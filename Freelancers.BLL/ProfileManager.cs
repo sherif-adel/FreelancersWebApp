@@ -16,10 +16,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The profile ID.</param>
     	public static Profile GetById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return ProfileDataService.GetById(id);
-    		}
+    		return ProfileDataService.GetById(id);
     	}
     
     	/// <summary>
@@ -27,10 +24,7 @@ namespace Freelancers.BLL
     	/// </summary>
     	public static List<Profile> GetAll()
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return ProfileDataService.GetAll();
-    		}
+    		return ProfileDataService.GetAll();
     	}
     
     	/// <summary>
@@ -39,10 +33,7 @@ namespace Freelancers.BLL
     	/// <param name="profile">The profile entity.</param>
     	public static void Add(Profile profile)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-            {
-    			ProfileDataService.Add(profile);
-            }
+    		ProfileDataService.Add(profile);
     	}
     
     	/// <summary>
@@ -51,10 +42,7 @@ namespace Freelancers.BLL
     	/// <param name="profile">The profile entity.</param>
     	public static void Delete(Profile profile)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			ProfileDataService.Delete(profile);
-    		}
+    		ProfileDataService.Delete(profile);
     	}
     
     	/// <summary>
@@ -63,10 +51,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The profile Id.</param>
     	public static void DeleteById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			ProfileDataService.DeleteById(id);
-    		}
+    		ProfileDataService.DeleteById(id);
     	}
     
     	/// <summary>
@@ -75,10 +60,7 @@ namespace Freelancers.BLL
     	/// <param name="profile">The profile entity.</param>
     	public static void Update(Profile profile)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			ProfileDataService.Update(profile);
-    		}
+    		ProfileDataService.Update(profile);
     	}
     
     	/// <summary>
@@ -87,10 +69,7 @@ namespace Freelancers.BLL
     	/// <param name="criteria">Search Criteria.</param>
     	public static List<Profile> Search(System.Linq.Expressions.Expression<Func<Profile, bool>> criteria)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return ProfileDataService.Search(criteria);
-    		}
+    		return ProfileDataService.Search(criteria);
     	}
 
         #endregion

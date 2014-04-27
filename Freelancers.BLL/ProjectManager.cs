@@ -16,10 +16,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The project ID.</param>
     	public static Project GetById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return ProjectDataService.GetById(id);
-    		}
+    		return ProjectDataService.GetById(id);
     	}
     
     	/// <summary>
@@ -27,10 +24,7 @@ namespace Freelancers.BLL
     	/// </summary>
     	public static List<Project> GetAll()
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return ProjectDataService.GetAll();
-    		}
+    		return ProjectDataService.GetAll();
     	}
     
     	/// <summary>
@@ -39,10 +33,7 @@ namespace Freelancers.BLL
     	/// <param name="project">The project entity.</param>
     	public static void Add(Project project)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-            {
-    			ProjectDataService.Add(project);
-            }
+    		ProjectDataService.Add(project);
     	}
     
     	/// <summary>
@@ -51,10 +42,7 @@ namespace Freelancers.BLL
     	/// <param name="project">The project entity.</param>
     	public static void Delete(Project project)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			ProjectDataService.Delete(project);
-    		}
+    		ProjectDataService.Delete(project);
     	}
     
     	/// <summary>
@@ -63,10 +51,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The project Id.</param>
     	public static void DeleteById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			ProjectDataService.DeleteById(id);
-    		}
+    		ProjectDataService.DeleteById(id);
     	}
     
     	/// <summary>
@@ -75,10 +60,7 @@ namespace Freelancers.BLL
     	/// <param name="project">The project entity.</param>
     	public static void Update(Project project)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			ProjectDataService.Update(project);
-    		}
+    		ProjectDataService.Update(project);
     	}
     
     	/// <summary>
@@ -87,10 +69,7 @@ namespace Freelancers.BLL
     	/// <param name="criteria">Search Criteria.</param>
     	public static List<Project> Search(System.Linq.Expressions.Expression<Func<Project, bool>> criteria)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return ProjectDataService.Search(criteria);
-    		}
+    		return ProjectDataService.Search(criteria);
     	}
 
         #endregion

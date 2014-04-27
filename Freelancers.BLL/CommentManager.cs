@@ -16,10 +16,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The comment ID.</param>
     	public static Comment GetById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return CommentDataService.GetById(id);
-    		}
+    		return CommentDataService.GetById(id);
     	}
     
     	/// <summary>
@@ -27,10 +24,7 @@ namespace Freelancers.BLL
     	/// </summary>
     	public static List<Comment> GetAll()
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return CommentDataService.GetAll();
-    		}
+    		return CommentDataService.GetAll();
     	}
     
     	/// <summary>
@@ -39,10 +33,7 @@ namespace Freelancers.BLL
     	/// <param name="comment">The comment entity.</param>
     	public static void Add(Comment comment)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-            {
-    			CommentDataService.Add(comment);
-            }
+    		CommentDataService.Add(comment);
     	}
     
     	/// <summary>
@@ -51,10 +42,7 @@ namespace Freelancers.BLL
     	/// <param name="comment">The comment entity.</param>
     	public static void Delete(Comment comment)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			CommentDataService.Delete(comment);
-    		}
+    		CommentDataService.Delete(comment);
     	}
     
     	/// <summary>
@@ -63,10 +51,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The comment Id.</param>
     	public static void DeleteById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			CommentDataService.DeleteById(id);
-    		}
+    		CommentDataService.DeleteById(id);
     	}
     
     	/// <summary>
@@ -75,10 +60,7 @@ namespace Freelancers.BLL
     	/// <param name="comment">The comment entity.</param>
     	public static void Update(Comment comment)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			CommentDataService.Update(comment);
-    		}
+    		CommentDataService.Update(comment);
     	}
     
     	/// <summary>
@@ -87,10 +69,7 @@ namespace Freelancers.BLL
     	/// <param name="criteria">Search Criteria.</param>
     	public static List<Comment> Search(System.Linq.Expressions.Expression<Func<Comment, bool>> criteria)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return CommentDataService.Search(criteria);
-    		}
+    		return CommentDataService.Search(criteria);
     	}
 
         #endregion

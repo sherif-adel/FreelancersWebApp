@@ -16,10 +16,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The maincategory ID.</param>
     	public static MainCategory GetById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return MainCategoryDataService.GetById(id);
-    		}
+    		return MainCategoryDataService.GetById(id);
     	}
     
     	/// <summary>
@@ -27,10 +24,7 @@ namespace Freelancers.BLL
     	/// </summary>
     	public static List<MainCategory> GetAll()
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return MainCategoryDataService.GetAll();
-    		}
+    		return MainCategoryDataService.GetAll();
     	}
     
     	/// <summary>
@@ -39,10 +33,7 @@ namespace Freelancers.BLL
     	/// <param name="maincategory">The maincategory entity.</param>
     	public static void Add(MainCategory maincategory)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-            {
-    			MainCategoryDataService.Add(maincategory);
-            }
+    		MainCategoryDataService.Add(maincategory);
     	}
     
     	/// <summary>
@@ -51,10 +42,7 @@ namespace Freelancers.BLL
     	/// <param name="maincategory">The maincategory entity.</param>
     	public static void Delete(MainCategory maincategory)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			MainCategoryDataService.Delete(maincategory);
-    		}
+    		MainCategoryDataService.Delete(maincategory);
     	}
     
     	/// <summary>
@@ -63,10 +51,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The maincategory Id.</param>
     	public static void DeleteById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			MainCategoryDataService.DeleteById(id);
-    		}
+    		MainCategoryDataService.DeleteById(id);
     	}
     
     	/// <summary>
@@ -75,10 +60,7 @@ namespace Freelancers.BLL
     	/// <param name="maincategory">The maincategory entity.</param>
     	public static void Update(MainCategory maincategory)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			MainCategoryDataService.Update(maincategory);
-    		}
+    		MainCategoryDataService.Update(maincategory);
     	}
     
     	/// <summary>
@@ -87,10 +69,7 @@ namespace Freelancers.BLL
     	/// <param name="criteria">Search Criteria.</param>
     	public static List<MainCategory> Search(System.Linq.Expressions.Expression<Func<MainCategory, bool>> criteria)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return MainCategoryDataService.Search(criteria);
-    		}
+    		return MainCategoryDataService.Search(criteria);
     	}
 
         #endregion

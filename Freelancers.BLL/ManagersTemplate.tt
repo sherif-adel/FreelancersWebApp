@@ -39,10 +39,7 @@ using FreeLancers.DAL;
 	/// <param name="id">The <#= entityNameLower #> ID.</param>
 	public static <#=entityType#> GetById(int id)
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-		{
-			return <#=entityType#>DataService.GetById(id);
-		}
+		return <#=entityType#>DataService.GetById(id);
 	}
 
 	/// <summary>
@@ -50,10 +47,7 @@ using FreeLancers.DAL;
 	/// </summary>
 	public static List<<#=entityType#>> GetAll()
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-		{
-			return <#=entityType#>DataService.GetAll();
-		}
+		return <#=entityType#>DataService.GetAll();
 	}
 
 	/// <summary>
@@ -62,10 +56,7 @@ using FreeLancers.DAL;
 	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
 	public static void Add(<#=entityType#> <#= entityNameLower #>)
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-        {
-			<#=entityType#>DataService.Add(<#= entityNameLower #>);
-        }
+		<#=entityType#>DataService.Add(<#= entityNameLower #>);
 	}
 
 	/// <summary>
@@ -74,10 +65,7 @@ using FreeLancers.DAL;
 	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
 	public static void Delete(<#=entityType#> <#= entityNameLower #>)
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-		{
-			<#=entityType#>DataService.Delete(<#= entityNameLower #>);
-		}
+		<#=entityType#>DataService.Delete(<#= entityNameLower #>);
 	}
 
 	/// <summary>
@@ -86,10 +74,7 @@ using FreeLancers.DAL;
 	/// <param name="id">The <#= entityNameLower #> Id.</param>
 	public static void DeleteById(int id)
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-		{
-			<#=entityType#>DataService.DeleteById(id);
-		}
+		<#=entityType#>DataService.DeleteById(id);
 	}
 
 	/// <summary>
@@ -98,10 +83,7 @@ using FreeLancers.DAL;
 	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
 	public static void Update(<#=entityType#> <#= entityNameLower #>)
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-		{
-			<#=entityType#>DataService.Update(<#= entityNameLower #>);
-		}
+		<#=entityType#>DataService.Update(<#= entityNameLower #>);
 	}
 
 	/// <summary>
@@ -110,10 +92,7 @@ using FreeLancers.DAL;
 	/// <param name="criteria">Search Criteria.</param>
 	public static List<<#=entityType#>> Search(System.Linq.Expressions.Expression<Func<<#=entityType#>, bool>> criteria)
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-		{
-			return <#=entityType#>DataService.Search(criteria);
-		}
+		return <#=entityType#>DataService.Search(criteria);
 	}
 <# region.End();#>
 }

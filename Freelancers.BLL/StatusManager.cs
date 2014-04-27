@@ -16,10 +16,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The status ID.</param>
     	public static Status GetById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return StatusDataService.GetById(id);
-    		}
+    		return StatusDataService.GetById(id);
     	}
     
     	/// <summary>
@@ -27,10 +24,7 @@ namespace Freelancers.BLL
     	/// </summary>
     	public static List<Status> GetAll()
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return StatusDataService.GetAll();
-    		}
+    		return StatusDataService.GetAll();
     	}
     
     	/// <summary>
@@ -39,10 +33,7 @@ namespace Freelancers.BLL
     	/// <param name="status">The status entity.</param>
     	public static void Add(Status status)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-            {
-    			StatusDataService.Add(status);
-            }
+    		StatusDataService.Add(status);
     	}
     
     	/// <summary>
@@ -51,10 +42,7 @@ namespace Freelancers.BLL
     	/// <param name="status">The status entity.</param>
     	public static void Delete(Status status)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			StatusDataService.Delete(status);
-    		}
+    		StatusDataService.Delete(status);
     	}
     
     	/// <summary>
@@ -63,10 +51,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The status Id.</param>
     	public static void DeleteById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			StatusDataService.DeleteById(id);
-    		}
+    		StatusDataService.DeleteById(id);
     	}
     
     	/// <summary>
@@ -75,10 +60,7 @@ namespace Freelancers.BLL
     	/// <param name="status">The status entity.</param>
     	public static void Update(Status status)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			StatusDataService.Update(status);
-    		}
+    		StatusDataService.Update(status);
     	}
     
     	/// <summary>
@@ -87,10 +69,7 @@ namespace Freelancers.BLL
     	/// <param name="criteria">Search Criteria.</param>
     	public static List<Status> Search(System.Linq.Expressions.Expression<Func<Status, bool>> criteria)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return StatusDataService.Search(criteria);
-    		}
+    		return StatusDataService.Search(criteria);
     	}
 
         #endregion

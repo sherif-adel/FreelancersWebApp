@@ -16,10 +16,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The subcategory ID.</param>
     	public static SubCategory GetById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return SubCategoryDataService.GetById(id);
-    		}
+    		return SubCategoryDataService.GetById(id);
     	}
     
     	/// <summary>
@@ -27,10 +24,7 @@ namespace Freelancers.BLL
     	/// </summary>
     	public static List<SubCategory> GetAll()
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return SubCategoryDataService.GetAll();
-    		}
+    		return SubCategoryDataService.GetAll();
     	}
     
     	/// <summary>
@@ -39,10 +33,7 @@ namespace Freelancers.BLL
     	/// <param name="subcategory">The subcategory entity.</param>
     	public static void Add(SubCategory subcategory)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-            {
-    			SubCategoryDataService.Add(subcategory);
-            }
+    		SubCategoryDataService.Add(subcategory);
     	}
     
     	/// <summary>
@@ -51,10 +42,7 @@ namespace Freelancers.BLL
     	/// <param name="subcategory">The subcategory entity.</param>
     	public static void Delete(SubCategory subcategory)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			SubCategoryDataService.Delete(subcategory);
-    		}
+    		SubCategoryDataService.Delete(subcategory);
     	}
     
     	/// <summary>
@@ -63,10 +51,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The subcategory Id.</param>
     	public static void DeleteById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			SubCategoryDataService.DeleteById(id);
-    		}
+    		SubCategoryDataService.DeleteById(id);
     	}
     
     	/// <summary>
@@ -75,10 +60,7 @@ namespace Freelancers.BLL
     	/// <param name="subcategory">The subcategory entity.</param>
     	public static void Update(SubCategory subcategory)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			SubCategoryDataService.Update(subcategory);
-    		}
+    		SubCategoryDataService.Update(subcategory);
     	}
     
     	/// <summary>
@@ -87,10 +69,7 @@ namespace Freelancers.BLL
     	/// <param name="criteria">Search Criteria.</param>
     	public static List<SubCategory> Search(System.Linq.Expressions.Expression<Func<SubCategory, bool>> criteria)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return SubCategoryDataService.Search(criteria);
-    		}
+    		return SubCategoryDataService.Search(criteria);
     	}
 
         #endregion

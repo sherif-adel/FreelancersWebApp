@@ -16,10 +16,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The skill ID.</param>
     	public static Skill GetById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return SkillDataService.GetById(id);
-    		}
+    		return SkillDataService.GetById(id);
     	}
     
     	/// <summary>
@@ -27,10 +24,7 @@ namespace Freelancers.BLL
     	/// </summary>
     	public static List<Skill> GetAll()
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return SkillDataService.GetAll();
-    		}
+    		return SkillDataService.GetAll();
     	}
     
     	/// <summary>
@@ -39,10 +33,7 @@ namespace Freelancers.BLL
     	/// <param name="skill">The skill entity.</param>
     	public static void Add(Skill skill)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-            {
-    			SkillDataService.Add(skill);
-            }
+    		SkillDataService.Add(skill);
     	}
     
     	/// <summary>
@@ -51,10 +42,7 @@ namespace Freelancers.BLL
     	/// <param name="skill">The skill entity.</param>
     	public static void Delete(Skill skill)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			SkillDataService.Delete(skill);
-    		}
+    		SkillDataService.Delete(skill);
     	}
     
     	/// <summary>
@@ -63,10 +51,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The skill Id.</param>
     	public static void DeleteById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			SkillDataService.DeleteById(id);
-    		}
+    		SkillDataService.DeleteById(id);
     	}
     
     	/// <summary>
@@ -75,10 +60,7 @@ namespace Freelancers.BLL
     	/// <param name="skill">The skill entity.</param>
     	public static void Update(Skill skill)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			SkillDataService.Update(skill);
-    		}
+    		SkillDataService.Update(skill);
     	}
     
     	/// <summary>
@@ -87,10 +69,7 @@ namespace Freelancers.BLL
     	/// <param name="criteria">Search Criteria.</param>
     	public static List<Skill> Search(System.Linq.Expressions.Expression<Func<Skill, bool>> criteria)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return SkillDataService.Search(criteria);
-    		}
+    		return SkillDataService.Search(criteria);
     	}
 
         #endregion

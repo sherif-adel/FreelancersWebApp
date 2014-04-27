@@ -16,10 +16,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The role ID.</param>
     	public static Role GetById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return RoleDataService.GetById(id);
-    		}
+    		return RoleDataService.GetById(id);
     	}
     
     	/// <summary>
@@ -27,10 +24,7 @@ namespace Freelancers.BLL
     	/// </summary>
     	public static List<Role> GetAll()
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return RoleDataService.GetAll();
-    		}
+    		return RoleDataService.GetAll();
     	}
     
     	/// <summary>
@@ -39,10 +33,7 @@ namespace Freelancers.BLL
     	/// <param name="role">The role entity.</param>
     	public static void Add(Role role)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-            {
-    			RoleDataService.Add(role);
-            }
+    		RoleDataService.Add(role);
     	}
     
     	/// <summary>
@@ -51,10 +42,7 @@ namespace Freelancers.BLL
     	/// <param name="role">The role entity.</param>
     	public static void Delete(Role role)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			RoleDataService.Delete(role);
-    		}
+    		RoleDataService.Delete(role);
     	}
     
     	/// <summary>
@@ -63,10 +51,7 @@ namespace Freelancers.BLL
     	/// <param name="id">The role Id.</param>
     	public static void DeleteById(int id)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			RoleDataService.DeleteById(id);
-    		}
+    		RoleDataService.DeleteById(id);
     	}
     
     	/// <summary>
@@ -75,10 +60,7 @@ namespace Freelancers.BLL
     	/// <param name="role">The role entity.</param>
     	public static void Update(Role role)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			RoleDataService.Update(role);
-    		}
+    		RoleDataService.Update(role);
     	}
     
     	/// <summary>
@@ -87,10 +69,7 @@ namespace Freelancers.BLL
     	/// <param name="criteria">Search Criteria.</param>
     	public static List<Role> Search(System.Linq.Expressions.Expression<Func<Role, bool>> criteria)
     	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return RoleDataService.Search(criteria);
-    		}
+    		return RoleDataService.Search(criteria);
     	}
 
         #endregion
