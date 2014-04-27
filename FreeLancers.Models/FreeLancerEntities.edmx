@@ -1,0 +1,1123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FreeLancersModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="FreeLancersModelStoreContainer">
+          <EntitySet Name="Comments" EntityType="FreeLancersModel.Store.Comments" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Competitors" EntityType="FreeLancersModel.Store.Competitors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FreelancerSkills" EntityType="FreeLancersModel.Store.FreelancerSkills" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FreelancerSubCategories" EntityType="FreeLancersModel.Store.FreelancerSubCategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MainCategory" EntityType="FreeLancersModel.Store.MainCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Profiles" EntityType="FreeLancersModel.Store.Profiles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Project" EntityType="FreeLancersModel.Store.Project" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProjectNotifications" EntityType="FreeLancersModel.Store.ProjectNotifications" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Requests" EntityType="FreeLancersModel.Store.Requests" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Roles" EntityType="FreeLancersModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Skills" EntityType="FreeLancersModel.Store.Skills" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Status" EntityType="FreeLancersModel.Store.Status" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SubCategory" EntityType="FreeLancersModel.Store.SubCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="FreeLancersModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Comments_Profiles" Association="FreeLancersModel.Store.FK_Comments_Profiles">
+            <End Role="Profiles" EntitySet="Profiles" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Users" Association="FreeLancersModel.Store.FK_Comments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competitors_Project" Association="FreeLancersModel.Store.FK_Competitors_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Competitors" EntitySet="Competitors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competitors_Users" Association="FreeLancersModel.Store.FK_Competitors_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Competitors" EntitySet="Competitors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FreelancerSkills_Profiles" Association="FreeLancersModel.Store.FK_FreelancerSkills_Profiles">
+            <End Role="Profiles" EntitySet="Profiles" />
+            <End Role="FreelancerSkills" EntitySet="FreelancerSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FreelancerSkills_Skills" Association="FreeLancersModel.Store.FK_FreelancerSkills_Skills">
+            <End Role="Skills" EntitySet="Skills" />
+            <End Role="FreelancerSkills" EntitySet="FreelancerSkills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FreelancerSubCategories_SubCategory" Association="FreeLancersModel.Store.FK_FreelancerSubCategories_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategory" />
+            <End Role="FreelancerSubCategories" EntitySet="FreelancerSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FreelancerSubCategories_Users" Association="FreeLancersModel.Store.FK_FreelancerSubCategories_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="FreelancerSubCategories" EntitySet="FreelancerSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profiles_Users" Association="FreeLancersModel.Store.FK_Profiles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Profiles" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_SubCategory" Association="FreeLancersModel.Store.FK_Project_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategory" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Users" Association="FreeLancersModel.Store.FK_Project_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Users1" Association="FreeLancersModel.Store.FK_Project_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectNotifications_Project" Association="FreeLancersModel.Store.FK_ProjectNotifications_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectNotifications" EntitySet="ProjectNotifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProjectNotifications_Users" Association="FreeLancersModel.Store.FK_ProjectNotifications_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ProjectNotifications" EntitySet="ProjectNotifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_RequestStatus" Association="FreeLancersModel.Store.FK_Requests_RequestStatus">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Requests" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_Users" Association="FreeLancersModel.Store.FK_Requests_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Requests" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_Users1" Association="FreeLancersModel.Store.FK_Requests_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Requests" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestStatus_Roles" Association="FreeLancersModel.Store.FK_RequestStatus_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_MainCategory" Association="FreeLancersModel.Store.FK_SubCategory_MainCategory">
+            <End Role="MainCategory" EntitySet="MainCategory" />
+            <End Role="SubCategory" EntitySet="SubCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="FreeLancersModel.Store.FK_Users_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles1" Association="FreeLancersModel.Store.FK_Users_Roles1">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Comment" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ProfileID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Competitors">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="money" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FreelancerSkills">
+          <Key>
+            <PropertyRef Name="SkillID" />
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Name="SkillID" Type="int" Nullable="false" />
+          <Property Name="ProfileID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FreelancerSubCategories">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="SubCategoryID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="SubCategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MainCategory">
+          <Key>
+            <PropertyRef Name="MainCategoryID" />
+          </Key>
+          <Property Name="MainCategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Image" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profiles">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Name="ProfileID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Image1" Type="image" />
+          <Property Name="Image2" Type="image" />
+          <Property Name="Image3" Type="image" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Experience" Type="int" Nullable="false" />
+          <Property Name="LinkedURL" Type="nvarchar" MaxLength="50" />
+          <Property Name="YouTubeURL" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreviousWork" Type="nvarchar(max)" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="Featured" Type="bit" />
+          <Property Name="CompanyName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="SubCategoryID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AverageCost" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="Finished" Type="bit" Nullable="false" />
+          <Property Name="FreelancerID" Type="int" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Featured" Type="bit" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProjectNotifications">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="ProjectID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Requests">
+          <Key>
+            <PropertyRef Name="RequestID" />
+          </Key>
+          <Property Name="RequestID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FreelancerID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="AverageCost" Type="int" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="SkillID" />
+          </Key>
+          <Property Name="SkillID" Type="int" Nullable="false" />
+          <Property Name="SkillName" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="RoleID" Type="int" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryID" />
+          </Key>
+          <Property Name="SubCategoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Image" Type="image" />
+          <Property Name="MainCategoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Mobile" Type="int" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Comments_Profiles">
+          <End Role="Profiles" Type="FreeLancersModel.Store.Profiles" Multiplicity="1" />
+          <End Role="Comments" Type="FreeLancersModel.Store.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profiles">
+              <PropertyRef Name="ProfileID" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="ProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Users">
+          <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="1" />
+          <End Role="Comments" Type="FreeLancersModel.Store.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competitors_Project">
+          <End Role="Project" Type="FreeLancersModel.Store.Project" Multiplicity="1" />
+          <End Role="Competitors" Type="FreeLancersModel.Store.Competitors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Competitors">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competitors_Users">
+          <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="1" />
+          <End Role="Competitors" Type="FreeLancersModel.Store.Competitors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Competitors">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FreelancerSkills_Profiles">
+          <End Role="Profiles" Type="FreeLancersModel.Store.Profiles" Multiplicity="1" />
+          <End Role="FreelancerSkills" Type="FreeLancersModel.Store.FreelancerSkills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profiles">
+              <PropertyRef Name="ProfileID" />
+            </Principal>
+            <Dependent Role="FreelancerSkills">
+              <PropertyRef Name="ProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FreelancerSkills_Skills">
+          <End Role="Skills" Type="FreeLancersModel.Store.Skills" Multiplicity="1" />
+          <End Role="FreelancerSkills" Type="FreeLancersModel.Store.FreelancerSkills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skills">
+              <PropertyRef Name="SkillID" />
+            </Principal>
+            <Dependent Role="FreelancerSkills">
+              <PropertyRef Name="SkillID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FreelancerSubCategories_SubCategory">
+          <End Role="SubCategory" Type="FreeLancersModel.Store.SubCategory" Multiplicity="1" />
+          <End Role="FreelancerSubCategories" Type="FreeLancersModel.Store.FreelancerSubCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryID" />
+            </Principal>
+            <Dependent Role="FreelancerSubCategories">
+              <PropertyRef Name="SubCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FreelancerSubCategories_Users">
+          <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="1" />
+          <End Role="FreelancerSubCategories" Type="FreeLancersModel.Store.FreelancerSubCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="FreelancerSubCategories">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profiles_Users">
+          <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="1" />
+          <End Role="Profiles" Type="FreeLancersModel.Store.Profiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Profiles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_SubCategory">
+          <End Role="SubCategory" Type="FreeLancersModel.Store.SubCategory" Multiplicity="1" />
+          <End Role="Project" Type="FreeLancersModel.Store.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="SubCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Users">
+          <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="1" />
+          <End Role="Project" Type="FreeLancersModel.Store.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Users1">
+          <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="0..1" />
+          <End Role="Project" Type="FreeLancersModel.Store.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="FreelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectNotifications_Project">
+          <End Role="Project" Type="FreeLancersModel.Store.Project" Multiplicity="1" />
+          <End Role="ProjectNotifications" Type="FreeLancersModel.Store.ProjectNotifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="ProjectNotifications">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProjectNotifications_Users">
+          <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="1" />
+          <End Role="ProjectNotifications" Type="FreeLancersModel.Store.ProjectNotifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ProjectNotifications">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_RequestStatus">
+          <End Role="Status" Type="FreeLancersModel.Store.Status" Multiplicity="1" />
+          <End Role="Requests" Type="FreeLancersModel.Store.Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Requests">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_Users">
+          <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="1" />
+          <End Role="Requests" Type="FreeLancersModel.Store.Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Requests">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_Users1">
+          <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="1" />
+          <End Role="Requests" Type="FreeLancersModel.Store.Requests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Requests">
+              <PropertyRef Name="FreelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestStatus_Roles">
+          <End Role="Roles" Type="FreeLancersModel.Store.Roles" Multiplicity="0..1" />
+          <End Role="Status" Type="FreeLancersModel.Store.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_MainCategory">
+          <End Role="MainCategory" Type="FreeLancersModel.Store.MainCategory" Multiplicity="0..1" />
+          <End Role="SubCategory" Type="FreeLancersModel.Store.SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainCategory">
+              <PropertyRef Name="MainCategoryID" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="MainCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Role="Roles" Type="FreeLancersModel.Store.Roles" Multiplicity="1" />
+          <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles1">
+          <End Role="Roles" Type="FreeLancersModel.Store.Roles" Multiplicity="1" />
+          <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FreeLancersModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FreeLancersEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Comments" EntityType="FreeLancersModel.Comment" />
+          <EntitySet Name="Competitors" EntityType="FreeLancersModel.Competitor" />
+          <EntitySet Name="MainCategories" EntityType="FreeLancersModel.MainCategory" />
+          <EntitySet Name="Profiles" EntityType="FreeLancersModel.Profile" />
+          <EntitySet Name="Projects" EntityType="FreeLancersModel.Project" />
+          <EntitySet Name="Requests" EntityType="FreeLancersModel.Request" />
+          <EntitySet Name="Roles" EntityType="FreeLancersModel.Role" />
+          <EntitySet Name="Skills" EntityType="FreeLancersModel.Skill" />
+          <EntitySet Name="Status" EntityType="FreeLancersModel.Status" />
+          <EntitySet Name="SubCategories" EntityType="FreeLancersModel.SubCategory" />
+          <AssociationSet Name="FK_Comments_Profiles" Association="FreeLancersModel.FK_Comments_Profiles">
+            <End Role="Profile" EntitySet="Profiles" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competitors_Project" Association="FreeLancersModel.FK_Competitors_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Competitor" EntitySet="Competitors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategory_MainCategory" Association="FreeLancersModel.FK_SubCategory_MainCategory">
+            <End Role="MainCategory" EntitySet="MainCategories" />
+            <End Role="SubCategory" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_SubCategory" Association="FreeLancersModel.FK_Project_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategories" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_RequestStatus" Association="FreeLancersModel.FK_Requests_RequestStatus">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestStatus_Roles" Association="FreeLancersModel.FK_RequestStatus_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FreelancerSkills" Association="FreeLancersModel.FreelancerSkills">
+            <End Role="Profile" EntitySet="Profiles" />
+            <End Role="Skill" EntitySet="Skills" />
+          </AssociationSet>
+          <EntitySet Name="Users" EntityType="FreeLancersModel.User" />
+          <AssociationSet Name="FK_Comments_Users" Association="FreeLancersModel.FK_Comments_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Competitors_Users" Association="FreeLancersModel.FK_Competitors_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Competitor" EntitySet="Competitors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profiles_Users" Association="FreeLancersModel.FK_Profiles_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Users" Association="FreeLancersModel.FK_Project_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_Users1" Association="FreeLancersModel.FK_Project_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_Users" Association="FreeLancersModel.FK_Requests_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_Users1" Association="FreeLancersModel.FK_Requests_Users1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles" Association="FreeLancersModel.FK_Users_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Roles1" Association="FreeLancersModel.FK_Users_Roles1">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FreelancerSubCategories" Association="FreeLancersModel.FreelancerSubCategories">
+            <End Role="SubCategory" EntitySet="SubCategories" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectNotifications" Association="FreeLancersModel.ProjectNotifications">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Type="Int32" Name="CommentID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Comment1" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="ProfileID" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Profile" Relationship="FreeLancersModel.FK_Comments_Profiles" FromRole="Comment" ToRole="Profile" />
+          <NavigationProperty Name="User" Relationship="FreeLancersModel.FK_Comments_Users" FromRole="Comment" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Competitor">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Decimal" Name="Cost" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="Duration" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="FreeLancersModel.FK_Competitors_Project" FromRole="Competitor" ToRole="Project" />
+          <NavigationProperty Name="User" Relationship="FreeLancersModel.FK_Competitors_Users" FromRole="Competitor" ToRole="User" />
+        </EntityType>
+        <EntityType Name="MainCategory">
+          <Key>
+            <PropertyRef Name="MainCategoryID" />
+          </Key>
+          <Property Type="Int32" Name="MainCategoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="Image" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="SubCategories" Relationship="FreeLancersModel.FK_SubCategory_MainCategory" FromRole="MainCategory" ToRole="SubCategory" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Type="Int32" Name="ProfileID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Binary" Name="Image1" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Image2" MaxLength="Max" FixedLength="false" />
+          <Property Type="Binary" Name="Image3" MaxLength="Max" FixedLength="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Experience" Nullable="false" />
+          <Property Type="String" Name="LinkedURL" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="YouTubeURL" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousWork" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Rating" />
+          <Property Type="Boolean" Name="Featured" />
+          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Comments" Relationship="FreeLancersModel.FK_Comments_Profiles" FromRole="Profile" ToRole="Comment" />
+          <NavigationProperty Name="Skills" Relationship="FreeLancersModel.FreelancerSkills" FromRole="Profile" ToRole="Skill" />
+          <NavigationProperty Name="User" Relationship="FreeLancersModel.FK_Profiles_Users" FromRole="Profile" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+          </Key>
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="SubCategoryID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="AverageCost" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="0" />
+          <Property Type="Boolean" Name="Finished" Nullable="false" />
+          <Property Type="Int32" Name="FreelancerID" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="Featured" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Competitors" Relationship="FreeLancersModel.FK_Competitors_Project" FromRole="Project" ToRole="Competitor" />
+          <NavigationProperty Name="SubCategory" Relationship="FreeLancersModel.FK_Project_SubCategory" FromRole="Project" ToRole="SubCategory" />
+          <NavigationProperty Name="User" Relationship="FreeLancersModel.FK_Project_Users" FromRole="Project" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="FreeLancersModel.FK_Project_Users1" FromRole="Project" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="FreeLancersModel.ProjectNotifications" FromRole="Project" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="RequestID" />
+          </Key>
+          <Property Type="Int32" Name="RequestID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="FreelancerID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="StatusID" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="0" />
+          <Property Type="Int32" Name="AverageCost" />
+          <NavigationProperty Name="Status" Relationship="FreeLancersModel.FK_Requests_RequestStatus" FromRole="Request" ToRole="Status" />
+          <NavigationProperty Name="User" Relationship="FreeLancersModel.FK_Requests_Users" FromRole="Request" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="FreeLancersModel.FK_Requests_Users1" FromRole="Request" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Type="Int32" Name="RoleID" Nullable="false" />
+          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Status" Relationship="FreeLancersModel.FK_RequestStatus_Roles" FromRole="Role" ToRole="Status" />
+          <NavigationProperty Name="Users" Relationship="FreeLancersModel.FK_Users_Roles" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="Users1" Relationship="FreeLancersModel.FK_Users_Roles1" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="SkillID" />
+          </Key>
+          <Property Type="Int32" Name="SkillID" Nullable="false" />
+          <Property Type="String" Name="SkillName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Profiles" Relationship="FreeLancersModel.FreelancerSkills" FromRole="Skill" ToRole="Profile" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Type="Int32" Name="StatusID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RoleID" />
+          <NavigationProperty Name="Requests" Relationship="FreeLancersModel.FK_Requests_RequestStatus" FromRole="Status" ToRole="Request" />
+          <NavigationProperty Name="Role" Relationship="FreeLancersModel.FK_RequestStatus_Roles" FromRole="Status" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryID" />
+          </Key>
+          <Property Type="Int32" Name="SubCategoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="Image" MaxLength="Max" FixedLength="false" />
+          <Property Type="Int32" Name="MainCategoryID" />
+          <NavigationProperty Name="MainCategory" Relationship="FreeLancersModel.FK_SubCategory_MainCategory" FromRole="SubCategory" ToRole="MainCategory" />
+          <NavigationProperty Name="Projects" Relationship="FreeLancersModel.FK_Project_SubCategory" FromRole="SubCategory" ToRole="Project" />
+          <NavigationProperty Name="Users" Relationship="FreeLancersModel.FreelancerSubCategories" FromRole="SubCategory" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Comments_Profiles">
+          <End Type="FreeLancersModel.Profile" Role="Profile" Multiplicity="1" />
+          <End Type="FreeLancersModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profile">
+              <PropertyRef Name="ProfileID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competitors_Project">
+          <End Type="FreeLancersModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="FreeLancersModel.Competitor" Role="Competitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectID" />
+            </Principal>
+            <Dependent Role="Competitor">
+              <PropertyRef Name="ProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategory_MainCategory">
+          <End Type="FreeLancersModel.MainCategory" Role="MainCategory" Multiplicity="0..1" />
+          <End Type="FreeLancersModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainCategory">
+              <PropertyRef Name="MainCategoryID" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="MainCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_SubCategory">
+          <End Type="FreeLancersModel.SubCategory" Role="SubCategory" Multiplicity="1" />
+          <End Type="FreeLancersModel.Project" Role="Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="SubCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_RequestStatus">
+          <End Type="FreeLancersModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="FreeLancersModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestStatus_Roles">
+          <End Type="FreeLancersModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="FreeLancersModel.Status" Role="Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FreelancerSkills">
+          <End Type="FreeLancersModel.Profile" Role="Profile" Multiplicity="*" />
+          <End Type="FreeLancersModel.Skill" Role="Skill" Multiplicity="*" />
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Mobile" />
+          <Property Type="Int32" Name="RoleID" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="FreeLancersModel.FK_Comments_Users" FromRole="User" ToRole="Comment" />
+          <NavigationProperty Name="Competitors" Relationship="FreeLancersModel.FK_Competitors_Users" FromRole="User" ToRole="Competitor" />
+          <NavigationProperty Name="Profiles" Relationship="FreeLancersModel.FK_Profiles_Users" FromRole="User" ToRole="Profile" />
+          <NavigationProperty Name="Projects" Relationship="FreeLancersModel.FK_Project_Users" FromRole="User" ToRole="Project" />
+          <NavigationProperty Name="Projects1" Relationship="FreeLancersModel.FK_Project_Users1" FromRole="User" ToRole="Project" />
+          <NavigationProperty Name="Requests" Relationship="FreeLancersModel.FK_Requests_Users" FromRole="User" ToRole="Request" />
+          <NavigationProperty Name="Requests1" Relationship="FreeLancersModel.FK_Requests_Users1" FromRole="User" ToRole="Request" />
+          <NavigationProperty Name="Role" Relationship="FreeLancersModel.FK_Users_Roles" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Role1" Relationship="FreeLancersModel.FK_Users_Roles1" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="SubCategories" Relationship="FreeLancersModel.FreelancerSubCategories" FromRole="User" ToRole="SubCategory" />
+          <NavigationProperty Name="Projects2" Relationship="FreeLancersModel.ProjectNotifications" FromRole="User" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK_Comments_Users">
+          <End Type="FreeLancersModel.User" Role="User" Multiplicity="1" />
+          <End Type="FreeLancersModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Competitors_Users">
+          <End Type="FreeLancersModel.User" Role="User" Multiplicity="1" />
+          <End Type="FreeLancersModel.Competitor" Role="Competitor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Competitor">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profiles_Users">
+          <End Type="FreeLancersModel.User" Role="User" Multiplicity="1" />
+          <End Type="FreeLancersModel.Profile" Role="Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Users">
+          <End Type="FreeLancersModel.User" Role="User" Multiplicity="1" />
+          <End Type="FreeLancersModel.Project" Role="Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_Users1">
+          <End Type="FreeLancersModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="FreeLancersModel.Project" Role="Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="FreelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_Users">
+          <End Type="FreeLancersModel.User" Role="User" Multiplicity="1" />
+          <End Type="FreeLancersModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_Users1">
+          <End Type="FreeLancersModel.User" Role="User" Multiplicity="1" />
+          <End Type="FreeLancersModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="FreelancerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Type="FreeLancersModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="FreeLancersModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles1">
+          <End Type="FreeLancersModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="FreeLancersModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FreelancerSubCategories">
+          <End Type="FreeLancersModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+          <End Type="FreeLancersModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <Association Name="ProjectNotifications">
+          <End Type="FreeLancersModel.Project" Role="Project" Multiplicity="*" />
+          <End Type="FreeLancersModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FreeLancersModelStoreContainer" CdmEntityContainer="FreeLancersEntities">
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="FreeLancersModel.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Comment1" ColumnName="Comment" />
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competitors">
+            <EntityTypeMapping TypeName="FreeLancersModel.Competitor">
+              <MappingFragment StoreEntitySet="Competitors">
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainCategories">
+            <EntityTypeMapping TypeName="FreeLancersModel.MainCategory">
+              <MappingFragment StoreEntitySet="MainCategory">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MainCategoryID" ColumnName="MainCategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="FreeLancersModel.Profile">
+              <MappingFragment StoreEntitySet="Profiles">
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Featured" ColumnName="Featured" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="PreviousWork" ColumnName="PreviousWork" />
+                <ScalarProperty Name="YouTubeURL" ColumnName="YouTubeURL" />
+                <ScalarProperty Name="LinkedURL" ColumnName="LinkedURL" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Image3" ColumnName="Image3" />
+                <ScalarProperty Name="Image2" ColumnName="Image2" />
+                <ScalarProperty Name="Image1" ColumnName="Image1" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="FreeLancersModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Featured" ColumnName="Featured" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="FreelancerID" ColumnName="FreelancerID" />
+                <ScalarProperty Name="Finished" ColumnName="Finished" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="AverageCost" ColumnName="AverageCost" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="FreeLancersModel.Request">
+              <MappingFragment StoreEntitySet="Requests">
+                <ScalarProperty Name="AverageCost" ColumnName="AverageCost" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FreelancerID" ColumnName="FreelancerID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="FreeLancersModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="FreeLancersModel.Skill">
+              <MappingFragment StoreEntitySet="Skills">
+                <ScalarProperty Name="SkillName" ColumnName="SkillName" />
+                <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="FreeLancersModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategories">
+            <EntityTypeMapping TypeName="FreeLancersModel.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategory">
+                <ScalarProperty Name="MainCategoryID" ColumnName="MainCategoryID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FreelancerSkills" TypeName="FreeLancersModel.FreelancerSkills" StoreEntitySet="FreelancerSkills">
+            <EndProperty Name="Skill">
+              <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+            </EndProperty>
+            <EndProperty Name="Profile">
+              <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="FreeLancersModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FreelancerSubCategories" TypeName="FreeLancersModel.FreelancerSubCategories" StoreEntitySet="FreelancerSubCategories">
+            <EndProperty Name="User">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="SubCategory">
+              <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="ProjectNotifications" TypeName="FreeLancersModel.ProjectNotifications" StoreEntitySet="ProjectNotifications">
+            <EndProperty Name="User">
+              <ScalarProperty Name="UserID" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="Project">
+              <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

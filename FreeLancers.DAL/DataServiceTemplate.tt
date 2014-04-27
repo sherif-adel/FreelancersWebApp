@@ -1,0 +1,158 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ output extension=".cs" #>
+
+<#
+CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+CodeRegion region = new CodeRegion(this, 1);
+MetadataTools ef = new MetadataTools(this);
+
+string inputFile = @"..\FreeLancers.Models\FreeLancerEntities.edmx";
+EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
+EntityContainer container = ItemCollection.GetItems<EntityContainer>().FirstOrDefault();
+string namespaceName = code.VsNamespaceSuggestion();
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+
+foreach (EntitySet entity in container.BaseEntitySets.OfType<EntitySet>())
+{
+	string entitySetName = code.Escape(entity);
+	string entityType = code.Escape(entity.ElementType);
+	string dataServiceName = String.Format("{0}DataService",entityType);
+	string entityNameLower = code.Escape(entity.ElementType).ToLower();
+	fileManager.StartNewFile(String.Format("{0}.cs",dataServiceName));
+	BeginNamespace(namespaceName, code); 
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using FreeLancers.Models;
+
+<#=Accessibility.ForType(entity.ElementType)#> <#=code.SpaceAfter(code.AbstractOption(entity.ElementType))#>partial class <#=dataServiceName#>
+{
+<#	region.Begin("Methods"); #>
+
+	/// <summary>
+	/// Gets the specified entity by Id.
+	/// </summary>
+	/// <param name="id">The <#= entityNameLower #> Id.</param>
+	public static <#=entityType#> GetById(int id)
+	{
+		using (FreeLancersEntities entities = new FreeLancersEntities())
+		{
+			return entities.<#=entitySetName#>.FirstOrDefault(entity => entity.<#=entityType#>ID == id);
+		}
+	}
+
+	/// <summary>
+	/// Gets All.
+	/// </summary>
+	public static List<<#=entityType#>> GetAll()
+	{
+		using (FreeLancersEntities entities = new FreeLancersEntities())
+		{
+			return entities.<#=entitySetName#>.ToList();
+		}
+	}
+
+	/// <summary>
+	/// Adds the specified entity.
+	/// </summary>
+	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
+	public static void Add(<#=entityType#> <#= entityNameLower #>)
+	{
+		using (FreeLancersEntities entities = new FreeLancersEntities())
+        {
+			entities.<#=entitySetName#>.Add(<#= entityNameLower #>);
+			entities.SaveChanges();
+        }
+	}
+
+	/// <summary>
+	/// Deletes the specified entity.
+	/// </summary>
+	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
+	public static void Delete(<#=entityType#> <#= entityNameLower #>)
+	{
+		using (FreeLancersEntities entities = new FreeLancersEntities())
+		{
+			entities.<#=entitySetName#>.Remove(<#= entityNameLower #>);
+			entities.SaveChanges();
+		}
+	}
+
+	/// <summary>
+	/// Deletes the entity by Id.
+	/// </summary>
+	/// <param name="id">The <#= entityNameLower #> Id.</param>
+	public static void DeleteById(int id)
+	{
+		using (FreeLancersEntities entities = new FreeLancersEntities())
+		{
+			var <#= entityNameLower #> = GetById(id);
+			entities.<#=entitySetName#>.Remove(<#= entityNameLower #>);
+			entities.SaveChanges();
+		}
+	}
+
+	/// <summary>
+	/// Updates the specified entity.
+	/// </summary>
+	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
+	public static void Update(<#=entityType#> <#= entityNameLower #>)
+	{
+		using (FreeLancersEntities entities = new FreeLancersEntities())
+		{
+			entities.Entry(<#= entityNameLower #>).State = System.Data.EntityState.Modified;
+			entities.SaveChanges();
+		}
+	}
+
+	/// <summary>
+	/// Queries the entity.
+	/// </summary>
+	/// <param name="criteria">Search Criteria.</param>
+	public static List<<#=entityType#>> Search(System.Linq.Expressions.Expression<Func<<#=entityType#>, bool>> criteria)
+	{
+		using (FreeLancersEntities entities = new FreeLancersEntities())
+		{
+			return entities.<#=entitySetName#>.Where(criteria).ToList();
+		}
+	}
+<# region.End();#>
+}
+<#
+	EndNamespace(namespaceName);
+}
+
+fileManager.Process();
+
+#>
+
+<#+	
+void BeginNamespace(string namespaceName, CodeGenerationTools code)
+{
+	CodeRegion region = new CodeRegion(this);
+	if (!String.IsNullOrEmpty(namespaceName))
+	{
+#>
+namespace <#=code.EscapeNamespace(namespaceName)#>
+{
+<#+
+		PushIndent(CodeRegion.GetIndent(1));
+	}
+}
+
+
+void EndNamespace(string namespaceName)
+{
+	if (!String.IsNullOrEmpty(namespaceName))
+	{
+		PopIndent();
+#>
+}
+<#+
+	}
+}
+
+#>
