@@ -14,36 +14,38 @@ namespace FreeLancers.Service.Contracts
 		public int UserID { get; set; }
 
 		[DataMember]
-		public string Email { get; set; }
-
-		[DataMember]
 		public string FirstName { get; set; }
 
 		[DataMember]
 		public string LastName { get; set; }
 
 		[DataMember]
+		public string Email { get; set; }
+
+		[DataMember]
 		public string Password { get; set; }
 
 		[DataMember]
-		public Nullable<int> SubCategoryID { get; set; }
+		public Nullable<int> Mobile { get; set; }
 
 		[DataMember]
 		public int RoleID { get; set; }
 
-		[DataMember]
-		public int Mobile { get; set; }
 
-		//[DataMember]
-		//public virtual ICollection<FreelancersPost> FreelancersPosts { get; set; }
+		//public virtual ICollection<Comment> Comments { get; set; }
 
-		//[DataMember]
+		//public virtual ICollection<Competitor> Competitors { get; set; }
+
+		//public virtual ICollection<Profile> Profiles { get; set; }
+
+		//public virtual ICollection<Project> Projects { get; set; }
+
 		//public virtual ICollection<Request> Requests { get; set; }
 
-		//[DataMember]
 		//public virtual Role Role { get; set; }
 
-		//[DataMember]
-		//public virtual SubCategory SubCategory { get; set; }
+		//public virtual ICollection<SubCategory> SubCategories { get; set; }
+
+		//public virtual ICollection<Project> ProjectsNotifications { get; set; }
 	}
 }

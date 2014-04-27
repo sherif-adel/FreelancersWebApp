@@ -18,24 +18,24 @@ namespace FreeLancer.Services
 		public UserContract GetById(int userId)
 		{
 			var user = UsersManager.GetById(userId);
-			return Translator.ConverToUserContract(user);
+			return UsersTranslator.ConverToUserContract(user);
 		}
 
 		public List<UserContract> GetAll()
 		{
 			var users = UsersManager.GetAll();
-			return Translator.ConverToUserContract(users);
+			return UsersTranslator.ConverToUserContract(users);
 		}
 
 		public void Add(UserContract user)
 		{
-			var userEntity = Translator.ConverToUserEntity(user);
+			var userEntity = UsersTranslator.ConverToUserEntity(user);
 			UsersManager.Add(userEntity);
 		}
 
 		public void Delete(UserContract user)
 		{
-			var userEntity = Translator.ConverToUserEntity(user);
+			var userEntity = UsersTranslator.ConverToUserEntity(user);
 			UsersManager.Delete(userEntity);
 		}
 
@@ -46,13 +46,13 @@ namespace FreeLancer.Services
 
 		public void Update(UserContract user)
 		{
-			var userEntity = Translator.ConverToUserEntity(user);
+			var userEntity = UsersTranslator.ConverToUserEntity(user);
 			UsersManager.Update(userEntity);
 		}
 
 		//public List<UserContract> Search(System.Linq.Expressions.Expression<Func<UserContract, bool>> criteria)
 		//{
-		//	var userEntity = Translator.ConverToUserEntity((UserContract)criteria.Parameters[0]);
+		//	var userEntity = UsersTranslator.ConverToUserEntity((UserContract)criteria.Parameters[0]);
 		//	var param = Expression.Parameter(typeof(User), "p");
 		//	var body = criteria.Body;
 
@@ -60,19 +60,19 @@ namespace FreeLancer.Services
 		//		body, param);
 
 		//	var users = UsersManager.Search(lambda);
-		//	return Translator.ConverToUserContract(users);
+		//	return UsersTranslator.ConverToUserContract(users);
 		//}
 
 		public List<UserContract> GetUsersByRoleId(int roleId)
 		{
 			var users = UsersManager.GetUsersByRoleId(roleId);
-			return Translator.ConverToUserContract(users);
+			return UsersTranslator.ConverToUserContract(users);
 		}
 
 		public UserContract ValidateLogin(string email, string password)
 		{
 			var user = UsersManager.ValidateLogin(email, password);
-			return Translator.ConverToUserContract(user);
+			return UsersTranslator.ConverToUserContract(user);
 		}
 	}
 }

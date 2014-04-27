@@ -5,36 +5,33 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="cc650cc7f7b74680ad922144b2486b3d" Name="Diagram1">
-        <EntityTypeShape EntityType="FreeLancersModel.Comment" Width="1.5" PointX="0.72904165495608075" PointY="12.791677525635659" />
-        <EntityTypeShape EntityType="FreeLancersModel.Competitor" Width="1.5" PointX="2.5669429276915929" PointY="3.6971043514539974" />
-        <EntityTypeShape EntityType="FreeLancersModel.MainCategory" Width="1.5" PointX="8.5500612801639644" PointY="17.74295627406936" />
-        <EntityTypeShape EntityType="FreeLancersModel.Profile" Width="1.5" PointX="2.3966990031286604" PointY="23.714669789986065" />
-        <EntityTypeShape EntityType="FreeLancersModel.Project" Width="1.5" PointX="7.7020927684857021" PointY="7.3497196917187981" />
-        <EntityTypeShape EntityType="FreeLancersModel.Request" Width="1.5" PointX="8.6777006446745713" PointY="8.6348554085171116" />
-        <EntityTypeShape EntityType="FreeLancersModel.Role" Width="1.5" PointX="6.9248373224049979" PointY="2.5216990870058997" />
-        <EntityTypeShape EntityType="FreeLancersModel.Skill" Width="1.5" PointX="2.5449817881663241" PointY="2.9591172798346341" />
-        <EntityTypeShape EntityType="FreeLancersModel.Status" Width="1.5" PointX="4.6283846910243778" PointY="29.975647493254229" />
-        <EntityTypeShape EntityType="FreeLancersModel.SubCategory" Width="1.5" PointX="4.270858578510051" PointY="19.562708491255858" />
+        <EntityTypeShape EntityType="FreeLancersModel.Comment" Width="1.5" PointX="2.2221927075750161" PointY="16.187638871459122" />
+        <EntityTypeShape EntityType="FreeLancersModel.Competitor" Width="1.5" PointX="1.2279800070580003" PointY="13.580510130888088" />
+        <EntityTypeShape EntityType="FreeLancersModel.MainCategory" Width="1.5" PointX="4.4183893950741684" PointY="14.866624168523877" />
+        <EntityTypeShape EntityType="FreeLancersModel.Profile" Width="1.5" PointX="11.688129063550443" PointY="12.707103809671059" />
+        <EntityTypeShape EntityType="FreeLancersModel.Project" Width="1.5" PointX="0.72758063335324663" PointY="18.452940755734659" />
+        <EntityTypeShape EntityType="FreeLancersModel.Request" Width="1.5" PointX="10.2340819305899" PointY="29.729253812566984" />
+        <EntityTypeShape EntityType="FreeLancersModel.Role" Width="1.5" PointX="1.2629609076599409" PointY="0.24923169624490277" />
+        <EntityTypeShape EntityType="FreeLancersModel.Skill" Width="1.5" PointX="6.6616620638694908" PointY="8.53230886558644" />
+        <EntityTypeShape EntityType="FreeLancersModel.Status" Width="1.5" PointX="9.2348980741737865" PointY="11.97887847385317" />
+        <EntityTypeShape EntityType="FreeLancersModel.SubCategory" Width="1.5" PointX="7.0257513965599943" PointY="22.34766098407454" />
+        <EntityTypeShape EntityType="FreeLancersModel.User" Width="1.5" PointX="9.5169711716086471" PointY="13.346459886686159" />
         <AssociationConnector Association="FreeLancersModel.FK_Comments_Profiles" />
-        <AssociationConnector Association="FreeLancersModel.FK_Competitors_Project" />
-        <AssociationConnector Association="FreeLancersModel.FK_SubCategory_MainCategory" />
-        <AssociationConnector Association="FreeLancersModel.FK_Project_SubCategory" />
-        <AssociationConnector Association="FreeLancersModel.FK_Requests_RequestStatus" />
-        <AssociationConnector Association="FreeLancersModel.FK_RequestStatus_Roles" />
-        <AssociationConnector Association="FreeLancersModel.FreelancerSkills" />
-        <EntityTypeShape EntityType="FreeLancersModel.User" Width="1.5" PointX="1.1179307033857009" PointY="7.5668964272210824" />
         <AssociationConnector Association="FreeLancersModel.FK_Comments_Users" />
+        <AssociationConnector Association="FreeLancersModel.FK_Competitors_Project" />
         <AssociationConnector Association="FreeLancersModel.FK_Competitors_Users" />
+        <AssociationConnector Association="FreeLancersModel.FK_SubCategory_MainCategory" />
         <AssociationConnector Association="FreeLancersModel.FK_Profiles_Users" />
+        <AssociationConnector Association="FreeLancersModel.FK_Project_SubCategory" />
         <AssociationConnector Association="FreeLancersModel.FK_Project_Users" />
-        <AssociationConnector Association="FreeLancersModel.FK_Project_Users1" />
+        <AssociationConnector Association="FreeLancersModel.FK_Requests_RequestStatus" />
         <AssociationConnector Association="FreeLancersModel.FK_Requests_Users" />
-        <AssociationConnector Association="FreeLancersModel.FK_Requests_Users1" />
+        <AssociationConnector Association="FreeLancersModel.FK_RequestStatus_Roles" />
         <AssociationConnector Association="FreeLancersModel.FK_Users_Roles" />
-        <AssociationConnector Association="FreeLancersModel.FK_Users_Roles1" />
+        <AssociationConnector Association="FreeLancersModel.FreelancerSkills" />
         <AssociationConnector Association="FreeLancersModel.FreelancerSubCategories" />
         <AssociationConnector Association="FreeLancersModel.ProjectNotifications" />
-        </Diagram>
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
