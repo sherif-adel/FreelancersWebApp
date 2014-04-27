@@ -42,7 +42,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentManager.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompetitorManager.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataServiceTemplate1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enums\RoleTypes.cs" />
+    <Compile Include="MainCategoryManager.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileManager.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectManager.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RequestManager.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleManager.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkillManager.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StatusManager.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubCategoryManager.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserManager.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="UsersManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,6 +93,15 @@
       <Project>{8db99cbc-bb87-4cc4-89f1-d2a2560c5974}</Project>
       <Name>FreeLancers.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataServiceTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataServiceTemplate1.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
