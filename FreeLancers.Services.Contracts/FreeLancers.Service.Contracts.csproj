@@ -55,6 +55,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\RoleContract.cs" />
+    <Compile Include="Contracts\SkillContract.cs" />
     <Compile Include="Contracts\StatusContract.cs" />
     <Compile Include="Contracts\SubCategoryContract.cs" />
     <Compile Include="Contracts\UserContract.cs" />

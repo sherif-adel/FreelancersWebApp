@@ -22,7 +22,7 @@ namespace FreeLancers.Service.Contracts.Contracts
 		//[DataMember]
 		//public List<Request> Requests { get; set; }
 
-		//[DataMember]
-		//public Role Role { get; set; }
+		[DataMember]
+		public RoleContract Role { get; set; }
 	}
 }

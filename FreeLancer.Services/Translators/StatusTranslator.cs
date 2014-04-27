@@ -19,7 +19,7 @@ namespace FreeLancer.Services.Translators
 				RoleID = status.RoleID,
 				StatusID = status.StatusID,
 				//Requests
-				//Role
+				Role = RolesTranslator.ConverToRoleEntity(status.Role)
 			};
 			return entityStatus;
 		}
@@ -46,7 +46,7 @@ namespace FreeLancer.Services.Translators
 				RoleID = status.RoleID,
 				StatusID = status.StatusID,
 				//Requests
-				//Role
+				Role = RolesTranslator.ConverToRoleContract(status.Role)
 			};
 			return statusContract;
 		}

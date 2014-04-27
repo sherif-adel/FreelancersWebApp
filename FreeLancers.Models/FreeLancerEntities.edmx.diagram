@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="cc650cc7f7b74680ad922144b2486b3d" Name="Diagram1">
-        <EntityTypeShape EntityType="FreeLancersModel.Comment" Width="1.5" PointX="2.2221927075750161" PointY="16.187638871459122" />
+        <EntityTypeShape EntityType="FreeLancersModel.Comment" Width="1.5" PointX="3.125" PointY="33.25" />
         <EntityTypeShape EntityType="FreeLancersModel.Competitor" Width="1.5" PointX="1.2279800070580003" PointY="13.580510130888088" />
         <EntityTypeShape EntityType="FreeLancersModel.MainCategory" Width="1.5" PointX="4.4183893950741684" PointY="14.866624168523877" />
         <EntityTypeShape EntityType="FreeLancersModel.Profile" Width="1.5" PointX="11.688129063550443" PointY="12.707103809671059" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using FreeLancers.Service.Contracts.Contracts;
 
 namespace FreeLancers.Service.Contracts
 {
@@ -42,9 +43,9 @@ namespace FreeLancers.Service.Contracts
 
 		//public virtual ICollection<Request> Requests { get; set; }
 
-		//public virtual Role Role { get; set; }
+		public virtual RoleContract Role { get; set; }
 
-		//public virtual ICollection<SubCategory> SubCategories { get; set; }
+		public virtual List<SubCategoryContract> SubCategories { get; set; }
 
 		//public virtual ICollection<Project> ProjectsNotifications { get; set; }
 	}

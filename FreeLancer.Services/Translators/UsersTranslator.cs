@@ -21,7 +21,9 @@ namespace FreeLancer.Services.Translators
 				Mobile = user.Mobile,
 				Password = user.Password,
 				Email = user.Email,
-				RoleID = user.RoleID
+				RoleID = user.RoleID,
+				SubCategories = SubCategoryTranslator.ConverToSubCategoryEntity(user.SubCategories),
+				Role = RolesTranslator.ConverToRoleEntity(user.Role)
 			};
 			return entityUser;
 		}
@@ -46,7 +48,9 @@ namespace FreeLancer.Services.Translators
 				Mobile = user.Mobile,
 				Password = user.Password,
 				Email = user.Email,
-				RoleID = user.RoleID
+				RoleID = user.RoleID,
+				SubCategories = SubCategoryTranslator.ConverToSubCategoryContract(user.SubCategories.ToList()),
+				Role = RolesTranslator.ConverToRoleContract(user.Role)
 			};
 			return contractUser;
 		}
