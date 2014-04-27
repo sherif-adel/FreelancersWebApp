@@ -6,10 +6,10 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using FreeLancer.Services.Translators;
 using Freelancers.BLL;
 using FreeLancers.Models;
 using FreeLancers.Service.Contracts;
-using FreeLancers.Service.Translators;
 
 namespace FreeLancer.Services
 {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FreeLancers.Models;
 using FreeLancers.Service.Contracts;
 
-namespace FreeLancers.Service.Translators
+namespace FreeLancer.Services.Translators
 {
 	public static class UsersTranslator
 	{

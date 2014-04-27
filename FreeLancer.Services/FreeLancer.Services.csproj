@@ -63,6 +63,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Translators\StatusTranslator.cs" />
+    <Compile Include="Translators\SubCategoryTranslator.cs" />
     <Compile Include="Translators\UsersTranslator.cs" />
     <Compile Include="UserService.svc.cs">
       <DependentUpon>UserService.svc</DependentUpon>
