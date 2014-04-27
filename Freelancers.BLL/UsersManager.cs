@@ -13,7 +13,7 @@ namespace Freelancers.BLL
 	{
 		public static User GetById(int userId)
 		{
-			return UserDataService.GetById(userId);
+			return UserDataService.GetById(userId); ;
 		}
 
 		public static List<User> GetAll()
