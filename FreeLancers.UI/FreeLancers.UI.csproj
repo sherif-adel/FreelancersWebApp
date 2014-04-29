@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Common\Pages\Login.aspx" />
     <Content Include="Common\Resources\Styles\JQuery.UI\images\animated-overlay.gif" />
     <Content Include="Common\Resources\Styles\JQuery.UI\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Common\Resources\Styles\JQuery.UI\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -125,7 +126,6 @@
     <Content Include="Common\Resources\Scripts\jquery-2.1.0.min.js" />
     <Content Include="Common\Resources\Scripts\jquery-ui-1.10.4.js" />
     <Content Include="Common\Resources\Scripts\jquery-ui-1.10.4.min.js" />
-    <Content Include="Users\Pages\Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +136,12 @@
     <Compile Include="Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
+    <Compile Include="Common\Pages\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Pages\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="FreeLancers\Freelancer.Master.cs">
       <DependentUpon>Freelancer.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -144,13 +150,6 @@
       <DependentUpon>Freelancer.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Users\Pages\Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Users\Pages\Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Users\User.Master.cs">
       <DependentUpon>User.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
