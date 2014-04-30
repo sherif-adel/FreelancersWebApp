@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using FreeLancers.Models;
-using FreeLancers.Service.Contracts.Contracts;
+using FreeLancers.Service.Contracts;
 
-namespace FreeLancer.Services.Translators
+namespace FreeLancers.Service.Translators
 {
 	public class SkillTranslator
 	{
@@ -16,8 +16,8 @@ namespace FreeLancer.Services.Translators
 			Skill entitySkill = new Skill()
 			{
 				SkillID = skill.SkillID,
-				SkillName = skill.SkillName
-				//Profiles
+				SkillName = skill.SkillName,
+				Profiles = ProfileTranslator.ConverToProfileEntity(skill.Profiles.ToList())
 			};
 			return entitySkill;
 		}
@@ -41,8 +41,8 @@ namespace FreeLancer.Services.Translators
 			SkillContract skillContract = new SkillContract()
 			{
 				SkillID = skill.SkillID,
-				SkillName = skill.SkillName
-				//Profiles
+				SkillName = skill.SkillName,
+				Profiles = ProfileTranslator.ConverToProfileContract(skill.Profiles.ToList())
 			};
 			return skillContract;
 		}

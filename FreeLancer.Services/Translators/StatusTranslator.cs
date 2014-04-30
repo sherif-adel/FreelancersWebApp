@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using FreeLancers.Models;
-using FreeLancers.Service.Contracts.Contracts;
+using FreeLancers.Service.Contracts;
 
-namespace FreeLancer.Services.Translators
+namespace FreeLancers.Service.Translators
 {
 	public static class StatusTranslator
 	{
@@ -18,7 +18,7 @@ namespace FreeLancer.Services.Translators
 				Name = status.Name,
 				RoleID = status.RoleID,
 				StatusID = status.StatusID,
-				//Requests
+				Requests = RequestTranslator.ConverToRequestEntity(status.Requests.ToList()),
 				Role = RolesTranslator.ConverToRoleEntity(status.Role)
 			};
 			return entityStatus;
@@ -45,7 +45,7 @@ namespace FreeLancer.Services.Translators
 				Name = status.Name,
 				RoleID = status.RoleID,
 				StatusID = status.StatusID,
-				//Requests
+                Requests = RequestTranslator.ConverToRequestContract(status.Requests.ToList()),
 				Role = RolesTranslator.ConverToRoleContract(status.Role)
 			};
 			return statusContract;

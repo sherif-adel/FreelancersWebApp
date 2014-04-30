@@ -1,0 +1,118 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ output extension=".cs" #>
+
+<#
+CodeGenerationTools code = new CodeGenerationTools(this);
+MetadataLoader loader = new MetadataLoader(this);
+CodeRegion region = new CodeRegion(this, 1);
+MetadataTools ef = new MetadataTools(this);
+
+string inputFile = @"..\FreeLancers.Models\FreeLancerEntities.edmx";
+EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
+EntityContainer container = ItemCollection.GetItems<EntityContainer>().FirstOrDefault();
+string namespaceName = code.VsNamespaceSuggestion();
+EntityFrameworkTemplateFileManager fileManager = EntityFrameworkTemplateFileManager.Create(this);
+
+foreach (EntitySet entity in container.BaseEntitySets.OfType<EntitySet>())
+{
+	string entitySetName = code.Escape(entity);
+	string entityType = code.Escape(entity.ElementType);
+	string ManagerName = String.Format("{0}Service","I"+entityType);
+	string entityNameLower = code.Escape(entity.ElementType).ToLower();
+	fileManager.StartNewFile(String.Format("{0}.cs",ManagerName));
+	BeginNamespace(namespaceName, code); 
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+
+[ServiceContract]
+<#=Accessibility.ForType(entity.ElementType)#> <#=code.SpaceAfter(code.AbstractOption(entity.ElementType))#>partial interface <#=ManagerName#>
+{
+<#	region.Begin("Methods"); #>
+
+	/// <summary>
+	/// Gets the specified entity by ID.
+	/// </summary>
+	/// <param name="id">The <#= entityNameLower #> ID.</param>
+	[OperationContract]
+	<#=entityType#>Contract GetById(int id);
+
+	/// <summary>
+	/// Gets All.
+	/// </summary>
+	[OperationContract]
+	List<<#=entityType#>Contract> GetAll();
+
+	/// <summary>
+	/// Adds the specified entity.
+	/// </summary>
+	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
+	[OperationContract]
+	void Add(<#=entityType#>Contract <#= entityNameLower #>);
+
+	/// <summary>
+	/// Deletes the specified entity.
+	/// </summary>
+	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
+	[OperationContract]
+	void Delete(<#=entityType#>Contract <#= entityNameLower #>);
+	/// <summary>
+	/// Deletes the entity by Id.
+	/// </summary>
+	/// <param name="id">The <#= entityNameLower #> Id.</param>
+	[OperationContract]
+	void DeleteById(int id);
+	/// <summary>
+	/// Updates the specified entity.
+	/// </summary>
+	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
+	[OperationContract]
+	void Update(<#=entityType#>Contract <#= entityNameLower #>);
+	/// <summary>
+	/// Queries the entity.
+	/// </summary>
+	/// <param name="criteria">Search Criteria.</param>
+	[OperationContract]
+	List<<#=entityType#>Contract> Search(System.Linq.Expressions.Expression<Func<<#=entityType#>Contract, bool>> criteria);
+<# region.End();#>
+}
+<#
+	EndNamespace(namespaceName);
+}
+
+fileManager.Process();
+
+#>
+
+<#+	
+void BeginNamespace(string namespaceName, CodeGenerationTools code)
+{
+	CodeRegion region = new CodeRegion(this);
+	if (!String.IsNullOrEmpty(namespaceName))
+	{
+#>
+namespace <#=code.EscapeNamespace(namespaceName)#>
+{
+<#+
+		PushIndent(CodeRegion.GetIndent(1));
+	}
+}
+
+
+void EndNamespace(string namespaceName)
+{
+	if (!String.IsNullOrEmpty(namespaceName))
+	{
+		PopIndent();
+#>
+}
+<#+
+	}
+}
+
+#>

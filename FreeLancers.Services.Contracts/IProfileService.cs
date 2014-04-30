@@ -8,54 +8,54 @@ namespace FreeLancers.Service.Contracts
     using System.Text;
     
     [ServiceContract]
-    public partial interface IUserService
+    public partial interface IProfileService
     {
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
-    	/// <param name="id">The user ID.</param>
+    	/// <param name="id">The profile ID.</param>
     	[OperationContract]
-    	UserContract GetById(int id);
+    	ProfileContract GetById(int id);
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
     	[OperationContract]
-    	List<UserContract> GetAll();
+    	List<ProfileContract> GetAll();
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
-    	/// <param name="user">The user entity.</param>
+    	/// <param name="profile">The profile entity.</param>
     	[OperationContract]
-    	void Add(UserContract user);
+    	void Add(ProfileContract profile);
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
-    	/// <param name="user">The user entity.</param>
+    	/// <param name="profile">The profile entity.</param>
     	[OperationContract]
-    	void Delete(UserContract user);
+    	void Delete(ProfileContract profile);
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
-    	/// <param name="id">The user Id.</param>
+    	/// <param name="id">The profile Id.</param>
     	[OperationContract]
     	void DeleteById(int id);
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
-    	/// <param name="user">The user entity.</param>
+    	/// <param name="profile">The profile entity.</param>
     	[OperationContract]
-    	void Update(UserContract user);
+    	void Update(ProfileContract profile);
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
     	[OperationContract]
-    	List<UserContract> Search(System.Linq.Expressions.Expression<Func<UserContract, bool>> criteria);
+    	List<ProfileContract> Search(System.Linq.Expressions.Expression<Func<ProfileContract, bool>> criteria);
 
         #endregion
 

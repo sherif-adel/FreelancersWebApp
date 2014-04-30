@@ -8,54 +8,54 @@ namespace FreeLancers.Service.Contracts
     using System.Text;
     
     [ServiceContract]
-    public partial interface IUserService
+    public partial interface IProjectService
     {
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
-    	/// <param name="id">The user ID.</param>
+    	/// <param name="id">The project ID.</param>
     	[OperationContract]
-    	UserContract GetById(int id);
+    	ProjectContract GetById(int id);
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
     	[OperationContract]
-    	List<UserContract> GetAll();
+    	List<ProjectContract> GetAll();
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
-    	/// <param name="user">The user entity.</param>
+    	/// <param name="project">The project entity.</param>
     	[OperationContract]
-    	void Add(UserContract user);
+    	void Add(ProjectContract project);
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
-    	/// <param name="user">The user entity.</param>
+    	/// <param name="project">The project entity.</param>
     	[OperationContract]
-    	void Delete(UserContract user);
+    	void Delete(ProjectContract project);
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
-    	/// <param name="id">The user Id.</param>
+    	/// <param name="id">The project Id.</param>
     	[OperationContract]
     	void DeleteById(int id);
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
-    	/// <param name="user">The user entity.</param>
+    	/// <param name="project">The project entity.</param>
     	[OperationContract]
-    	void Update(UserContract user);
+    	void Update(ProjectContract project);
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
     	[OperationContract]
-    	List<UserContract> Search(System.Linq.Expressions.Expression<Func<UserContract, bool>> criteria);
+    	List<ProjectContract> Search(System.Linq.Expressions.Expression<Func<ProjectContract, bool>> criteria);
 
         #endregion
 

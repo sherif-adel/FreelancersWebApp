@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using FreeLancers.Models;
-using FreeLancers.Service.Contracts.Contracts;
+using FreeLancers.Service.Contracts;
 
-namespace FreeLancer.Services.Translators
+namespace FreeLancers.Service.Translators
 {
 	public class RolesTranslator
 	{
@@ -17,8 +17,8 @@ namespace FreeLancer.Services.Translators
 			{
 				RoleID = role.RoleID,
 				RoleName = role.RoleName,
-				Status = StatusTranslator.ConverToStatusEntity(role.Status),
-				Users =UsersTranslator.ConverToUserEntity(role.Users)
+				Status = StatusTranslator.ConverToStatusEntity(role.Status.ToList()),
+				Users =UsersTranslator.ConverToUserEntity(role.Users.ToList())
 			};
 			return entityRole;
 		}

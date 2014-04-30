@@ -8,54 +8,54 @@ namespace FreeLancers.Service.Contracts
     using System.Text;
     
     [ServiceContract]
-    public partial interface IUserService
+    public partial interface ICompetitorService
     {
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
-    	/// <param name="id">The user ID.</param>
+    	/// <param name="id">The competitor ID.</param>
     	[OperationContract]
-    	UserContract GetById(int id);
+    	CompetitorContract GetById(int id);
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
     	[OperationContract]
-    	List<UserContract> GetAll();
+    	List<CompetitorContract> GetAll();
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
-    	/// <param name="user">The user entity.</param>
+    	/// <param name="competitor">The competitor entity.</param>
     	[OperationContract]
-    	void Add(UserContract user);
+    	void Add(CompetitorContract competitor);
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
-    	/// <param name="user">The user entity.</param>
+    	/// <param name="competitor">The competitor entity.</param>
     	[OperationContract]
-    	void Delete(UserContract user);
+    	void Delete(CompetitorContract competitor);
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
-    	/// <param name="id">The user Id.</param>
+    	/// <param name="id">The competitor Id.</param>
     	[OperationContract]
     	void DeleteById(int id);
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
-    	/// <param name="user">The user entity.</param>
+    	/// <param name="competitor">The competitor entity.</param>
     	[OperationContract]
-    	void Update(UserContract user);
+    	void Update(CompetitorContract competitor);
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
     	[OperationContract]
-    	List<UserContract> Search(System.Linq.Expressions.Expression<Func<UserContract, bool>> criteria);
+    	List<CompetitorContract> Search(System.Linq.Expressions.Expression<Func<CompetitorContract, bool>> criteria);
 
         #endregion
 

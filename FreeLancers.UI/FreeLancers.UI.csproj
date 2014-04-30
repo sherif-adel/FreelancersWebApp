@@ -173,7 +173,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\FreeLancer.Services\FreeLancer.Services.csproj">
+    <ProjectReference Include="..\FreeLancer.Services\FreeLancers.Service.csproj">
       <Project>{45550b28-d851-4283-8e9e-1866c8cdb8e3}</Project>
       <Name>FreeLancer.Services</Name>
     </ProjectReference>

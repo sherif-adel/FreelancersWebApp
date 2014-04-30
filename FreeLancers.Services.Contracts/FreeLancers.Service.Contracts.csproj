@@ -55,18 +55,99 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\RoleContract.cs" />
-    <Compile Include="Contracts\SkillContract.cs" />
-    <Compile Include="Contracts\StatusContract.cs" />
-    <Compile Include="Contracts\SubCategoryContract.cs" />
-    <Compile Include="Contracts\UserContract.cs" />
-    <Compile Include="IUserService.cs" />
+    <Compile Include="CommentContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompetitorContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContractsTemplate1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ICommentService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ICompetitorService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IMainCategoryService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IUserService2.cs" />
+    <Compile Include="IProfileService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IProjectService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IRequestService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IRoleService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISkillService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IStatusService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ISubCategoryService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IUserService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainCategoryContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceInterfacesTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkillContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StatusContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubCategoryContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ServiceInterfacesTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ServiceInterfacesTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="ContractsTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ContractsTemplate1.cs</LastGenOutput>
+    </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\WCF\Microsoft.VisualStudio.ServiceModel.targets" />
   <ProjectExtensions>

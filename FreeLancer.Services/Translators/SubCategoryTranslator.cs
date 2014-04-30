@@ -5,7 +5,7 @@ using System.Web;
 using FreeLancers.Models;
 using FreeLancers.Service.Contracts;
 
-namespace FreeLancer.Services.Translators
+namespace FreeLancers.Service.Translators
 {
 	public static class SubCategoryTranslator
 	{
@@ -20,9 +20,9 @@ namespace FreeLancer.Services.Translators
 				Image = subCategory.Image,
 				MainCategoryID = subCategory.MainCategoryID,
 				Name = subCategory.Name,
-				Users = UsersTranslator.ConverToUserEntity(subCategory.Users)
-				//MainCategory
-				//Projects
+				Users = UsersTranslator.ConverToUserEntity(subCategory.Users.ToList()),
+                MainCategory=MainCategoryTranslator.ConverToMainCategoryEntity(subCategory.MainCategory),
+                Projects = ProjectTranslator.ConverToProjectEntity(subCategory.Projects.ToList())
 			};
 			return entitySubCategory;
 		}
@@ -50,9 +50,9 @@ namespace FreeLancer.Services.Translators
 				Image = subCategory.Image,
 				MainCategoryID = subCategory.MainCategoryID,
 				Name = subCategory.Name,
-				Users = UsersTranslator.ConverToUserContract(subCategory.Users.ToList())
-				//MainCategory
-				//Projects
+				Users = UsersTranslator.ConverToUserContract(subCategory.Users.ToList()),
+                MainCategory = MainCategoryTranslator.ConverToMainCategoryContract(subCategory.MainCategory),
+                Projects = ProjectTranslator.ConverToProjectContract(subCategory.Projects.ToList())
 			};
 			return subCategoryContract;
 		}

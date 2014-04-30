@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FreeLancers.Models;
 using FreeLancers.Service.Contracts;
 
-namespace FreeLancer.Services.Translators
+namespace FreeLancers.Service.Translators
 {
 	public static class UsersTranslator
 	{
@@ -22,7 +22,7 @@ namespace FreeLancer.Services.Translators
 				Password = user.Password,
 				Email = user.Email,
 				RoleID = user.RoleID,
-				SubCategories = SubCategoryTranslator.ConverToSubCategoryEntity(user.SubCategories),
+				SubCategories = SubCategoryTranslator.ConverToSubCategoryEntity(user.SubCategories.ToList()),
 				Role = RolesTranslator.ConverToRoleEntity(user.Role)
 			};
 			return entityUser;

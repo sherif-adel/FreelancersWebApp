@@ -8,54 +8,54 @@ namespace FreeLancers.Service.Contracts
     using System.Text;
     
     [ServiceContract]
-    public partial interface IUserService
+    public partial interface IMainCategoryService
     {
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
-    	/// <param name="id">The user ID.</param>
+    	/// <param name="id">The maincategory ID.</param>
     	[OperationContract]
-    	UserContract GetById(int id);
+    	MainCategoryContract GetById(int id);
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
     	[OperationContract]
-    	List<UserContract> GetAll();
+    	List<MainCategoryContract> GetAll();
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
-    	/// <param name="user">The user entity.</param>
+    	/// <param name="maincategory">The maincategory entity.</param>
     	[OperationContract]
-    	void Add(UserContract user);
+    	void Add(MainCategoryContract maincategory);
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
-    	/// <param name="user">The user entity.</param>
+    	/// <param name="maincategory">The maincategory entity.</param>
     	[OperationContract]
-    	void Delete(UserContract user);
+    	void Delete(MainCategoryContract maincategory);
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
-    	/// <param name="id">The user Id.</param>
+    	/// <param name="id">The maincategory Id.</param>
     	[OperationContract]
     	void DeleteById(int id);
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
-    	/// <param name="user">The user entity.</param>
+    	/// <param name="maincategory">The maincategory entity.</param>
     	[OperationContract]
-    	void Update(UserContract user);
+    	void Update(MainCategoryContract maincategory);
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
     	[OperationContract]
-    	List<UserContract> Search(System.Linq.Expressions.Expression<Func<UserContract, bool>> criteria);
+    	List<MainCategoryContract> Search(System.Linq.Expressions.Expression<Func<MainCategoryContract, bool>> criteria);
 
         #endregion
 

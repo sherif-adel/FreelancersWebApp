@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using FreeLancer.Services.Translators;
+using FreeLancers.Service.Translators;
 using Freelancers.BLL;
 using FreeLancers.Models;
 using FreeLancers.Service.Contracts;
@@ -18,24 +18,24 @@ namespace FreeLancer.Services
 		public UserContract GetById(int userId)
 		{
 			var user = UsersManager.GetById(userId);
-			return UsersTranslator.ConverToUserContract(user);
+			return UsersTranslator.ConvertToUserContract(user);
 		}
 
 		public List<UserContract> GetAll()
 		{
 			var users = UsersManager.GetAll();
-			return UsersTranslator.ConverToUserContract(users);
+			return UsersTranslator.ConvertToUserContract(users).ToList();
 		}
 
 		public void Add(UserContract user)
 		{
-			var userEntity = UsersTranslator.ConverToUserEntity(user);
+			var userEntity = UsersTranslator.ConvertToUserEntity(user);
 			UsersManager.Add(userEntity);
 		}
 
 		public void Delete(UserContract user)
 		{
-			var userEntity = UsersTranslator.ConverToUserEntity(user);
+			var userEntity = UsersTranslator.ConvertToUserEntity(user);
 			UsersManager.Delete(userEntity);
 		}
 
@@ -46,12 +46,12 @@ namespace FreeLancer.Services
 
 		public void Update(UserContract user)
 		{
-			var userEntity = UsersTranslator.ConverToUserEntity(user);
+			var userEntity = UsersTranslator.ConvertToUserEntity(user);
 			UsersManager.Update(userEntity);
 		}
 
-		//public List<UserContract> Search(System.Linq.Expressions.Expression<Func<UserContract, bool>> criteria)
-		//{
+		public List<UserContract> Search(System.Linq.Expressions.Expression<Func<UserContract, bool>> criteria)
+		{
 		//	var userEntity = UsersTranslator.ConverToUserEntity((UserContract)criteria.Parameters[0]);
 		//	var param = Expression.Parameter(typeof(User), "p");
 		//	var body = criteria.Body;
@@ -61,18 +61,22 @@ namespace FreeLancer.Services
 
 		//	var users = UsersManager.Search(lambda);
 		//	return UsersTranslator.ConverToUserContract(users);
-		//}
+
+            //  THIS LINE IS TO BUILD WITH NO ERRORS (FOR IMPLEMENTATION ISSUES)
+            return UsersTranslator.ConvertToUserContract(UserManager.GetAll()).ToList();
+            //  THIS LINE IS TO BUILD WITH NO ERRORS (FOR IMPLEMENTATION ISSUES)
+        }
 
 		public List<UserContract> GetUsersByRoleId(int roleId)
 		{
 			var users = UsersManager.GetUsersByRoleId(roleId);
-			return UsersTranslator.ConverToUserContract(users);
+			return UsersTranslator.ConvertToUserContract(users).ToList();
 		}
 
 		public UserContract ValidateLogin(string email, string password)
 		{
 			var user = UsersManager.ValidateLogin(email, password);
-			return UsersTranslator.ConverToUserContract(user);
+			return UsersTranslator.ConvertToUserContract(user);
 		}
 	}
 }
