@@ -27,6 +27,26 @@ namespace FreeLancers.DAL
 				return entities.Users.FirstOrDefault(user => user.Email == email && user.Password == password);
 			}
 		}
+
+		public static User ValidateLogin(string email)
+		{
+			using (FreeLancersEntities entities = new FreeLancersEntities())
+			{
+				return entities.Users.FirstOrDefault(user => user.Email == email);
+			}
+		}
+
+		public static bool HasPassword(User user)
+		{
+			using (FreeLancersEntities entities = new FreeLancersEntities())
+			{
+				var returnedUser = entities.Users.FirstOrDefault(x => x.Email == user.Email);
+				if (string.IsNullOrEmpty(returnedUser.Password))
+					return false;
+				else
+					return true;
+			}
+		}
 		#endregion
 	}
 }

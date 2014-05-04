@@ -55,5 +55,15 @@ namespace Freelancers.BLL
 		{
 			return UserDataService.ValidateLogin(email, password);
 		}
+
+		public static User ValidateLogin(string email)
+		{
+			return UserDataService.ValidateLogin(email);
+		}
+
+		public static bool HasPassword(User user)
+		{
+			return UserDataService.HasPassword(user);
+		}
 	}
 }

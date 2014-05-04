@@ -78,5 +78,17 @@ namespace FreeLancer.Services
 			var user = UsersManager.ValidateLogin(email, password);
 			return UsersTranslator.ConvertToUserContract(user);
 		}
+
+		public UserContract ValidateLogin(string email)
+		{
+			var user = UsersManager.ValidateLogin(email);
+			return UsersTranslator.ConverToUserContract(user);
+		}
+
+		public bool HasPassword(UserContract user)
+		{
+			var convertedUser = UsersTranslator.ConverToUserEntity(user);
+			return UsersManager.HasPassword(convertedUser);
+		}
 	}
 }

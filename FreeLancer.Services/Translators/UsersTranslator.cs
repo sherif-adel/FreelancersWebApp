@@ -14,7 +14,8 @@ namespace FreeLancers.Service.Translators
 
 		public static User ConverToUserEntity(UserContract user)
 		{
-			User entityUser = new User(){
+			User entityUser = new User()
+			{
 				UserID = user.UserID,
 				FirstName = user.FirstName,
 				LastName = user.LastName,
@@ -22,8 +23,8 @@ namespace FreeLancers.Service.Translators
 				Password = user.Password,
 				Email = user.Email,
 				RoleID = user.RoleID,
-				SubCategories = SubCategoryTranslator.ConverToSubCategoryEntity(user.SubCategories.ToList()),
-				Role = RolesTranslator.ConverToRoleEntity(user.Role)
+				SubCategories = user.SubCategories != null ? SubCategoryTranslator.ConverToSubCategoryEntity(user.SubCategories) : null,
+				Role = user.Role != null ? RolesTranslator.ConverToRoleEntity(user.Role) : null
 			};
 			return entityUser;
 		}
@@ -40,6 +41,9 @@ namespace FreeLancers.Service.Translators
 
 		public static UserContract ConverToUserContract(User user)
 		{
+			if (user == null)
+				return null;
+
 			UserContract contractUser = new UserContract()
 			{
 				UserID = user.UserID,
@@ -49,8 +53,8 @@ namespace FreeLancers.Service.Translators
 				Password = user.Password,
 				Email = user.Email,
 				RoleID = user.RoleID,
-				SubCategories = SubCategoryTranslator.ConverToSubCategoryContract(user.SubCategories.ToList()),
-				Role = RolesTranslator.ConverToRoleContract(user.Role)
+				//SubCategories = user.SubCategories != null ? SubCategoryTranslator.ConverToSubCategoryContract(user.SubCategories.ToList()) : null,
+				//Role = user.Role != null ? RolesTranslator.ConverToRoleContract(user.Role) : null
 			};
 			return contractUser;
 		}
