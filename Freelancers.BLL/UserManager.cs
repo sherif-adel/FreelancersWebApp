@@ -6,70 +6,85 @@ namespace Freelancers.BLL
     using FreeLancers.Models;
     using FreeLancers.DAL;
     
-    public partial class UserManager
+    public partial class UserManager : ManagersBase<User>
     {
+    
+        #region Properties
+    
+    	private UserDataService _userDataService;
+
+        #endregion
+
+        #region Constructor
+        public UserManager(FreeLancersEntities entities):base(entities)
+    	{
+    		_userDataService = new UserDataService(entities);
+        }
+
+        #endregion
+
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
     	/// <param name="id">The user ID.</param>
-    	public static User GetById(int id)
+    	public override User GetById(int id)
     	{
-    		return UserDataService.GetById(id);
+    		return _userDataService.GetById(id);
     	}
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
-    	public static List<User> GetAll()
+    	public override List<User> GetAll()
     	{
-    		return UserDataService.GetAll();
+    		return _userDataService.GetAll();
     	}
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
     	/// <param name="user">The user entity.</param>
-    	public static void Add(User user)
+    	public override void Add(User user)
     	{
-    		UserDataService.Add(user);
+    		_userDataService.Add(user);
     	}
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
     	/// <param name="user">The user entity.</param>
-    	public static void Delete(User user)
+    	public override void Delete(User user)
     	{
-    		UserDataService.Delete(user);
+    		_userDataService.Delete(user);
     	}
     
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
     	/// <param name="id">The user Id.</param>
-    	public static void DeleteById(int id)
+    	public override void Delete(int id)
     	{
-    		UserDataService.DeleteById(id);
+    		_userDataService.Delete(id);
     	}
     
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
     	/// <param name="user">The user entity.</param>
-    	public static void Update(User user)
+    	public override void Update(User user)
     	{
-    		UserDataService.Update(user);
+    		_userDataService.Update(user);
     	}
     
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
-    	public static List<User> Search(System.Linq.Expressions.Expression<Func<User, bool>> criteria)
+    	public override List<User> Search(Func<User, bool> criteria)
     	{
-    		return UserDataService.Search(criteria);
+    		return _userDataService.Search(criteria);
     	}
 
         #endregion

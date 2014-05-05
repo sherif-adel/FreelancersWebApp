@@ -6,70 +6,85 @@ namespace Freelancers.BLL
     using FreeLancers.Models;
     using FreeLancers.DAL;
     
-    public partial class StatusManager
+    public partial class StatusManager : ManagersBase<Status>
     {
+    
+        #region Properties
+    
+    	private StatusDataService _statusDataService;
+
+        #endregion
+
+        #region Constructor
+        public StatusManager(FreeLancersEntities entities):base(entities)
+    	{
+    		_statusDataService = new StatusDataService(entities);
+        }
+
+        #endregion
+
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
     	/// <param name="id">The status ID.</param>
-    	public static Status GetById(int id)
+    	public override Status GetById(int id)
     	{
-    		return StatusDataService.GetById(id);
+    		return _statusDataService.GetById(id);
     	}
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
-    	public static List<Status> GetAll()
+    	public override List<Status> GetAll()
     	{
-    		return StatusDataService.GetAll();
+    		return _statusDataService.GetAll();
     	}
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
     	/// <param name="status">The status entity.</param>
-    	public static void Add(Status status)
+    	public override void Add(Status status)
     	{
-    		StatusDataService.Add(status);
+    		_statusDataService.Add(status);
     	}
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
     	/// <param name="status">The status entity.</param>
-    	public static void Delete(Status status)
+    	public override void Delete(Status status)
     	{
-    		StatusDataService.Delete(status);
+    		_statusDataService.Delete(status);
     	}
     
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
     	/// <param name="id">The status Id.</param>
-    	public static void DeleteById(int id)
+    	public override void Delete(int id)
     	{
-    		StatusDataService.DeleteById(id);
+    		_statusDataService.Delete(id);
     	}
     
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
     	/// <param name="status">The status entity.</param>
-    	public static void Update(Status status)
+    	public override void Update(Status status)
     	{
-    		StatusDataService.Update(status);
+    		_statusDataService.Update(status);
     	}
     
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
-    	public static List<Status> Search(System.Linq.Expressions.Expression<Func<Status, bool>> criteria)
+    	public override List<Status> Search(Func<Status, bool> criteria)
     	{
-    		return StatusDataService.Search(criteria);
+    		return _statusDataService.Search(criteria);
     	}
 
         #endregion

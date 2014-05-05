@@ -6,70 +6,85 @@ namespace Freelancers.BLL
     using FreeLancers.Models;
     using FreeLancers.DAL;
     
-    public partial class RoleManager
+    public partial class RoleManager : ManagersBase<Role>
     {
+    
+        #region Properties
+    
+    	private RoleDataService _roleDataService;
+
+        #endregion
+
+        #region Constructor
+        public RoleManager(FreeLancersEntities entities):base(entities)
+    	{
+    		_roleDataService = new RoleDataService(entities);
+        }
+
+        #endregion
+
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
     	/// <param name="id">The role ID.</param>
-    	public static Role GetById(int id)
+    	public override Role GetById(int id)
     	{
-    		return RoleDataService.GetById(id);
+    		return _roleDataService.GetById(id);
     	}
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
-    	public static List<Role> GetAll()
+    	public override List<Role> GetAll()
     	{
-    		return RoleDataService.GetAll();
+    		return _roleDataService.GetAll();
     	}
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
     	/// <param name="role">The role entity.</param>
-    	public static void Add(Role role)
+    	public override void Add(Role role)
     	{
-    		RoleDataService.Add(role);
+    		_roleDataService.Add(role);
     	}
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
     	/// <param name="role">The role entity.</param>
-    	public static void Delete(Role role)
+    	public override void Delete(Role role)
     	{
-    		RoleDataService.Delete(role);
+    		_roleDataService.Delete(role);
     	}
     
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
     	/// <param name="id">The role Id.</param>
-    	public static void DeleteById(int id)
+    	public override void Delete(int id)
     	{
-    		RoleDataService.DeleteById(id);
+    		_roleDataService.Delete(id);
     	}
     
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
     	/// <param name="role">The role entity.</param>
-    	public static void Update(Role role)
+    	public override void Update(Role role)
     	{
-    		RoleDataService.Update(role);
+    		_roleDataService.Update(role);
     	}
     
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
-    	public static List<Role> Search(System.Linq.Expressions.Expression<Func<Role, bool>> criteria)
+    	public override List<Role> Search(Func<Role, bool> criteria)
     	{
-    		return RoleDataService.Search(criteria);
+    		return _roleDataService.Search(criteria);
     	}
 
         #endregion

@@ -6,70 +6,85 @@ namespace Freelancers.BLL
     using FreeLancers.Models;
     using FreeLancers.DAL;
     
-    public partial class ProfileManager
+    public partial class ProfileManager : ManagersBase<Profile>
     {
+    
+        #region Properties
+    
+    	private ProfileDataService _profileDataService;
+
+        #endregion
+
+        #region Constructor
+        public ProfileManager(FreeLancersEntities entities):base(entities)
+    	{
+    		_profileDataService = new ProfileDataService(entities);
+        }
+
+        #endregion
+
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
     	/// <param name="id">The profile ID.</param>
-    	public static Profile GetById(int id)
+    	public override Profile GetById(int id)
     	{
-    		return ProfileDataService.GetById(id);
+    		return _profileDataService.GetById(id);
     	}
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
-    	public static List<Profile> GetAll()
+    	public override List<Profile> GetAll()
     	{
-    		return ProfileDataService.GetAll();
+    		return _profileDataService.GetAll();
     	}
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
     	/// <param name="profile">The profile entity.</param>
-    	public static void Add(Profile profile)
+    	public override void Add(Profile profile)
     	{
-    		ProfileDataService.Add(profile);
+    		_profileDataService.Add(profile);
     	}
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
     	/// <param name="profile">The profile entity.</param>
-    	public static void Delete(Profile profile)
+    	public override void Delete(Profile profile)
     	{
-    		ProfileDataService.Delete(profile);
+    		_profileDataService.Delete(profile);
     	}
     
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
     	/// <param name="id">The profile Id.</param>
-    	public static void DeleteById(int id)
+    	public override void Delete(int id)
     	{
-    		ProfileDataService.DeleteById(id);
+    		_profileDataService.Delete(id);
     	}
     
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
     	/// <param name="profile">The profile entity.</param>
-    	public static void Update(Profile profile)
+    	public override void Update(Profile profile)
     	{
-    		ProfileDataService.Update(profile);
+    		_profileDataService.Update(profile);
     	}
     
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
-    	public static List<Profile> Search(System.Linq.Expressions.Expression<Func<Profile, bool>> criteria)
+    	public override List<Profile> Search(Func<Profile, bool> criteria)
     	{
-    		return ProfileDataService.Search(criteria);
+    		return _profileDataService.Search(criteria);
     	}
 
         #endregion

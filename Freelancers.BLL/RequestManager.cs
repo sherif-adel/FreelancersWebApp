@@ -6,70 +6,85 @@ namespace Freelancers.BLL
     using FreeLancers.Models;
     using FreeLancers.DAL;
     
-    public partial class RequestManager
+    public partial class RequestManager : ManagersBase<Request>
     {
+    
+        #region Properties
+    
+    	private RequestDataService _requestDataService;
+
+        #endregion
+
+        #region Constructor
+        public RequestManager(FreeLancersEntities entities):base(entities)
+    	{
+    		_requestDataService = new RequestDataService(entities);
+        }
+
+        #endregion
+
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
     	/// <param name="id">The request ID.</param>
-    	public static Request GetById(int id)
+    	public override Request GetById(int id)
     	{
-    		return RequestDataService.GetById(id);
+    		return _requestDataService.GetById(id);
     	}
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
-    	public static List<Request> GetAll()
+    	public override List<Request> GetAll()
     	{
-    		return RequestDataService.GetAll();
+    		return _requestDataService.GetAll();
     	}
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
     	/// <param name="request">The request entity.</param>
-    	public static void Add(Request request)
+    	public override void Add(Request request)
     	{
-    		RequestDataService.Add(request);
+    		_requestDataService.Add(request);
     	}
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
     	/// <param name="request">The request entity.</param>
-    	public static void Delete(Request request)
+    	public override void Delete(Request request)
     	{
-    		RequestDataService.Delete(request);
+    		_requestDataService.Delete(request);
     	}
     
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
     	/// <param name="id">The request Id.</param>
-    	public static void DeleteById(int id)
+    	public override void Delete(int id)
     	{
-    		RequestDataService.DeleteById(id);
+    		_requestDataService.Delete(id);
     	}
     
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
     	/// <param name="request">The request entity.</param>
-    	public static void Update(Request request)
+    	public override void Update(Request request)
     	{
-    		RequestDataService.Update(request);
+    		_requestDataService.Update(request);
     	}
     
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
-    	public static List<Request> Search(System.Linq.Expressions.Expression<Func<Request, bool>> criteria)
+    	public override List<Request> Search(Func<Request, bool> criteria)
     	{
-    		return RequestDataService.Search(criteria);
+    		return _requestDataService.Search(criteria);
     	}
 
         #endregion

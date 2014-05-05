@@ -6,70 +6,85 @@ namespace Freelancers.BLL
     using FreeLancers.Models;
     using FreeLancers.DAL;
     
-    public partial class SkillManager
+    public partial class SkillManager : ManagersBase<Skill>
     {
+    
+        #region Properties
+    
+    	private SkillDataService _skillDataService;
+
+        #endregion
+
+        #region Constructor
+        public SkillManager(FreeLancersEntities entities):base(entities)
+    	{
+    		_skillDataService = new SkillDataService(entities);
+        }
+
+        #endregion
+
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
     	/// <param name="id">The skill ID.</param>
-    	public static Skill GetById(int id)
+    	public override Skill GetById(int id)
     	{
-    		return SkillDataService.GetById(id);
+    		return _skillDataService.GetById(id);
     	}
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
-    	public static List<Skill> GetAll()
+    	public override List<Skill> GetAll()
     	{
-    		return SkillDataService.GetAll();
+    		return _skillDataService.GetAll();
     	}
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
     	/// <param name="skill">The skill entity.</param>
-    	public static void Add(Skill skill)
+    	public override void Add(Skill skill)
     	{
-    		SkillDataService.Add(skill);
+    		_skillDataService.Add(skill);
     	}
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
     	/// <param name="skill">The skill entity.</param>
-    	public static void Delete(Skill skill)
+    	public override void Delete(Skill skill)
     	{
-    		SkillDataService.Delete(skill);
+    		_skillDataService.Delete(skill);
     	}
     
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
     	/// <param name="id">The skill Id.</param>
-    	public static void DeleteById(int id)
+    	public override void Delete(int id)
     	{
-    		SkillDataService.DeleteById(id);
+    		_skillDataService.Delete(id);
     	}
     
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
     	/// <param name="skill">The skill entity.</param>
-    	public static void Update(Skill skill)
+    	public override void Update(Skill skill)
     	{
-    		SkillDataService.Update(skill);
+    		_skillDataService.Update(skill);
     	}
     
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
-    	public static List<Skill> Search(System.Linq.Expressions.Expression<Func<Skill, bool>> criteria)
+    	public override List<Skill> Search(Func<Skill, bool> criteria)
     	{
-    		return SkillDataService.Search(criteria);
+    		return _skillDataService.Search(criteria);
     	}
 
         #endregion

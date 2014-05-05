@@ -21,6 +21,8 @@ foreach (EntitySet entity in container.BaseEntitySets.OfType<EntitySet>())
 	string ManagerName = String.Format("{0}Manager",entityType);
 	string entityNameLower = code.Escape(entity.ElementType).ToLower();
 	fileManager.StartNewFile(String.Format("{0}.cs",ManagerName));
+	string DataServiceName = String.Format("{0}DataService",entityType);
+	string DataServiceObjectName = String.Format("_{0}DataService",entityNameLower);
 	BeginNamespace(namespaceName, code); 
 #>
 using System;
@@ -29,70 +31,81 @@ using System.Linq;
 using FreeLancers.Models;
 using FreeLancers.DAL;
 
-<#=Accessibility.ForType(entity.ElementType)#> <#=code.SpaceAfter(code.AbstractOption(entity.ElementType))#>partial class <#=ManagerName#>
+<#=Accessibility.ForType(entity.ElementType)#> <#=code.SpaceAfter(code.AbstractOption(entity.ElementType))#>partial class <#=ManagerName#> : ManagersBase<<#=entityType#>>
 {
+
+<#	region.Begin("Properties"); #>
+
+	private <#=DataServiceName#> <#= DataServiceObjectName #>;
+<# region.End();#>
+<#	region.Begin("Constructor"); #>
+    public <#=ManagerName#>(FreeLancersEntities entities):base(entities)
+	{
+		<#= DataServiceObjectName #> = new <#=DataServiceName#>(entities);
+    }
+<# region.End();#>
 <#	region.Begin("Methods"); #>
 
 	/// <summary>
 	/// Gets the specified entity by ID.
 	/// </summary>
 	/// <param name="id">The <#= entityNameLower #> ID.</param>
-	public static <#=entityType#> GetById(int id)
+	public override <#=entityType#> GetById(int id)
 	{
-		return <#=entityType#>DataService.GetById(id);
+		return <#=DataServiceObjectName#>.GetById(id);
 	}
 
 	/// <summary>
 	/// Gets All.
 	/// </summary>
-	public static List<<#=entityType#>> GetAll()
+	public override List<<#=entityType#>> GetAll()
 	{
-		return <#=entityType#>DataService.GetAll();
+		return <#=DataServiceObjectName#>.GetAll();
 	}
 
 	/// <summary>
 	/// Adds the specified entity.
 	/// </summary>
 	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
-	public static void Add(<#=entityType#> <#= entityNameLower #>)
+	public override void Add(<#=entityType#> <#= entityNameLower #>)
 	{
-		<#=entityType#>DataService.Add(<#= entityNameLower #>);
+		<#=DataServiceObjectName#>.Add(<#= entityNameLower #>);
 	}
 
 	/// <summary>
 	/// Deletes the specified entity.
 	/// </summary>
 	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
-	public static void Delete(<#=entityType#> <#= entityNameLower #>)
+	public override void Delete(<#=entityType#> <#= entityNameLower #>)
 	{
-		<#=entityType#>DataService.Delete(<#= entityNameLower #>);
+		<#=DataServiceObjectName#>.Delete(<#= entityNameLower #>);
 	}
 
 	/// <summary>
 	/// Deletes the entity by Id.
 	/// </summary>
 	/// <param name="id">The <#= entityNameLower #> Id.</param>
-	public static void DeleteById(int id)
+	public override void Delete(int id)
 	{
-		<#=entityType#>DataService.DeleteById(id);
+		<#=DataServiceObjectName#>.Delete(id);
 	}
 
 	/// <summary>
 	/// Updates the specified entity.
 	/// </summary>
 	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
-	public static void Update(<#=entityType#> <#= entityNameLower #>)
+	public override void Update(<#=entityType#> <#= entityNameLower #>)
 	{
-		<#=entityType#>DataService.Update(<#= entityNameLower #>);
+		<#=DataServiceObjectName#>.Update(<#= entityNameLower #>);
 	}
 
 	/// <summary>
 	/// Queries the entity.
 	/// </summary>
 	/// <param name="criteria">Search Criteria.</param>
-	public static List<<#=entityType#>> Search(System.Linq.Expressions.Expression<Func<<#=entityType#>, bool>> criteria)
+	public override List<<#=entityType#>> Search(Func<<#=entityType#>, bool> criteria)
 	{
-		return <#=entityType#>DataService.Search(criteria);
+		return <#=DataServiceObjectName#>.Search(criteria);
 	}
 <# region.End();#>
 }

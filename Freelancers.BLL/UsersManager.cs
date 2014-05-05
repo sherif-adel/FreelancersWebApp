@@ -9,61 +9,26 @@ using Freelancers.BLL.Enums;
 
 namespace Freelancers.BLL
 {
-	public static class UsersManager
-	{
-		public static User GetById(int userId)
-		{
-			return UserDataService.GetById(userId);
-		}
+    public partial class UserManager
+    {
+        public List<User> GetUsersByRoleId(int roleId)
+        {
+            return _userDataService.GetUsersByRoleId(roleId);
+        }
 
-		public static List<User> GetAll()
-		{
-			return UserDataService.GetAll();
-		}
+        public User ValidateLogin(string email, string password)
+        {
+            return _userDataService.ValidateLogin(email, password);
+        }
 
-		public static void Add(User user)
-		{
-			UserDataService.Add(user);
-		}
+        public User ValidateLogin(string email)
+        {
+            return _userDataService.ValidateLogin(email);
+        }
 
-		public static void Delete(User user)
-		{
-			UserDataService.Delete(user);
-		}
-
-		public static void DeleteById(int userId)
-		{
-			UserDataService.DeleteById(userId);
-		}
-
-		public static void Update(User user)
-		{
-			UserDataService.Update(user);
-		}
-
-		public static void Search(System.Linq.Expressions.Expression<Func<User, bool>> criteria)
-		{
-			UserDataService.Search(criteria);
-		}
-
-		public static List<User> GetUsersByRoleId(int roleId)
-		{
-			return UserDataService.GetUsersByRoleId(roleId);
-		}
-
-		public static User ValidateLogin(string email, string password)
-		{
-			return UserDataService.ValidateLogin(email, password);
-		}
-
-		public static User ValidateLogin(string email)
-		{
-			return UserDataService.ValidateLogin(email);
-		}
-
-		public static bool HasPassword(User user)
-		{
-			return UserDataService.HasPassword(user);
-		}
-	}
+        public bool HasPassword(User user)
+        {
+            return _userDataService.HasPassword(user);
+        }
+    }
 }
