@@ -1,103 +1,95 @@
+
 namespace FreeLancers.DAL
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using FreeLancers.Models;
+
+using System;
+using System.Data.Entity;
+using System.Collections.Generic;
+using System.Linq;
+using FreeLancers.Models;
+
+public partial class RoleDataService : DataServiceBase<Role>
+{
+    #region Constructor
     
-    public partial class RoleDataService
-    {
-        #region Methods
-    
-    	/// <summary>
-    	/// Gets the specified entity by Id.
-    	/// </summary>
-    	/// <param name="id">The role Id.</param>
-    	public static Role GetById(int id)
-    	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return entities.Roles.FirstOrDefault(entity => entity.RoleID == id);
-    		}
-    	}
-    
-    	/// <summary>
-    	/// Gets All.
-    	/// </summary>
-    	public static List<Role> GetAll()
-    	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return entities.Roles.ToList();
-    		}
-    	}
-    
-    	/// <summary>
-    	/// Adds the specified entity.
-    	/// </summary>
-    	/// <param name="role">The role entity.</param>
-    	public static void Add(Role role)
-    	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-            {
-    			entities.Roles.Add(role);
-    			entities.SaveChanges();
-            }
-    	}
-    
-    	/// <summary>
-    	/// Deletes the specified entity.
-    	/// </summary>
-    	/// <param name="role">The role entity.</param>
-    	public static void Delete(Role role)
-    	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			entities.Roles.Remove(role);
-    			entities.SaveChanges();
-    		}
-    	}
-    
-    	/// <summary>
-    	/// Deletes the entity by Id.
-    	/// </summary>
-    	/// <param name="id">The role Id.</param>
-    	public static void DeleteById(int id)
-    	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			var role = GetById(id);
-    			entities.Roles.Remove(role);
-    			entities.SaveChanges();
-    		}
-    	}
-    
-    	/// <summary>
-    	/// Updates the specified entity.
-    	/// </summary>
-    	/// <param name="role">The role entity.</param>
-    	public static void Update(Role role)
-    	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			entities.Entry(role).State = System.Data.EntityState.Modified;
-    			entities.SaveChanges();
-    		}
-    	}
-    
-    	/// <summary>
-    	/// Queries the entity.
-    	/// </summary>
-    	/// <param name="criteria">Search Criteria.</param>
-    	public static List<Role> Search(System.Linq.Expressions.Expression<Func<Role, bool>> criteria)
-    	{
-    		using (FreeLancersEntities entities = new FreeLancersEntities())
-    		{
-    			return entities.Roles.Where(criteria).ToList();
-    		}
-    	}
+	/// <summary>
+	/// Gets the specified entity by Id.
+	/// </summary>
+	/// <param name="id">The role Id.</param>
+	public RoleDataService(FreeLancersEntities dataContext):base(dataContext)
+	{
+		this.DataContext = dataContext;
+	}
 
         #endregion
 
-    }
+    
+
+    #region Methods
+    
+
+	/// <summary>
+	/// Gets the specified entity by Id.
+	/// </summary>
+	/// <param name="id">The role Id.</param>
+	public override Role GetById(int id)
+	{
+		return DataContext.Roles.FirstOrDefault(entity => entity.RoleID == id);
+	}
+
+	/// <summary>
+	/// Gets All.
+	/// </summary>
+	public override List<Role> GetAll()
+	{
+		return DataContext.Roles.ToList();
+	}
+
+	/// <summary>
+	/// Adds the specified entity.
+	/// </summary>
+	/// <param name="role">The role entity.</param>
+	public override void Add(Role role)
+	{
+		DataContext.Roles.Add(role);
+		DataContext.SaveChanges();
+	}
+
+	/// <summary>
+	/// Deletes the specified entity.
+	/// </summary>
+	/// <param name="role">The role entity.</param>
+	public override void Delete(Role role)
+	{
+
+		DataContext.Roles.Remove(role);
+		DataContext.SaveChanges();
+	}
+
+	/// <summary>
+	/// Deletes the entity by Id.
+	/// </summary>
+	/// <param name="id">The role Id.</param>
+	public override void Delete(int id)
+	{
+		var role = GetById(id);
+		DataContext.Roles.Remove(role);
+		DataContext.SaveChanges();
+	}
+
+	/// <summary>
+	/// Updates the specified entity.
+	/// </summary>
+	/// <param name="role">The role entity.</param>
+	public override void Update(Role role)
+	{
+		DataContext.Entry(role).State = EntityState.Modified;
+		DataContext.SaveChanges();
+	}
+
+        #endregion
+
+    
+}
+
 }

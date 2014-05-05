@@ -24,100 +24,83 @@ foreach (EntitySet entity in container.BaseEntitySets.OfType<EntitySet>())
 	BeginNamespace(namespaceName, code); 
 #>
 using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using FreeLancers.Models;
 
-<#=Accessibility.ForType(entity.ElementType)#> <#=code.SpaceAfter(code.AbstractOption(entity.ElementType))#>partial class <#=dataServiceName#>
+<#=Accessibility.ForType(entity.ElementType)#> <#=code.SpaceAfter(code.AbstractOption(entity.ElementType))#>partial class <#=dataServiceName#> : DataServiceBase<<#=entityType#>>
 {
+<#	region.Begin("Constructor"); #>
+	/// <summary>
+	/// Gets the specified entity by Id.
+	/// </summary>
+	/// <param name="id">The <#= entityNameLower #> Id.</param>
+	public <#=dataServiceName#>(FreeLancersEntities dataContext):base(dataContext)
+	{
+		this.DataContext = dataContext;
+	}
+<#  region.End();#>
+
 <#	region.Begin("Methods"); #>
 
 	/// <summary>
 	/// Gets the specified entity by Id.
 	/// </summary>
 	/// <param name="id">The <#= entityNameLower #> Id.</param>
-	public static <#=entityType#> GetById(int id)
+	public override <#=entityType#> GetById(int id)
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-		{
-			return entities.<#=entitySetName#>.FirstOrDefault(entity => entity.<#=entityType#>ID == id);
-		}
+		return DataContext.<#=entitySetName#>.FirstOrDefault(entity => entity.<#=entityType#>ID == id);
 	}
 
 	/// <summary>
 	/// Gets All.
 	/// </summary>
-	public static List<<#=entityType#>> GetAll()
+	public override List<<#=entityType#>> GetAll()
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-		{
-			return entities.<#=entitySetName#>.ToList();
-		}
+		return DataContext.<#=entitySetName#>.ToList();
 	}
 
 	/// <summary>
 	/// Adds the specified entity.
 	/// </summary>
 	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
-	public static void Add(<#=entityType#> <#= entityNameLower #>)
+	public override void Add(<#=entityType#> <#= entityNameLower #>)
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-        {
-			entities.<#=entitySetName#>.Add(<#= entityNameLower #>);
-			entities.SaveChanges();
-        }
+		DataContext.<#=entitySetName#>.Add(<#= entityNameLower #>);
+		DataContext.SaveChanges();
 	}
 
 	/// <summary>
 	/// Deletes the specified entity.
 	/// </summary>
 	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
-	public static void Delete(<#=entityType#> <#= entityNameLower #>)
+	public override void Delete(<#=entityType#> <#= entityNameLower #>)
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-		{
-			entities.<#=entitySetName#>.Remove(<#= entityNameLower #>);
-			entities.SaveChanges();
-		}
+
+		DataContext.<#=entitySetName#>.Remove(<#= entityNameLower #>);
+		DataContext.SaveChanges();
 	}
 
 	/// <summary>
 	/// Deletes the entity by Id.
 	/// </summary>
 	/// <param name="id">The <#= entityNameLower #> Id.</param>
-	public static void DeleteById(int id)
+	public override void Delete(int id)
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-		{
-			var <#= entityNameLower #> = GetById(id);
-			entities.<#=entitySetName#>.Remove(<#= entityNameLower #>);
-			entities.SaveChanges();
-		}
+		var <#= entityNameLower #> = GetById(id);
+		DataContext.<#=entitySetName#>.Remove(<#= entityNameLower #>);
+		DataContext.SaveChanges();
 	}
 
 	/// <summary>
 	/// Updates the specified entity.
 	/// </summary>
 	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
-	public static void Update(<#=entityType#> <#= entityNameLower #>)
+	public override void Update(<#=entityType#> <#= entityNameLower #>)
 	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-		{
-			entities.Entry(<#= entityNameLower #>).State = System.Data.EntityState.Modified;
-			entities.SaveChanges();
-		}
-	}
-
-	/// <summary>
-	/// Queries the entity.
-	/// </summary>
-	/// <param name="criteria">Search Criteria.</param>
-	public static List<<#=entityType#>> Search(System.Linq.Expressions.Expression<Func<<#=entityType#>, bool>> criteria)
-	{
-		using (FreeLancersEntities entities = new FreeLancersEntities())
-		{
-			return entities.<#=entitySetName#>.Where(criteria).ToList();
-		}
+		DataContext.Entry(<#= entityNameLower #>).State = EntityState.Modified;
+		DataContext.SaveChanges();
 	}
 <# region.End();#>
 }

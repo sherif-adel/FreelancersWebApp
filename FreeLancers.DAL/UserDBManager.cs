@@ -7,46 +7,35 @@ using FreeLancers.Models;
 
 namespace FreeLancers.DAL
 {
-	public partial class UserDataService
-	{
+    public partial class UserDataService
+    {
 
-		#region Custom Operations
+        #region Custom Operations
 
-		public static List<User> GetUsersByRoleId(int roleId)
-		{
-			using (FreeLancersEntities entities = new FreeLancersEntities())
-			{
-				return entities.Users.Where(user => user.RoleID == roleId).ToList();
-			}
-		}
+        public List<User> GetUsersByRoleId(int roleId)
+        {
+            return DataContext.Users.Where(user => user.RoleID == roleId).ToList();
+        }
 
-		public static User ValidateLogin(string email, string password)
-		{
-			using (FreeLancersEntities entities = new FreeLancersEntities())
-			{
-				return entities.Users.FirstOrDefault(user => user.Email == email && user.Password == password);
-			}
-		}
+        public User ValidateLogin(string email, string password)
+        {
+            return DataContext.Users.FirstOrDefault(user => user.Email == email && user.Password == password);
+        }
 
-		public static User ValidateLogin(string email)
-		{
-			using (FreeLancersEntities entities = new FreeLancersEntities())
-			{
-				return entities.Users.FirstOrDefault(user => user.Email == email);
-			}
-		}
+        public User ValidateLogin(string email)
+        {
+            return DataContext.Users.FirstOrDefault(user => user.Email == email);
+        }
 
-		public static bool HasPassword(User user)
-		{
-			using (FreeLancersEntities entities = new FreeLancersEntities())
-			{
-				var returnedUser = entities.Users.FirstOrDefault(x => x.Email == user.Email);
-				if (string.IsNullOrEmpty(returnedUser.Password))
-					return false;
-				else
-					return true;
-			}
-		}
-		#endregion
-	}
+        public bool HasPassword(User user)
+        {
+            var returnedUser = DataContext.Users.FirstOrDefault(x => x.Email == user.Email);
+            if (string.IsNullOrEmpty(returnedUser.Password))
+                return false;
+            else
+                return true;
+        }
+
+        #endregion
+    }
 }
