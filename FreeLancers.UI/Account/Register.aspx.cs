@@ -11,54 +11,65 @@ using Microsoft.AspNet.Membership.OpenAuth;
 
 namespace FreeLancers.UI.Account
 {
-	public partial class Register : Page
-	{
-		public string ReturnUrl;
+    public partial class Register : Page
+    {
+        #region Properties
 
-		private UserService _userService;
+        public string ReturnUrl;
 
-		protected UserService UserService
-		{
-			get
-			{
-				if (_userService == null)
-					_userService = new UserService();
-				return _userService;
-			}
-		}
+        private UserService _userService;
 
-		protected UserContract CurrentUser
-		{
-			get
-			{
-				if (Session["loggedUser"] != null)
-					return (UserContract)Session["loggedUser"];
-				return null;
-			}
-			set
-			{
-				Session["loggedUser"] = value;
-			}
-		}
+        protected UserService UserService
+        {
+            get
+            {
+                if (_userService == null)
+                    _userService = new UserService();
+                return _userService;
+            }
+        }
 
-		protected void Page_Load(object sender, EventArgs e)
-		{
-			ReturnUrl = Request.QueryString["ReturnUrl"];
-		}
+        protected UserContract CurrentUser
+        {
+            get
+            {
+                if (Session["loggedUser"] != null)
+                    return (UserContract)Session["loggedUser"];
+                return null;
+            }
+            set
+            {
+                Session["loggedUser"] = value;
+            }
+        }
 
-		protected void RegisterUser_CreatedUser(object sender, EventArgs e)
-		{
-			if (String.IsNullOrEmpty(ReturnUrl))
-			{
-				ReturnUrl = "~/";
-			}
-			Response.Redirect(ReturnUrl);
-		}
+        #endregion
 
-		protected void btnRegister_Click(object sender, EventArgs e)
-		{           
-			UserContract user = new UserContract();
-            UserService.Search(x => x.Email == txtEmail.Text);
-		}
-	}
+        #region Protected Methods
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            ReturnUrl = Request.QueryString["ReturnUrl"];
+        }
+
+        protected void btnRegister_Click(object sender, EventArgs e)
+        {
+            var result = UserService.Search(x => x.Email == txtEmail.Text);
+            if (result == null || result.Count == 0)
+            {
+                UserContract user = new UserContract();
+                user.Email = txtEmail.Text;
+                user.Password = txtPassword.Text;
+                user.RoleID = int.Parse(RBLRoles.SelectedValue);
+                UserService.Add(user);
+                //Redirect according to Role or according to querystring
+            }
+            else
+            {
+                ModelState.AddModelError("NewUser", "This Email is already registered");
+            }
+        }
+
+        #endregion
+    }
 }
