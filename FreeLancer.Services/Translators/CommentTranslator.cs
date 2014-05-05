@@ -12,52 +12,52 @@ namespace FreeLancers.Service.Translators
     {
         #region ToEntity
 
-        public static Comment ConverToCommentEntity(CommentContract comment)
+        public static Comment ConvertToCommentEntity(CommentContract comment)
 		{
 			Comment entityComment = new Comment(){
 				Comment1=comment.Comment1,
 				CommentID=comment.CommentID,
                 Date=comment.Date,
-                Profile=ProfileTranslator.ConverToProfileEntity(comment.Profile),
+                Profile=ProfileTranslator.ConvertToProfileEntity(comment.Profile),
                 ProfileID=comment.ProfileID,
-                User=UsersTranslator.ConverToUserEntity(comment.User),
+                User=UsersTranslator.ConvertToUserEntity(comment.User),
                 UserID=comment.UserID
 			};
 			return entityComment;
 		}
 
-		public static List<Comment> ConverToCommentEntity(List<CommentContract> comments)
+		public static List<Comment> ConvertToCommentEntity(List<CommentContract> comments)
 		{
 			List<Comment> newComments = new List<Comment>();
 			foreach (var comment in comments)
 			{
-                newComments.Add(ConverToCommentEntity(comment));
+                newComments.Add(ConvertToCommentEntity(comment));
 			}
 			return newComments;
 		}
         #endregion
         #region ToContract
-        public static CommentContract ConverToCommentContract(Comment comment)
+        public static CommentContract ConvertToCommentContract(Comment comment)
 		{
 			CommentContract contractComment = new CommentContract()
 			{
                 Comment1 = comment.Comment1,
                 CommentID = comment.CommentID,
                 Date = comment.Date,
-                Profile = ProfileTranslator.ConverToProfileContract(comment.Profile),
+                Profile = ProfileTranslator.ConvertToProfileContract(comment.Profile),
                 ProfileID = comment.ProfileID,
-                User = UsersTranslator.ConverToUserContract(comment.User),
+                User = UsersTranslator.ConvertToUserContract(comment.User),
                 UserID = comment.UserID
 			};
 			return contractComment;
 		}
 
-		public static List<CommentContract> ConverToCommentContract(List<Comment> comments)
+		public static List<CommentContract> ConvertToCommentContract(List<Comment> comments)
 		{
 			List<CommentContract> newComments = new List<CommentContract>();
 			foreach (var comment in comments)
 			{
-				newComments.Add(ConverToCommentContract(comment));
+				newComments.Add(ConvertToCommentContract(comment));
 			}
 			return newComments;
 		}

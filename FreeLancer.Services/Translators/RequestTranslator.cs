@@ -12,7 +12,7 @@ namespace FreeLancers.Service.Translators
     {
         #region Request
 
-        public static Request ConverToRequestEntity(RequestContract request)
+        public static Request ConvertToRequestEntity(RequestContract request)
         {
             Request entityRequest = new Request()
             {
@@ -22,25 +22,25 @@ namespace FreeLancers.Service.Translators
                 FreelancerID = request.FreelancerID,
                 RequestID = request.RequestID,
                 StartDate = request.StartDate,
-                Status = StatusTranslator.ConverToStatusEntity(request.Status),
+                Status = StatusTranslator.ConvertToStatusEntity(request.Status),
                 StatusID = request.StatusID,
-                User = UsersTranslator.ConverToUserEntity(request.User),
+                User = UsersTranslator.ConvertToUserEntity(request.User),
                 UserID = request.UserID
             };
             return entityRequest;
         }
 
-        public static List<Request> ConverToRequestEntity(List<RequestContract> requests)
+        public static List<Request> ConvertToRequestEntity(List<RequestContract> requests)
         {
             List<Request> newRequests = new List<Request>();
             foreach (var request in requests)
             {
-                newRequests.Add(ConverToRequestEntity(request));
+                newRequests.Add(ConvertToRequestEntity(request));
             }
             return newRequests;
         }
 
-        public static RequestContract ConverToRequestContract(Request request)
+        public static RequestContract ConvertToRequestContract(Request request)
         {
             RequestContract contractRequest = new RequestContract()
             {
@@ -50,20 +50,20 @@ namespace FreeLancers.Service.Translators
                 FreelancerID = request.FreelancerID,
                 RequestID = request.RequestID,
                 StartDate = request.StartDate,
-                Status = StatusTranslator.ConverToStatusContract(request.Status),
+                Status = StatusTranslator.ConvertToStatusContract(request.Status),
                 StatusID = request.StatusID,
-                User = UsersTranslator.ConverToUserContract(request.User),
+                User = UsersTranslator.ConvertToUserContract(request.User),
                 UserID = request.UserID
             };
             return contractRequest;
         }
 
-        public static List<RequestContract> ConverToRequestContract(List<Request> requests)
+        public static List<RequestContract> ConvertToRequestContract(List<Request> requests)
         {
             List<RequestContract> newRequests = new List<RequestContract>();
             foreach (var request in requests)
             {
-                newRequests.Add(ConverToRequestContract(request));
+                newRequests.Add(ConvertToRequestContract(request));
             }
             return newRequests;
         }

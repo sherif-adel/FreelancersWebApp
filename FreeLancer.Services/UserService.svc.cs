@@ -13,82 +13,115 @@ using FreeLancers.Service.Contracts;
 
 namespace FreeLancer.Services
 {
-	public class UserService : IUserService
-	{
-		public UserContract GetById(int userId)
-		{
-			var user = UsersManager.GetById(userId);
-			return UsersTranslator.ConvertToUserContract(user);
-		}
-
-		public List<UserContract> GetAll()
-		{
-			var users = UsersManager.GetAll();
-			return UsersTranslator.ConvertToUserContract(users).ToList();
-		}
-
-		public void Add(UserContract user)
-		{
-			var userEntity = UsersTranslator.ConvertToUserEntity(user);
-			UsersManager.Add(userEntity);
-		}
-
-		public void Delete(UserContract user)
-		{
-			var userEntity = UsersTranslator.ConvertToUserEntity(user);
-			UsersManager.Delete(userEntity);
-		}
-
-		public void DeleteById(int userId)
-		{
-			UsersManager.DeleteById(userId);
-		}
-
-		public void Update(UserContract user)
-		{
-			var userEntity = UsersTranslator.ConvertToUserEntity(user);
-			UsersManager.Update(userEntity);
-		}
-
-		public List<UserContract> Search(System.Linq.Expressions.Expression<Func<UserContract, bool>> criteria)
-		{
-		//	var userEntity = UsersTranslator.ConverToUserEntity((UserContract)criteria.Parameters[0]);
-		//	var param = Expression.Parameter(typeof(User), "p");
-		//	var body = criteria.Body;
-
-		//	var lambda = Expression.Lambda<Func<User, bool>>(
-		//		body, param);
-
-		//	var users = UsersManager.Search(lambda);
-		//	return UsersTranslator.ConverToUserContract(users);
-
-            //  THIS LINE IS TO BUILD WITH NO ERRORS (FOR IMPLEMENTATION ISSUES)
-            return UsersTranslator.ConvertToUserContract(UserManager.GetAll()).ToList();
-            //  THIS LINE IS TO BUILD WITH NO ERRORS (FOR IMPLEMENTATION ISSUES)
+    public class UserService : IUserService
+    {
+        public UserContract GetById(int userId)
+        {
+            using (var entities = new FreeLancersEntities())
+            {
+                UserManager userManager = new UserManager(entities);
+                var user = userManager.GetById(userId);
+                return UsersTranslator.ConvertToUserContract(user);
+            }
         }
 
-		public List<UserContract> GetUsersByRoleId(int roleId)
-		{
-			var users = UsersManager.GetUsersByRoleId(roleId);
-			return UsersTranslator.ConvertToUserContract(users).ToList();
-		}
+        public List<UserContract> GetAll()
+        {
+            using (var entities = new FreeLancersEntities())
+            {
+                UserManager userManager = new UserManager(entities);
+                var users = userManager.GetAll();
+                return UsersTranslator.ConvertToUserContract(users).ToList();
+            }
+        }
 
-		public UserContract ValidateLogin(string email, string password)
-		{
-			var user = UsersManager.ValidateLogin(email, password);
-			return UsersTranslator.ConvertToUserContract(user);
-		}
+        public void Add(UserContract user)
+        {
+            using (var entities = new FreeLancersEntities())
+            {
+                UserManager userManager = new UserManager(entities);
+                var userEntity = UsersTranslator.ConvertToUserEntity(user);
+                userManager.Add(userEntity);
+            }
+        }
 
-		public UserContract ValidateLogin(string email)
-		{
-			var user = UsersManager.ValidateLogin(email);
-			return UsersTranslator.ConverToUserContract(user);
-		}
+        public void Delete(UserContract user)
+        {
+            using (var entities = new FreeLancersEntities())
+            {
+                UserManager userManager = new UserManager(entities);
+                var userEntity = UsersTranslator.ConvertToUserEntity(user);
+                userManager.Delete(userEntity);
+            }
+        }
 
-		public bool HasPassword(UserContract user)
-		{
-			var convertedUser = UsersTranslator.ConverToUserEntity(user);
-			return UsersManager.HasPassword(convertedUser);
-		}
-	}
+        public void DeleteById(int userId)
+        {
+            using (var entities = new FreeLancersEntities())
+            {
+                UserManager userManager = new UserManager(entities);
+                userManager.Delete(userId);
+            }
+        }
+
+        public void Update(UserContract user)
+        {
+            using (var entities = new FreeLancersEntities())
+            {
+                UserManager userManager = new UserManager(entities);
+                var userEntity = UsersTranslator.ConvertToUserEntity(user);
+                userManager.Update(userEntity);
+            }
+        }
+
+        public List<UserContract> Search(Func<dynamic, bool> criteria)
+        {
+            using (FreeLancersEntities entities = new FreeLancersEntities())
+            {
+                UserManager userManager = new UserManager(entities);
+                Func<User, bool> userCriteria = (Func<User, bool>)criteria;
+                return UsersTranslator.ConvertToUserContract(userManager.Search(userCriteria)).ToList();
+            }
+        }
+
+        public List<UserContract> GetUsersByRoleId(int roleId)
+        {
+            using (var entities = new FreeLancersEntities())
+            {
+                UserManager userManager = new UserManager(entities);
+                var users = userManager.GetUsersByRoleId(roleId);
+                return UsersTranslator.ConvertToUserContract(users).ToList();
+            }
+        }
+
+        public UserContract ValidateLogin(string email, string password)
+        {
+            using (var entities = new FreeLancersEntities())
+            {
+                UserManager userManager = new UserManager(entities);
+                var user = userManager.ValidateLogin(email, password);
+                return UsersTranslator.ConvertToUserContract(user);
+            }
+        }
+
+        public UserContract ValidateLogin(string email)
+        {
+            using (var entities = new FreeLancersEntities())
+            {
+                UserManager userManager = new UserManager(entities);
+                var user = userManager.ValidateLogin(email);
+                return UsersTranslator.ConvertToUserContract(user);
+            }
+        }
+
+        public bool HasPassword(UserContract user)
+        {
+            using (var entities = new FreeLancersEntities())
+            {
+                UserManager userManager = new UserManager(entities);
+                var convertedUser = UsersTranslator.ConvertToUserEntity(user);
+                return userManager.HasPassword(convertedUser);
+            }
+        }
+    }
 }

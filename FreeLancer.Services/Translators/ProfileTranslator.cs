@@ -12,11 +12,11 @@ namespace FreeLancers.Service.Translators
     {
         #region Profile
 
-        public static Profile ConverToProfileEntity(ProfileContract profile)
+        public static Profile ConvertToProfileEntity(ProfileContract profile)
         {
             Profile entityProfile = new Profile()
             {
-                Comments = CommentTranslator.ConverToCommentEntity(profile.Comments.ToList()),
+                Comments = CommentTranslator.ConvertToCommentEntity(profile.Comments.ToList()),
                 CompanyName = profile.CompanyName,
                 Description = profile.Description,
                 Experience = profile.Experience,
@@ -28,29 +28,29 @@ namespace FreeLancers.Service.Translators
                 PreviousWork = profile.PreviousWork,
                 ProfileID = profile.ProfileID,
                 Rating = profile.Rating,
-                Skills = SkillTranslator.ConverToSkillEntity(profile.Skills.ToList()),
-                User = UsersTranslator.ConverToUserEntity(profile.User),
+                Skills = SkillTranslator.ConvertToSkillEntity(profile.Skills.ToList()),
+                User = UsersTranslator.ConvertToUserEntity(profile.User),
                 UserID = profile.UserID,
                 YouTubeURL = profile.YouTubeURL
             };
             return entityProfile;
         }
 
-        public static List<Profile> ConverToProfileEntity(List<ProfileContract> profiles)
+        public static List<Profile> ConvertToProfileEntity(List<ProfileContract> profiles)
         {
             List<Profile> newProfiles = new List<Profile>();
             foreach (var profile in profiles)
             {
-                newProfiles.Add(ConverToProfileEntity(profile));
+                newProfiles.Add(ConvertToProfileEntity(profile));
             }
             return newProfiles;
         }
 
-        public static ProfileContract ConverToProfileContract(Profile profile)
+        public static ProfileContract ConvertToProfileContract(Profile profile)
         {
             ProfileContract contractProfile = new ProfileContract()
             {
-                Comments = CommentTranslator.ConverToCommentContract(profile.Comments.ToList()),
+                Comments = CommentTranslator.ConvertToCommentContract(profile.Comments.ToList()),
                 CompanyName = profile.CompanyName,
                 Description = profile.Description,
                 Experience = profile.Experience,
@@ -62,20 +62,20 @@ namespace FreeLancers.Service.Translators
                 PreviousWork = profile.PreviousWork,
                 ProfileID = profile.ProfileID,
                 Rating = profile.Rating,
-                Skills = SkillTranslator.ConverToSkillContract(profile.Skills.ToList()),
-                User = UsersTranslator.ConverToUserContract(profile.User),
+                Skills = SkillTranslator.ConvertToSkillContract(profile.Skills.ToList()),
+                User = UsersTranslator.ConvertToUserContract(profile.User),
                 UserID = profile.UserID,
                 YouTubeURL = profile.YouTubeURL
             };
             return contractProfile;
         }
 
-        public static List<ProfileContract> ConverToProfileContract(List<Profile> profiles)
+        public static List<ProfileContract> ConvertToProfileContract(List<Profile> profiles)
         {
             List<ProfileContract> newProfiles = new List<ProfileContract>();
             foreach (var profile in profiles)
             {
-                newProfiles.Add(ConverToProfileContract(profile));
+                newProfiles.Add(ConvertToProfileContract(profile));
             }
             return newProfiles;
         }

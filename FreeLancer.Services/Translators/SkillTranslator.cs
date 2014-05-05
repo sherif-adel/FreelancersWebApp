@@ -11,23 +11,23 @@ namespace FreeLancers.Service.Translators
 	{
 		#region ToEntity
 
-		public static Skill ConverToSkillEntity(SkillContract skill)
+		public static Skill ConvertToSkillEntity(SkillContract skill)
 		{
 			Skill entitySkill = new Skill()
 			{
 				SkillID = skill.SkillID,
 				SkillName = skill.SkillName,
-				Profiles = ProfileTranslator.ConverToProfileEntity(skill.Profiles.ToList())
+				Profiles = ProfileTranslator.ConvertToProfileEntity(skill.Profiles.ToList())
 			};
 			return entitySkill;
 		}
 
-		public static List<Skill> ConverToSkillEntity(List<SkillContract> skills)
+		public static List<Skill> ConvertToSkillEntity(List<SkillContract> skills)
 		{
 			List<Skill> newSkills = new List<Skill>();
 			foreach (var skill in skills)
 			{
-				newSkills.Add(ConverToSkillEntity(skill));
+				newSkills.Add(ConvertToSkillEntity(skill));
 			}
 			return newSkills;
 		}
@@ -36,23 +36,23 @@ namespace FreeLancers.Service.Translators
 
 		#region ToContract
 
-		public static SkillContract ConverToSkillContract(Skill skill)
+		public static SkillContract ConvertToSkillContract(Skill skill)
 		{
 			SkillContract skillContract = new SkillContract()
 			{
 				SkillID = skill.SkillID,
 				SkillName = skill.SkillName,
-				Profiles = ProfileTranslator.ConverToProfileContract(skill.Profiles.ToList())
+				Profiles = ProfileTranslator.ConvertToProfileContract(skill.Profiles.ToList())
 			};
 			return skillContract;
 		}
 
-		public static List<SkillContract> ConverToSkillContract(List<Skill> skills)
+		public static List<SkillContract> ConvertToSkillContract(List<Skill> skills)
 		{
 			List<SkillContract> newSkills = new List<SkillContract>();
 			foreach (var skill in skills)
 			{
-				newSkills.Add(ConverToSkillContract(skill));
+				newSkills.Add(ConvertToSkillContract(skill));
 			}
 			return newSkills;
 		}

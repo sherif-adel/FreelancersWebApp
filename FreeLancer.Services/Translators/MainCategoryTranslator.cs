@@ -12,46 +12,46 @@ namespace FreeLancers.Service.Translators
     {
         #region MainCategory
 
-        public static MainCategory ConverToMainCategoryEntity(MainCategoryContract maincategory)
+        public static MainCategory ConvertToMainCategoryEntity(MainCategoryContract maincategory)
         {
             MainCategory entityMainCategory = new MainCategory()
             {
                 Image = maincategory.Image,
                 MainCategoryID = maincategory.MainCategoryID,
                 Name = maincategory.Name,
-                SubCategories = SubCategoryTranslator.ConverToSubCategoryEntity(maincategory.SubCategories.ToList())
+                SubCategories = SubCategoryTranslator.ConvertToSubCategoryEntity(maincategory.SubCategories.ToList())
             };
             return entityMainCategory;
         }
 
-        public static List<MainCategory> ConverToMainCategoryEntity(List<MainCategoryContract> maincategorys)
+        public static List<MainCategory> ConvertToMainCategoryEntity(List<MainCategoryContract> maincategorys)
         {
             List<MainCategory> newMainCategorys = new List<MainCategory>();
             foreach (var maincategory in maincategorys)
             {
-                newMainCategorys.Add(ConverToMainCategoryEntity(maincategory));
+                newMainCategorys.Add(ConvertToMainCategoryEntity(maincategory));
             }
             return newMainCategorys;
         }
 
-        public static MainCategoryContract ConverToMainCategoryContract(MainCategory maincategory)
+        public static MainCategoryContract ConvertToMainCategoryContract(MainCategory maincategory)
         {
             MainCategoryContract contractMainCategory = new MainCategoryContract()
             {
                 Image = maincategory.Image,
                 MainCategoryID = maincategory.MainCategoryID,
                 Name = maincategory.Name,
-                SubCategories = SubCategoryTranslator.ConverToSubCategoryContract(maincategory.SubCategories.ToList())
+                SubCategories = SubCategoryTranslator.ConvertToSubCategoryContract(maincategory.SubCategories.ToList())
             };
             return contractMainCategory;
         }
 
-        public static List<MainCategoryContract> ConverToMainCategoryContract(List<MainCategory> maincategorys)
+        public static List<MainCategoryContract> ConvertToMainCategoryContract(List<MainCategory> maincategorys)
         {
             List<MainCategoryContract> newMainCategorys = new List<MainCategoryContract>();
             foreach (var maincategory in maincategorys)
             {
-                newMainCategorys.Add(ConverToMainCategoryContract(maincategory));
+                newMainCategorys.Add(ConvertToMainCategoryContract(maincategory));
             }
             return newMainCategorys;
         }

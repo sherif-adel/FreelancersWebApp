@@ -260,7 +260,7 @@ public class CodeStringGenerator
             CultureInfo.InvariantCulture,
             "{0} {1} {2} {{ {3}get; {4}set; }}",
             AccessibilityAndVirtual(Accessibility.ForProperty(navigationProperty)),
-            navigationProperty.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many ? ("ICollection<" + endType + "Contract" + ">") : endType + "Contract",
+            navigationProperty.ToEndMember.RelationshipMultiplicity == RelationshipMultiplicity.Many ? ("List<" + endType + "Contract" + ">") : endType + "Contract",
             _code.Escape(navigationProperty),
             _code.SpaceAfter(Accessibility.ForGetter(navigationProperty)),
             _code.SpaceAfter(Accessibility.ForSetter(navigationProperty)));
@@ -447,7 +447,7 @@ public class TypeMapper
         var collectionType = edmType as CollectionType;
         if (collectionType != null)
         {
-            return String.Format(CultureInfo.InvariantCulture, "ICollection<{0}>", GetTypeName(collectionType.TypeUsage, modelNamespace));
+            return String.Format(CultureInfo.InvariantCulture, "List<{0}>", GetTypeName(collectionType.TypeUsage, modelNamespace));
         }
 
         var typeName = _code.Escape(edmType.MetadataProperties

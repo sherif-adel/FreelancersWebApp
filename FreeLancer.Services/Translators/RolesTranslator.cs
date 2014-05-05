@@ -11,24 +11,24 @@ namespace FreeLancers.Service.Translators
 	{
 		#region ToEntity
 
-		public static Role ConverToRoleEntity(RoleContract role)
+		public static Role ConvertToRoleEntity(RoleContract role)
 		{
 			Role entityRole = new Role()
 			{
 				RoleID = role.RoleID,
 				RoleName = role.RoleName,
-				Status = StatusTranslator.ConverToStatusEntity(role.Status.ToList()),
-				Users =UsersTranslator.ConverToUserEntity(role.Users.ToList())
+				Status = StatusTranslator.ConvertToStatusEntity(role.Status.ToList()),
+				Users =UsersTranslator.ConvertToUserEntity(role.Users.ToList())
 			};
 			return entityRole;
 		}
 
-		public static List<Role> ConverToRoleEntity(List<RoleContract> roles)
+		public static List<Role> ConvertToRoleEntity(List<RoleContract> roles)
 		{
 			List<Role> newRoles = new List<Role>();
 			foreach (var role in roles)
 			{
-				newRoles.Add(ConverToRoleEntity(role));
+				newRoles.Add(ConvertToRoleEntity(role));
 			}
 			return newRoles;
 		}
@@ -37,24 +37,24 @@ namespace FreeLancers.Service.Translators
 
 		#region ToContract
 
-		public static RoleContract ConverToRoleContract(Role role)
+		public static RoleContract ConvertToRoleContract(Role role)
 		{
 			RoleContract roleContract = new RoleContract()
 			{
 				RoleID = role.RoleID,
 				RoleName = role.RoleName,
-				Status = StatusTranslator.ConverToStatusContract(role.Status.ToList()),
-				Users = UsersTranslator.ConverToUserContract(role.Users.ToList())
+				Status = StatusTranslator.ConvertToStatusContract(role.Status.ToList()),
+				Users = UsersTranslator.ConvertToUserContract(role.Users.ToList())
 			};
 			return roleContract;
 		}
 
-		public static List<RoleContract> ConverToRoleContract(List<Role> roles)
+		public static List<RoleContract> ConvertToRoleContract(List<Role> roles)
 		{
 			List<RoleContract> newRoles = new List<RoleContract>();
 			foreach (var role in roles)
 			{
-				newRoles.Add(ConverToRoleContract(role));
+				newRoles.Add(ConvertToRoleContract(role));
 			}
 			return newRoles;
 		}

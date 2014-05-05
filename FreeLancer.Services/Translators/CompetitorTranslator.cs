@@ -12,51 +12,51 @@ namespace FreeLancers.Service.Translators
 	{
 		#region ToEntity
 
-        public static Competitor ConverToCompetitorEntity(CompetitorContract competitor)
+        public static Competitor ConvertToCompetitorEntity(CompetitorContract competitor)
 		{
 			Competitor entityCompetitor = new Competitor(){
                 Cost = competitor.Cost,
                 Duration = competitor.Duration,
-                Project = ProjectTranslator.ConverToProjectEntity(competitor.Project),
+                Project = ProjectTranslator.ConvertToProjectEntity(competitor.Project),
                 ProjectID = competitor.ProjectID,
-                User= UsersTranslator.ConverToUserEntity(competitor.User),
+                User= UsersTranslator.ConvertToUserEntity(competitor.User),
                 UserID= competitor.UserID
 			};
 			return entityCompetitor;
 		}
 
-		public static List<Competitor> ConverToCompetitorEntity(List<CompetitorContract> competitors)
+		public static List<Competitor> ConvertToCompetitorEntity(List<CompetitorContract> competitors)
 		{
 			List<Competitor> newCompetitors = new List<Competitor>();
 			foreach (var competitor in competitors)
 			{
-                newCompetitors.Add(ConverToCompetitorEntity(competitor));
+                newCompetitors.Add(ConvertToCompetitorEntity(competitor));
 			}
 			return newCompetitors;
 		}
         #endregion
 
         #region ToContract
-        public static CompetitorContract ConverToCompetitorContract(Competitor competitor)
+        public static CompetitorContract ConvertToCompetitorContract(Competitor competitor)
 		{
 			CompetitorContract contractCompetitor = new CompetitorContract()
 			{
                 Cost = competitor.Cost,
                 Duration = competitor.Duration,
-                Project = ProjectTranslator.ConverToProjectContract(competitor.Project),
+                Project = ProjectTranslator.ConvertToProjectContract(competitor.Project),
                 ProjectID = competitor.ProjectID,
-                User = UsersTranslator.ConverToUserContract(competitor.User),
+                User = UsersTranslator.ConvertToUserContract(competitor.User),
                 UserID = competitor.UserID
 			};
 			return contractCompetitor;
 		}
 
-		public static List<CompetitorContract> ConverToCompetitorContract(List<Competitor> competitors)
+		public static List<CompetitorContract> ConvertToCompetitorContract(List<Competitor> competitors)
 		{
 			List<CompetitorContract> newCompetitors = new List<CompetitorContract>();
 			foreach (var competitor in competitors)
 			{
-				newCompetitors.Add(ConverToCompetitorContract(competitor));
+				newCompetitors.Add(ConvertToCompetitorContract(competitor));
 			}
 			return newCompetitors;
 		}

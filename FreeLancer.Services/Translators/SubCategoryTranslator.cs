@@ -11,7 +11,7 @@ namespace FreeLancers.Service.Translators
 	{
 		#region ToEntity
 
-		public static SubCategory ConverToSubCategoryEntity(SubCategoryContract subCategory)
+		public static SubCategory ConvertToSubCategoryEntity(SubCategoryContract subCategory)
 		{
 			SubCategory entitySubCategory = new SubCategory()
 			{
@@ -20,19 +20,19 @@ namespace FreeLancers.Service.Translators
 				Image = subCategory.Image,
 				MainCategoryID = subCategory.MainCategoryID,
 				Name = subCategory.Name,
-				Users = UsersTranslator.ConverToUserEntity(subCategory.Users.ToList()),
-                MainCategory=MainCategoryTranslator.ConverToMainCategoryEntity(subCategory.MainCategory),
-                Projects = ProjectTranslator.ConverToProjectEntity(subCategory.Projects.ToList())
+				Users = UsersTranslator.ConvertToUserEntity(subCategory.Users.ToList()),
+                MainCategory=MainCategoryTranslator.ConvertToMainCategoryEntity(subCategory.MainCategory),
+                Projects = ProjectTranslator.ConvertToProjectEntity(subCategory.Projects.ToList())
 			};
 			return entitySubCategory;
 		}
 
-		public static List<SubCategory> ConverToSubCategoryEntity(List<SubCategoryContract> subCategories)
+		public static List<SubCategory> ConvertToSubCategoryEntity(List<SubCategoryContract> subCategories)
 		{
 			List<SubCategory> newSubCategories = new List<SubCategory>();
 			foreach (var subCategory in subCategories)
 			{
-				newSubCategories.Add(ConverToSubCategoryEntity(subCategory));
+				newSubCategories.Add(ConvertToSubCategoryEntity(subCategory));
 			}
 			return newSubCategories;
 		}
@@ -41,7 +41,7 @@ namespace FreeLancers.Service.Translators
 
 		#region ToContract
 
-		public static SubCategoryContract ConverToSubCategoryContract(SubCategory subCategory)
+		public static SubCategoryContract ConvertToSubCategoryContract(SubCategory subCategory)
 		{
 			SubCategoryContract subCategoryContract = new SubCategoryContract()
 			{
@@ -50,19 +50,19 @@ namespace FreeLancers.Service.Translators
 				Image = subCategory.Image,
 				MainCategoryID = subCategory.MainCategoryID,
 				Name = subCategory.Name,
-				Users = UsersTranslator.ConverToUserContract(subCategory.Users.ToList()),
-                MainCategory = MainCategoryTranslator.ConverToMainCategoryContract(subCategory.MainCategory),
-                Projects = ProjectTranslator.ConverToProjectContract(subCategory.Projects.ToList())
+				Users = UsersTranslator.ConvertToUserContract(subCategory.Users.ToList()),
+                MainCategory = MainCategoryTranslator.ConvertToMainCategoryContract(subCategory.MainCategory),
+                Projects = ProjectTranslator.ConvertToProjectContract(subCategory.Projects.ToList())
 			};
 			return subCategoryContract;
 		}
 
-		public static List<SubCategoryContract> ConverToSubCategoryContract(List<SubCategory> subCategories)
+		public static List<SubCategoryContract> ConvertToSubCategoryContract(List<SubCategory> subCategories)
 		{
 			List<SubCategoryContract> newSubCategories = new List<SubCategoryContract>();
 			foreach (var subCategory in subCategories)
 			{
-				newSubCategories.Add(ConverToSubCategoryContract(subCategory));
+				newSubCategories.Add(ConvertToSubCategoryContract(subCategory));
 			}
 			return newSubCategories;
 		}

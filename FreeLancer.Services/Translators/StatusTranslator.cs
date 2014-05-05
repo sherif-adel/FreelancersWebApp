@@ -11,25 +11,25 @@ namespace FreeLancers.Service.Translators
 	{
 		#region ToEntity
 
-		public static Status ConverToStatusEntity(StatusContract status)
+		public static Status ConvertToStatusEntity(StatusContract status)
 		{
 			Status entityStatus = new Status()
 			{
 				Name = status.Name,
 				RoleID = status.RoleID,
 				StatusID = status.StatusID,
-				Requests = RequestTranslator.ConverToRequestEntity(status.Requests.ToList()),
-				Role = RolesTranslator.ConverToRoleEntity(status.Role)
+				Requests = RequestTranslator.ConvertToRequestEntity(status.Requests.ToList()),
+				Role = RolesTranslator.ConvertToRoleEntity(status.Role)
 			};
 			return entityStatus;
 		}
 
-		public static List<Status> ConverToStatusEntity(List<StatusContract> statuses)
+		public static List<Status> ConvertToStatusEntity(List<StatusContract> statuses)
 		{
 			List<Status> newStatuses = new List<Status>();
 			foreach (var status in statuses)
 			{
-				newStatuses.Add(ConverToStatusEntity(status));
+				newStatuses.Add(ConvertToStatusEntity(status));
 			}
 			return newStatuses;
 		}
@@ -38,25 +38,25 @@ namespace FreeLancers.Service.Translators
 
 		#region ToContract
 
-		public static StatusContract ConverToStatusContract(Status status)
+		public static StatusContract ConvertToStatusContract(Status status)
 		{
 			StatusContract statusContract = new StatusContract()
 			{
 				Name = status.Name,
 				RoleID = status.RoleID,
 				StatusID = status.StatusID,
-                Requests = RequestTranslator.ConverToRequestContract(status.Requests.ToList()),
-				Role = RolesTranslator.ConverToRoleContract(status.Role)
+                Requests = RequestTranslator.ConvertToRequestContract(status.Requests.ToList()),
+				Role = RolesTranslator.ConvertToRoleContract(status.Role)
 			};
 			return statusContract;
 		}
 
-		public static List<StatusContract> ConverToStatusContract(List<Status> statuses)
+		public static List<StatusContract> ConvertToStatusContract(List<Status> statuses)
 		{
 			List<StatusContract> newStatuses = new List<StatusContract>();
 			foreach (var status in statuses)
 			{
-				newStatuses.Add(ConverToStatusContract(status));
+				newStatuses.Add(ConvertToStatusContract(status));
 			}
 			return newStatuses;
 		}

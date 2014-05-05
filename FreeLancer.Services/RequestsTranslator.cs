@@ -1,43 +1,34 @@
-
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-
 
 namespace FreeLancer.Services
 {
-
-using System;
+    using System;
     using System.Collections.Generic;using System.Linq;using System.Text;using System.Threading.Tasks;using FreeLancers.Models;using FreeLancers.Service.Contracts;
     
-public partial class RequestsTranslator
-{
-
-    #region Convert to Entities
+    public partial class RequestsTranslator
+    {
+        #region Convert to Entities
+    public static Request ConvertToRequestEntity(RequestContract request){
     
-public static Request ConvertToRequestEntity(RequestContract request){
-
-Request entityRequest = new Request(){
-
-    RequestID=request.RequestID,
-    UserID=request.UserID,
-    FreelancerID=request.FreelancerID,
-    Description=request.Description,
-    StatusID=request.StatusID,
-    StartDate=request.StartDate,
-    EndDate=request.EndDate,
-    AverageCost=request.AverageCost,
+    Request entityRequest = new Request(){
     
-
-
-        Status=StatussTranslator.ConvertToStatusEntity(request.Status),
-    User=UsersTranslator.ConvertToUserEntity(request.User),
+        RequestID=request.RequestID,
+        UserID=request.UserID,
+        FreelancerID=request.FreelancerID,
+        Description=request.Description,
+        StatusID=request.StatusID,
+        StartDate=request.StartDate,
+        EndDate=request.EndDate,
+        AverageCost=request.AverageCost,
+        
+            Status=StatussTranslator.ConvertToStatusEntity(request.Status),
+        User=UsersTranslator.ConvertToUserEntity(request.User),
+         };
+    return entityRequest;}
+    public static ICollection<Request> ConvertToRequestEntity(List<RequestContract> requests){
     
- };
-return entityRequest;}
-
-public static ICollection<Request> ConvertToRequestEntity(ICollection<RequestContract> requests){
-
-       List<Request> newRequests = new List<Request>();
+           List<Request> newRequests = new List<Request>();
     			foreach (var request in requests)
     			{
     				newRequests.Add(ConvertToRequestEntity(request));
@@ -47,21 +38,16 @@ public static ICollection<Request> ConvertToRequestEntity(ICollection<RequestCon
 
         #endregion
 
+        #region Convert to Contracts
+    public static RequestContract ConvertToRequestContract(Request request){
     
-    #region Convert to Contracts
+    RequestContract contractRequest = new RequestContract(){
     
-public static RequestContract ConvertToRequestContract(Request request){
-
-RequestContract contractRequest = new RequestContract(){
-
-            RequestID=request.RequestID,UserID=request.UserID,FreelancerID=request.FreelancerID,Description=request.Description,StatusID=request.StatusID,StartDate=request.StartDate,EndDate=request.EndDate,AverageCost=request.AverageCost,
-                Status=StatussTranslator.ConvertToStatusContract(request.Status),
-                User=UsersTranslator.ConvertToUserContract(request.User),};
-return contractRequest;}
-
-public static ICollection<RequestContract> ConvertToRequestContract(ICollection<Request> requests){
-
-       List<RequestContract> newRequests = new List<RequestContract>();
+                RequestID=request.RequestID,UserID=request.UserID,FreelancerID=request.FreelancerID,Description=request.Description,StatusID=request.StatusID,StartDate=request.StartDate,EndDate=request.EndDate,AverageCost=request.AverageCost,                Status=StatussTranslator.ConvertToStatusContract(request.Status),                User=UsersTranslator.ConvertToUserContract(request.User),};
+    return contractRequest;}
+    public static List<RequestContract> ConvertToRequestContract(ICollection<Request> requests){
+    
+           List<RequestContract> newRequests = new List<RequestContract>();
     			foreach (var request in requests)
     			{
     				newRequests.Add(ConvertToRequestContract(request));
@@ -71,6 +57,5 @@ public static ICollection<RequestContract> ConvertToRequestContract(ICollection<
         #endregion
 
     	
-
-
+    
 }}

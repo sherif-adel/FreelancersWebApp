@@ -83,7 +83,7 @@ public static <#=entity.Name#> ConvertTo<#=entity.Name#>Entity(<#=entity.Name#>C
 return entity<#=entity.Name#>;}
 <#
         #>
-public static ICollection<<#=entity.Name#>> ConvertTo<#=entity.Name#>Entity(ICollection<<#=entity.Name#>Contract> <#=entity.Name.ToLower()#>s){
+public static ICollection<<#=entity.Name#>> ConvertTo<#=entity.Name#>Entity(List<<#=entity.Name#>Contract> <#=entity.Name.ToLower()#>s){
 
        List<<#=entity.Name#>> new<#=entity.Name#>s = new List<<#=entity.Name#>>();
 			foreach (var <#=entity.Name.ToLower()#> in <#=entity.Name.ToLower()#>s)
@@ -111,7 +111,7 @@ public static <#=entity.Name#>Contract ConvertTo<#=entity.Name#>Contract(<#=enti
 return contract<#=entity.Name#>;}
 <#
         #>
-public static ICollection<<#=entity.Name#>Contract> ConvertTo<#=entity.Name#>Contract(ICollection<<#=entity.Name#>> <#=entity.Name.ToLower()#>s){
+public static List<<#=entity.Name#>Contract> ConvertTo<#=entity.Name#>Contract(ICollection<<#=entity.Name#>> <#=entity.Name.ToLower()#>s){
 
        List<<#=entity.Name#>Contract> new<#=entity.Name#>s = new List<<#=entity.Name#>Contract>();
 			foreach (var <#=entity.Name.ToLower()#> in <#=entity.Name.ToLower()#>s)

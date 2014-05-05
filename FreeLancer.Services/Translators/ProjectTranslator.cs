@@ -12,12 +12,12 @@ namespace FreeLancers.Service.Translators
     {
         #region Project
 
-        public static Project ConverToProjectEntity(ProjectContract project)
+        public static Project ConvertToProjectEntity(ProjectContract project)
         {
             Project entityProject = new Project()
             {
                 AverageCost = project.AverageCost,
-                Competitors = CompetitorTranslator.ConverToCompetitorEntity(project.Competitors.ToList()),
+                Competitors = CompetitorTranslator.ConvertToCompetitorEntity(project.Competitors.ToList()),
                 Date = project.Date,
                 Description = project.Description,
                 EndDate = project.EndDate,
@@ -27,31 +27,31 @@ namespace FreeLancers.Service.Translators
                 Name = project.Name,
                 ProjectID = project.ProjectID,
                 StartDate = project.StartDate,
-                SubCategory = SubCategoryTranslator.ConverToSubCategoryEntity(project.SubCategory),
+                SubCategory = SubCategoryTranslator.ConvertToSubCategoryEntity(project.SubCategory),
                 SubCategoryID = project.SubCategoryID,
-                User = UsersTranslator.ConverToUserEntity(project.User),
+                User = UsersTranslator.ConvertToUserEntity(project.User),
                 UserID = project.UserID,
                 //UsersNotified = project.UsersNotified
             };
             return entityProject;
         }
 
-        public static List<Project> ConverToProjectEntity(List<ProjectContract> projects)
+        public static List<Project> ConvertToProjectEntity(List<ProjectContract> projects)
         {
             List<Project> newProjects = new List<Project>();
             foreach (var project in projects)
             {
-                newProjects.Add(ConverToProjectEntity(project));
+                newProjects.Add(ConvertToProjectEntity(project));
             }
             return newProjects;
         }
 
-        public static ProjectContract ConverToProjectContract(Project project)
+        public static ProjectContract ConvertToProjectContract(Project project)
         {
             ProjectContract contractProject = new ProjectContract()
             {
                 AverageCost = project.AverageCost,
-                Competitors = CompetitorTranslator.ConverToCompetitorContract(project.Competitors.ToList()),
+                Competitors = CompetitorTranslator.ConvertToCompetitorContract(project.Competitors.ToList()),
                 Date = project.Date,
                 Description = project.Description,
                 EndDate = project.EndDate,
@@ -61,21 +61,21 @@ namespace FreeLancers.Service.Translators
                 Name = project.Name,
                 ProjectID = project.ProjectID,
                 StartDate = project.StartDate,
-                SubCategory = SubCategoryTranslator.ConverToSubCategoryContract(project.SubCategory),
+                SubCategory = SubCategoryTranslator.ConvertToSubCategoryContract(project.SubCategory),
                 SubCategoryID = project.SubCategoryID,
-                User = UsersTranslator.ConverToUserContract(project.User),
+                User = UsersTranslator.ConvertToUserContract(project.User),
                 UserID = project.UserID,
                 //UsersNotified = project.UsersNotified
             };
             return contractProject;
         }
 
-        public static List<ProjectContract> ConverToProjectContract(List<Project> projects)
+        public static List<ProjectContract> ConvertToProjectContract(List<Project> projects)
         {
             List<ProjectContract> newProjects = new List<ProjectContract>();
             foreach (var project in projects)
             {
-                newProjects.Add(ConverToProjectContract(project));
+                newProjects.Add(ConvertToProjectContract(project));
             }
             return newProjects;
         }
