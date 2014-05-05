@@ -17,6 +17,8 @@ namespace FreeLancer.Services
         public static Role ConvertToRoleEntity(RoleContract role)
         {
 
+            if (role == null)
+                return null;
             Role entityRole = new Role()
             {
 
@@ -24,12 +26,14 @@ namespace FreeLancer.Services
                 RoleName = role.RoleName,
 
                 Status = StatussTranslator.ConvertToStatusEntity(role.Status),
-                //Users = UsersTranslator.ConvertToUserEntity(role.Users),
+                // Users=UsersTranslator.ConvertToUserEntity(role.Users),
             };
             return entityRole;
         }
         public static ICollection<Role> ConvertToRoleEntity(List<RoleContract> roles)
         {
+            if (roles == null)
+                return null;
 
             List<Role> newRoles = new List<Role>();
             foreach (var role in roles)
@@ -45,19 +49,24 @@ namespace FreeLancer.Services
         public static RoleContract ConvertToRoleContract(Role role)
         {
 
+            if (role == null)
+                return null;
+
             RoleContract contractRole = new RoleContract()
             {
 
                 RoleID = role.RoleID,
                 RoleName = role.RoleName,
                 Status = StatussTranslator.ConvertToStatusContract(role.Status),
-                //Users = UsersTranslator.ConvertToUserContract(role.Users),
+              //  Users = UsersTranslator.ConvertToUserContract(role.Users),
             };
             return contractRole;
         }
         public static List<RoleContract> ConvertToRoleContract(ICollection<Role> roles)
         {
 
+            if (roles == null)
+                return null;
             List<RoleContract> newRoles = new List<RoleContract>();
             foreach (var role in roles)
             {

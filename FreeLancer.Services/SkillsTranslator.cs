@@ -11,35 +11,45 @@ namespace FreeLancer.Services
         #region Convert to Entities
     public static Skill ConvertToSkillEntity(SkillContract skill){
     
+    if(skill == null)
+    	return null;
     Skill entitySkill = new Skill(){
-    
+    	
         SkillID=skill.SkillID,
         SkillName=skill.SkillName,
         
             Profiles=ProfilesTranslator.ConvertToProfileEntity(skill.Profiles),
          };
     return entitySkill;}
-    public static ICollection<Skill> ConvertToSkillEntity(List<SkillContract> skills){
+    public static ICollection<Skill> ConvertToSkillEntity(List<SkillContract> skills)
+    {
+    		if(skills == null)
+    			return null;
     
            List<Skill> newSkills = new List<Skill>();
-    			foreach (var skill in skills)
-    			{
-    				newSkills.Add(ConvertToSkillEntity(skill));
-    			}
-    			return newSkills;
+    		foreach (var skill in skills)
+    		{
+    			newSkills.Add(ConvertToSkillEntity(skill));
     		}
+    		return newSkills;
+    }
 
         #endregion
 
         #region Convert to Contracts
     public static SkillContract ConvertToSkillContract(Skill skill){
     
-    SkillContract contractSkill = new SkillContract(){
+    		if(skill == null)
+    			return null;
     
-                SkillID=skill.SkillID,SkillName=skill.SkillName,                Profiles=ProfilesTranslator.ConvertToProfileContract(skill.Profiles),};
+    		SkillContract contractSkill = new SkillContract(){
+    
+            SkillID=skill.SkillID,SkillName=skill.SkillName,             Profiles=ProfilesTranslator.ConvertToProfileContract(skill.Profiles),};
     return contractSkill;}
     public static List<SkillContract> ConvertToSkillContract(ICollection<Skill> skills){
     
+    		if(skills == null)
+    			return null;
            List<SkillContract> newSkills = new List<SkillContract>();
     			foreach (var skill in skills)
     			{

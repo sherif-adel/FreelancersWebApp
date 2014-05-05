@@ -11,8 +11,10 @@ namespace FreeLancer.Services
         #region Convert to Entities
     public static Status ConvertToStatusEntity(StatusContract status){
     
+    if(status == null)
+    	return null;
     Status entityStatus = new Status(){
-    
+    	
         StatusID=status.StatusID,
         Name=status.Name,
         RoleID=status.RoleID,
@@ -21,27 +23,35 @@ namespace FreeLancer.Services
         Role=RolesTranslator.ConvertToRoleEntity(status.Role),
          };
     return entityStatus;}
-    public static ICollection<Status> ConvertToStatusEntity(List<StatusContract> statuss){
+    public static ICollection<Status> ConvertToStatusEntity(List<StatusContract> statuss)
+    {
+    		if(statuss == null)
+    			return null;
     
            List<Status> newStatuss = new List<Status>();
-    			foreach (var status in statuss)
-    			{
-    				newStatuss.Add(ConvertToStatusEntity(status));
-    			}
-    			return newStatuss;
+    		foreach (var status in statuss)
+    		{
+    			newStatuss.Add(ConvertToStatusEntity(status));
     		}
+    		return newStatuss;
+    }
 
         #endregion
 
         #region Convert to Contracts
     public static StatusContract ConvertToStatusContract(Status status){
     
-    StatusContract contractStatus = new StatusContract(){
+    		if(status == null)
+    			return null;
     
-                StatusID=status.StatusID,Name=status.Name,RoleID=status.RoleID,                Requests=RequestsTranslator.ConvertToRequestContract(status.Requests),                Role=RolesTranslator.ConvertToRoleContract(status.Role),};
+    		StatusContract contractStatus = new StatusContract(){
+    
+            StatusID=status.StatusID,Name=status.Name,RoleID=status.RoleID,             Requests=RequestsTranslator.ConvertToRequestContract(status.Requests),             Role=RolesTranslator.ConvertToRoleContract(status.Role),};
     return contractStatus;}
     public static List<StatusContract> ConvertToStatusContract(ICollection<Status> statuss){
     
+    		if(statuss == null)
+    			return null;
            List<StatusContract> newStatuss = new List<StatusContract>();
     			foreach (var status in statuss)
     			{

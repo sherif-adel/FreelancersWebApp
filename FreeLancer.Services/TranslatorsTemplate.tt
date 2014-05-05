@@ -42,8 +42,10 @@ foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection)
 <#	region.Begin("Convert to Entities"); #>
 public static <#=entity.Name#> ConvertTo<#=entity.Name#>Entity(<#=entity.Name#>Contract <#=entity.Name.ToLower()#>){
 
+if(<#=entity.Name.ToLower()#> == null)
+	return null;
 <#=entity.Name#> entity<#=entity.Name#> = new <#=entity.Name#>(){
-
+	
     <#
             foreach (var edmProperty in simpleProperties)
             {
@@ -83,36 +85,46 @@ public static <#=entity.Name#> ConvertTo<#=entity.Name#>Entity(<#=entity.Name#>C
 return entity<#=entity.Name#>;}
 <#
         #>
-public static ICollection<<#=entity.Name#>> ConvertTo<#=entity.Name#>Entity(List<<#=entity.Name#>Contract> <#=entity.Name.ToLower()#>s){
+public static ICollection<<#=entity.Name#>> ConvertTo<#=entity.Name#>Entity(List<<#=entity.Name#>Contract> <#=entity.Name.ToLower()#>s)
+{
+		if(<#=entity.Name.ToLower()#>s == null)
+			return null;
 
        List<<#=entity.Name#>> new<#=entity.Name#>s = new List<<#=entity.Name#>>();
-			foreach (var <#=entity.Name.ToLower()#> in <#=entity.Name.ToLower()#>s)
-			{
-				new<#=entity.Name#>s.Add(ConvertTo<#=entity.Name#>Entity(<#=entity.Name.ToLower()#>));
-			}
-			return new<#=entity.Name#>s;
+		foreach (var <#=entity.Name.ToLower()#> in <#=entity.Name.ToLower()#>s)
+		{
+			new<#=entity.Name#>s.Add(ConvertTo<#=entity.Name#>Entity(<#=entity.Name.ToLower()#>));
 		}
+		return new<#=entity.Name#>s;
+}
 <# region.End();#>
 <#	region.Begin("Convert to Contracts"); #>
 public static <#=entity.Name#>Contract ConvertTo<#=entity.Name#>Contract(<#=entity.Name#> <#=entity.Name.ToLower()#>){
 
-<#=entity.Name#>Contract contract<#=entity.Name#> = new <#=entity.Name#>Contract(){
+		if(<#=entity.Name.ToLower()#> == null)
+			return null;
 
-            <#foreach (var edmProperty in simpleProperties)
-            {
-                #><#=codeStringGenerator.Property(edmProperty, entity.Name.ToLower())#><#
-            }
-            foreach (var navigationProperty in navigationProperties)
-            {
-                #>
-                <#=codeStringGenerator.NavigationPropertyContract(navigationProperty, entity.Name.ToLower())#><#
-            }
+		<#=entity.Name#>Contract contract<#=entity.Name#> = new <#=entity.Name#>Contract(){
+
+        <#foreach (var edmProperty in simpleProperties)
+        {
+            #><#=codeStringGenerator.Property(edmProperty, entity.Name.ToLower())#><#
+        }
+
+        foreach (var navigationProperty in navigationProperties)
+        {
+            #>
+             <#=codeStringGenerator.NavigationPropertyContract(navigationProperty, entity.Name.ToLower())#><#
+        }
+
        #>};
 return contract<#=entity.Name#>;}
 <#
         #>
 public static List<<#=entity.Name#>Contract> ConvertTo<#=entity.Name#>Contract(ICollection<<#=entity.Name#>> <#=entity.Name.ToLower()#>s){
 
+		if(<#=entity.Name.ToLower()#>s == null)
+			return null;
        List<<#=entity.Name#>Contract> new<#=entity.Name#>s = new List<<#=entity.Name#>Contract>();
 			foreach (var <#=entity.Name.ToLower()#> in <#=entity.Name.ToLower()#>s)
 			{

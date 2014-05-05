@@ -11,8 +11,10 @@ namespace FreeLancer.Services
         #region Convert to Entities
     public static Request ConvertToRequestEntity(RequestContract request){
     
+    if(request == null)
+    	return null;
     Request entityRequest = new Request(){
-    
+    	
         RequestID=request.RequestID,
         UserID=request.UserID,
         FreelancerID=request.FreelancerID,
@@ -26,27 +28,35 @@ namespace FreeLancer.Services
         User=UsersTranslator.ConvertToUserEntity(request.User),
          };
     return entityRequest;}
-    public static ICollection<Request> ConvertToRequestEntity(List<RequestContract> requests){
+    public static ICollection<Request> ConvertToRequestEntity(List<RequestContract> requests)
+    {
+    		if(requests == null)
+    			return null;
     
            List<Request> newRequests = new List<Request>();
-    			foreach (var request in requests)
-    			{
-    				newRequests.Add(ConvertToRequestEntity(request));
-    			}
-    			return newRequests;
+    		foreach (var request in requests)
+    		{
+    			newRequests.Add(ConvertToRequestEntity(request));
     		}
+    		return newRequests;
+    }
 
         #endregion
 
         #region Convert to Contracts
     public static RequestContract ConvertToRequestContract(Request request){
     
-    RequestContract contractRequest = new RequestContract(){
+    		if(request == null)
+    			return null;
     
-                RequestID=request.RequestID,UserID=request.UserID,FreelancerID=request.FreelancerID,Description=request.Description,StatusID=request.StatusID,StartDate=request.StartDate,EndDate=request.EndDate,AverageCost=request.AverageCost,                Status=StatussTranslator.ConvertToStatusContract(request.Status),                User=UsersTranslator.ConvertToUserContract(request.User),};
+    		RequestContract contractRequest = new RequestContract(){
+    
+            RequestID=request.RequestID,UserID=request.UserID,FreelancerID=request.FreelancerID,Description=request.Description,StatusID=request.StatusID,StartDate=request.StartDate,EndDate=request.EndDate,AverageCost=request.AverageCost,             Status=StatussTranslator.ConvertToStatusContract(request.Status),             User=UsersTranslator.ConvertToUserContract(request.User),};
     return contractRequest;}
     public static List<RequestContract> ConvertToRequestContract(ICollection<Request> requests){
     
+    		if(requests == null)
+    			return null;
            List<RequestContract> newRequests = new List<RequestContract>();
     			foreach (var request in requests)
     			{

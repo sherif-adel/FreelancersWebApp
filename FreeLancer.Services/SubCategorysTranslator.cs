@@ -11,8 +11,10 @@ namespace FreeLancer.Services
         #region Convert to Entities
     public static SubCategory ConvertToSubCategoryEntity(SubCategoryContract subcategory){
     
+    if(subcategory == null)
+    	return null;
     SubCategory entitySubCategory = new SubCategory(){
-    
+    	
         SubCategoryID=subcategory.SubCategoryID,
         Name=subcategory.Name,
         Description=subcategory.Description,
@@ -24,27 +26,35 @@ namespace FreeLancer.Services
         Users=UsersTranslator.ConvertToUserEntity(subcategory.Users),
          };
     return entitySubCategory;}
-    public static ICollection<SubCategory> ConvertToSubCategoryEntity(List<SubCategoryContract> subcategorys){
+    public static ICollection<SubCategory> ConvertToSubCategoryEntity(List<SubCategoryContract> subcategorys)
+    {
+    		if(subcategorys == null)
+    			return null;
     
            List<SubCategory> newSubCategorys = new List<SubCategory>();
-    			foreach (var subcategory in subcategorys)
-    			{
-    				newSubCategorys.Add(ConvertToSubCategoryEntity(subcategory));
-    			}
-    			return newSubCategorys;
+    		foreach (var subcategory in subcategorys)
+    		{
+    			newSubCategorys.Add(ConvertToSubCategoryEntity(subcategory));
     		}
+    		return newSubCategorys;
+    }
 
         #endregion
 
         #region Convert to Contracts
     public static SubCategoryContract ConvertToSubCategoryContract(SubCategory subcategory){
     
-    SubCategoryContract contractSubCategory = new SubCategoryContract(){
+    		if(subcategory == null)
+    			return null;
     
-                SubCategoryID=subcategory.SubCategoryID,Name=subcategory.Name,Description=subcategory.Description,Image=subcategory.Image,MainCategoryID=subcategory.MainCategoryID,                MainCategory=MainCategorysTranslator.ConvertToMainCategoryContract(subcategory.MainCategory),                Projects=ProjectsTranslator.ConvertToProjectContract(subcategory.Projects),                Users=UsersTranslator.ConvertToUserContract(subcategory.Users),};
+    		SubCategoryContract contractSubCategory = new SubCategoryContract(){
+    
+            SubCategoryID=subcategory.SubCategoryID,Name=subcategory.Name,Description=subcategory.Description,Image=subcategory.Image,MainCategoryID=subcategory.MainCategoryID,             MainCategory=MainCategorysTranslator.ConvertToMainCategoryContract(subcategory.MainCategory),             Projects=ProjectsTranslator.ConvertToProjectContract(subcategory.Projects),             Users=UsersTranslator.ConvertToUserContract(subcategory.Users),};
     return contractSubCategory;}
     public static List<SubCategoryContract> ConvertToSubCategoryContract(ICollection<SubCategory> subcategorys){
     
+    		if(subcategorys == null)
+    			return null;
            List<SubCategoryContract> newSubCategorys = new List<SubCategoryContract>();
     			foreach (var subcategory in subcategorys)
     			{
