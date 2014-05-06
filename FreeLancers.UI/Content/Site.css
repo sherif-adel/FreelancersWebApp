@@ -435,8 +435,7 @@ fieldset {
         font-weight: 600;
         padding: 7px;
         margin-right: 8px;
-        width: auto;
-    }
+        }
 
     td input[type="submit"],
     td input[type="button"],

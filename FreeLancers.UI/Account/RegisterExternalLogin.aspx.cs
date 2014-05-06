@@ -70,15 +70,6 @@ namespace FreeLancers.UI.Account
 			}
 		}
 
-		protected void logIn_Click(object sender, EventArgs e)
-		{
-			CreateAndLoginUser();
-		}
-
-		protected void cancel_Click(object sender, EventArgs e)
-		{
-			RedirectToReturnUrl();
-		}
 
 		private void ProcessProviderResult()
 		{
@@ -119,36 +110,11 @@ namespace FreeLancers.UI.Account
 			}
 			CurrentUser = user;
 
-			RedirectToReturnUrl();
-
 			// Strip the query string from action
 			Form.Action = ResolveUrl(redirectUrl);
 
 		}
 
-		private void CreateAndLoginUser()
-		{
-			if (!IsValid)
-			{
-				return;
-			}
-
-			var createResult = OpenAuth.CreateUser(ProviderName, ProviderUserId, ProviderUserName, userName.Text);
-			if (!createResult.IsSuccessful)
-			{
-
-				ModelState.AddModelError("UserName", createResult.ErrorMessage);
-
-			}
-			else
-			{
-				// User created & associated OK
-				if (OpenAuth.Login(ProviderName, ProviderUserId, createPersistentCookie: false))
-				{
-					RedirectToReturnUrl();
-				}
-			}
-		}
 
 		private void RedirectToReturnUrl()
 		{
@@ -162,5 +128,10 @@ namespace FreeLancers.UI.Account
 				Response.Redirect("~/");
 			}
 		}
+
+        protected void btnOk_Click(object sender, EventArgs e)
+        {
+            RedirectToReturnUrl();
+        }
 	}
 }

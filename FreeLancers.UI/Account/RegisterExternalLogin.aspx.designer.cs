@@ -7,33 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FreeLancers.UI.Account
-{
-
-
-	public partial class RegisterExternalLogin
-	{
-
-
-
-		/// <summary>
-		/// userNameForm control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.PlaceHolder userNameForm;
-
-		/// <summary>
-		/// userName control.
-		/// </summary>
-		/// <remarks>
-		/// Auto-generated field.
-		/// To modify move field declaration from designer file to code-behind file.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox userName;
-
-
-	}
+namespace FreeLancers.UI.Account {
+    
+    
+    public partial class RegisterExternalLogin {
+        
+        /// <summary>
+        /// userNameForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder userNameForm;
+        
+        /// <summary>
+        /// btnOk control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOk;
+    }
 }
