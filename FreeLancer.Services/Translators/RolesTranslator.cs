@@ -18,7 +18,7 @@ namespace FreeLancers.Service.Translators
 				RoleID = role.RoleID,
 				RoleName = role.RoleName,
 				Status = StatusTranslator.ConvertToStatusEntity(role.Status.ToList()),
-				Users =UsersTranslator.ConvertToUserEntity(role.Users.ToList())
+				//Users =UsersTranslator.ConvertToUserEntity(role.Users.ToList())
 			};
 			return entityRole;
 		}
@@ -44,7 +44,7 @@ namespace FreeLancers.Service.Translators
 				RoleID = role.RoleID,
 				RoleName = role.RoleName,
 				Status = StatusTranslator.ConvertToStatusContract(role.Status.ToList()),
-				Users = UsersTranslator.ConvertToUserContract(role.Users.ToList())
+				//Users = UsersTranslator.ConvertToUserContract(role.Users.ToList())
 			};
 			return roleContract;
 		}
