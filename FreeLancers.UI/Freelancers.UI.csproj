@@ -232,6 +232,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Account\AccountMaster.Master" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -278,6 +279,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\AccountMaster.Master.cs">
+      <DependentUpon>AccountMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Account\AccountMaster.Master.designer.cs">
+      <DependentUpon>AccountMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -387,7 +394,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FreeLancer.Services\FreeLancers.Service.csproj">
       <Project>{45550b28-d851-4283-8e9e-1866c8cdb8e3}</Project>
-      <Name>FreeLancer.Services</Name>
+      <Name>FreeLancers.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\FreeLancers.Services.Contracts\FreeLancers.Service.Contracts.csproj">
       <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>
