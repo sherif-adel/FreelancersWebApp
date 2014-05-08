@@ -12,32 +12,32 @@
 namespace FreeLancers.Models
 {
 
-    using System;
+using System;
     using System.Collections.Generic;
+    
+public partial class Role
+{
 
-    public partial class Role
+    public Role()
     {
 
-        public Role()
-        {
+        this.Status = new HashSet<Status>();
 
-            this.Status = new HashSet<Status>();
-
-            // this.Users = new HashSet<User>();
-
-        }
-
-
-        public int RoleID { get; set; }
-
-        public string RoleName { get; set; }
-
-
-
-        public virtual ICollection<Status> Status { get; set; }
-
-        //public virtual ICollection<User> Users { get; set; }
+        this.Users = new HashSet<User>();
 
     }
+
+
+    public int RoleID { get; set; }
+
+    public string RoleName { get; set; }
+
+
+
+    public virtual ICollection<Status> Status { get; set; }
+
+    public virtual ICollection<User> Users { get; set; }
+
+}
 
 }
