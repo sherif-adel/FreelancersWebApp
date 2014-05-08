@@ -16,7 +16,7 @@ namespace FreeLancers.UI
 			"wl.basic wl.emails"
 			), "Microsoft", null);
 
-			//OAuthWebSecurity.RegisterGoogleClient();
+			OAuthWebSecurity.RegisterFacebookClient("692376860819843","dec6dc180939f4dc8b417da4fcd1321e");
 			OAuthWebSecurity.RegisterClient(new GoogleCustomClient(), "Google", null);
 
 		}

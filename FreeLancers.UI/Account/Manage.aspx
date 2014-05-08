@@ -77,7 +77,7 @@
                             Display="Dynamic" ValidationGroup="ManageDetails" />
                     </li>
                 </ol>
-                <asp:Button ID="btnSaveDetails" runat="server" Text="Save Details" ValidationGroup="SetPassword" OnClick="btnSaveDetails_Click" />
+                <asp:Button ID="btnSaveDetails" runat="server" Text="Save Details" ValidationGroup="ManageDetails" OnClick="btnSaveDetails_Click" />
             </fieldset>
         </asp:PlaceHolder>
 

@@ -31,7 +31,7 @@
             <asp:Button runat="server" ID="btnLogin" Text="Log in" OnClick="btnLogin_Click" />
         </fieldset>
         <p>
-            <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled" Text="Register" NavigateUrl="~/Account/Register.aspx"></asp:HyperLink>
+            <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled" Text="Register" Font-Bold="true" Font-Underline="true" NavigateUrl="~/Account/Register.aspx"></asp:HyperLink>
             if you don't have an account.
         </p>
     </section>

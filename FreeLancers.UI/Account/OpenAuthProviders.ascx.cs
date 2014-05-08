@@ -41,7 +41,7 @@ namespace FreeLancers.UI.Account
 			List<Provider> x = new List<Provider>();
 			x.Add(new Provider("Microsoft", "Microsoft"));
 			x.Add(new Provider("Google", "Google"));
-			x.Add(new Provider("Twitter", "Twitter"));
+            x.Add(new Provider("Facebook", "Facebook"));
 
 			return x;
 		}
