@@ -46,7 +46,7 @@ namespace FreeLancers.UI.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox password;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword password;
         
         /// <summary>
         /// confirmPassword control.
@@ -55,7 +55,7 @@ namespace FreeLancers.UI.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox confirmPassword;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword confirmPassword;
         
         /// <summary>
         /// manageDetails control.
@@ -175,22 +175,13 @@ namespace FreeLancers.UI.Account {
         protected global::System.Web.UI.WebControls.ModelErrorMessage ModelErrorMessage1;
         
         /// <summary>
-        /// CurrentPasswordLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CurrentPasswordLabel;
-        
-        /// <summary>
         /// txtCurrentPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCurrentPassword;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtCurrentPassword;
         
         /// <summary>
         /// ModelErrorMessage2 control.
@@ -202,31 +193,13 @@ namespace FreeLancers.UI.Account {
         protected global::System.Web.UI.WebControls.ModelErrorMessage ModelErrorMessage2;
         
         /// <summary>
-        /// NewPasswordLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label NewPasswordLabel;
-        
-        /// <summary>
         /// NewPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox NewPassword;
-        
-        /// <summary>
-        /// ConfirmNewPasswordLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ConfirmNewPasswordLabel;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword NewPassword;
         
         /// <summary>
         /// ConfirmNewPassword control.
@@ -235,6 +208,6 @@ namespace FreeLancers.UI.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ConfirmNewPassword;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword ConfirmNewPassword;
     }
 }

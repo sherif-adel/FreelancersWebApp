@@ -6,57 +6,34 @@ using Microsoft.Web.WebPages.OAuth;
 
 namespace FreeLancers.UI.Account
 {
-	public partial class OpenAuthProviders : System.Web.UI.UserControl
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
+    public partial class OpenAuthProviders : System.Web.UI.UserControl
+    {
+        public string ReturnUrl
+        {
+            get { return (string)ViewState["ReturnUrl"] ?? String.Empty; }
+            set { ViewState["ReturnUrl"] = value; }
+        }
 
-			if (IsPostBack)
-			{
-				var provider = Request.Form["provider"];
-				if (provider == null)
-				{
-					return;
-				}
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            string provider;
+            if (!String.IsNullOrEmpty(Request.QueryString["provider"]))
+            {
+                provider = Request.QueryString["provider"];
+            }
+            else
+            {
+                return;
+            }
 
-				var redirectUrl = "~/Account/RegisterExternalLogin";
-				if (!String.IsNullOrEmpty(ReturnUrl))
-				{
-					var resolvedReturnUrl = ResolveUrl(ReturnUrl);
-					redirectUrl += "?ReturnUrl=" + HttpUtility.UrlEncode(resolvedReturnUrl);
-				}
+            var redirectUrl = "~/Account/RegisterExternalLogin";
+            if (!String.IsNullOrEmpty(ReturnUrl))
+            {
+                var resolvedReturnUrl = ResolveUrl(ReturnUrl);
+                redirectUrl += "?ReturnUrl=" + HttpUtility.UrlEncode(resolvedReturnUrl);
+            }
 
-				OAuthWebSecurity.RequestAuthentication(provider, redirectUrl);
-			}
-		}
-
-
-
-		public string ReturnUrl { get; set; }
-
-
-
-		public IEnumerable<Provider> GetProviderNames()
-		{
-			List<Provider> x = new List<Provider>();
-			x.Add(new Provider("Microsoft", "Microsoft"));
-			x.Add(new Provider("Google", "Google"));
-            x.Add(new Provider("Facebook", "Facebook"));
-
-			return x;
-		}
-
-	}
-
-	public class Provider
-	{
-		public string ProviderDisplayName;
-		public string ProviderName;
-		public Provider(string ProviderDisplayName, string ProviderName)
-		{
-			this.ProviderDisplayName = ProviderDisplayName;
-			this.ProviderName = ProviderName;
-		}
-
-	}
+            OAuthWebSecurity.RequestAuthentication(provider, redirectUrl);
+        }
+    }
 }

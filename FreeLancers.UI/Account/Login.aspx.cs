@@ -25,21 +25,23 @@ namespace FreeLancers.UI.Account
         protected void Page_Load(object sender, EventArgs e)
         {
             var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+
             if (!String.IsNullOrEmpty(returnUrl))
             {
+                OpenAuthLogin.ReturnUrl = returnUrl;
                 RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
             }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string email = txtUserName.Text;
-            string password = txtPassword.Text;
+            string email = txtUserName.Value;
+            string password = txtPassword.Value;
 
             var user = UserService.ValidateLogin(email, password);
             if (user != null)
             {
-                Session["loggedUser"] = user;              
+                Session["loggedUser"] = user;
                 //redirect according to role or return url 
             }
             else

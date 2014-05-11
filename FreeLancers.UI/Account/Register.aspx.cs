@@ -54,12 +54,12 @@ namespace FreeLancers.UI.Account
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            var result = UserService.Search(x => x.Email == txtEmail.Text);
+            var result = UserService.Search(x => x.Email == txtEmail.Value);
             if (result == null || result.Count == 0)
             {
                 UserContract user = new UserContract();
-                user.Email = txtEmail.Text;
-                user.Password = txtPassword.Text;
+                user.Email = txtEmail.Value;
+                user.Password = txtPassword.Value;
                 user.RoleID = int.Parse(RBLRoles.SelectedValue);
                 UserService.Add(user);
                 //Redirect according to Role or according to querystring

@@ -1,21 +1,16 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="OpenAuthProviders.ascx.cs" Inherits="FreeLancers.UI.Account.OpenAuthProviders" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="OpenAuthProviders.ascx.cs" Inherits="FreeLancers.UI.Account.OpenAuthProviders" EnableViewState="true"%>
 
 <fieldset class="open-auth-providers">
     <legend>Log in using another service</legend>
-    
-    <asp:ListView runat="server" ID="providerDetails" ItemType=" FreeLancers.UI.Account.Provider"
-        SelectMethod="GetProviderNames" ViewStateMode="Disabled">
-        <ItemTemplate>
-            <button type="submit" name="provider" value="<%#: Item.ProviderName %>"
-                title="Log in using your <%#: Item.ProviderDisplayName %> account.">
-                <%#: Item.ProviderDisplayName %>
-            </button>
-        </ItemTemplate>
-    
-        <EmptyDataTemplate>
-            <div class="message-info">
-                <p>There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=252803">this article</a> for details on setting up this ASP.NET application to support logging in via external services.</p>
-            </div>
-        </EmptyDataTemplate>
-    </asp:ListView>
+    <ul class="social-icons">
+        <li>
+            <a class="facebook" data-original-title="Twitter" href="?provider=facebook"></a>
+        </li>
+        <li>
+            <a class="googleplus" data-original-title="Goole Plus" href="?provider=google"></a>
+        </li>
+        <li>
+            <a class="myspace" data-original-title="Linkedin" href="?provider=microsoft"></a>
+        </li>
+    </ul>
 </fieldset>

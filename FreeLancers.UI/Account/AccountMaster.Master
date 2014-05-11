@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AccountMaster.master.cs" Inherits="FreeLancers.UI.Account.AccountMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AccountMaster.master.cs" EnableViewState="true" Inherits="FreeLancers.UI.Account.AccountMaster" %>
 
 <!DOCTYPE html>
 
@@ -21,29 +21,30 @@
 <head>
     <meta charset="utf-8" />
     <title>Metronic | Admin Dashboard Template</title>
-     <asp:ContentPlaceHolder ID="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
+      <%: Scripts.Render("~/Content/css") %>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Scripts/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL STYLES -->
-    <link href="../../assets/global/plugins/select2/select2.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/plugins/select2/select2-metronic.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/admin/pages/css/login.css" rel="stylesheet" type="text/css" />
+    <link href="../Scripts/plugins/select2/select2.css" rel="stylesheet" type="text/css" />
+    <link href="../Scripts/plugins/select2/select2-metronic.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/External/login.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL SCRIPTS -->
     <!-- BEGIN THEME STYLES -->
-    <link href="../../assets/global/css/components.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/global/css/plugins.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css" />
-    <link id="style_color" href="../../assets/admin/layout/css/themes/default.css" rel="stylesheet" type="text/css" />
-    <link href="../../assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/External/components.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/External/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/External/layout.css" rel="stylesheet" type="text/css" />
+    <link id="style_color" href="../Content/External/themes/default.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/External/custom.css" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -58,60 +59,62 @@
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="login">
-    <!-- BEGIN LOGO -->
-    <div class="logo">
-        <a href="index.html">
-            <img src="../../assets/admin/layout/img/logo-big.png" alt="" />
-        </a>
-    </div>
-    <!-- END LOGO -->
-    <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-    <div class="menu-toggler sidebar-toggler">
-    </div>
-    <!-- END SIDEBAR TOGGLER BUTTON -->
-    <!-- BEGIN LOGIN -->
-    <div class="content">
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
-    <!-- BEGIN COPYRIGHT -->
-    <div class="copyright">
-        2014 &copy; Metronic. Admin Dashboard Template.
-    </div>
-    <!-- END COPYRIGHT -->
-    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-    <!-- BEGIN CORE PLUGINS -->
-    <!--[if lt IE 9]>
+    <form id="Form1" runat="server">
+        <!-- BEGIN LOGO -->
+        <div class="logo">
+            <a href="index.html">
+                <img  src="/Images/External/logo-big.png" alt="" />
+            </a>
+        </div>
+        <!-- END LOGO -->
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        <div class="menu-toggler sidebar-toggler">
+        </div>
+        <!-- END SIDEBAR TOGGLER BUTTON -->
+        <!-- BEGIN LOGIN -->
+        <div class="content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <!-- BEGIN COPYRIGHT -->
+        <div class="copyright">
+            2014 &copy; Egypt Freelancers.
+        </div>
+        <!-- END COPYRIGHT -->
+        <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+        <!-- BEGIN CORE PLUGINS -->
+        <!--[if lt IE 9]>
 	<script src="../../assets/global/plugins/respond.min.js"></script>
 	<script src="../../assets/global/plugins/excanvas.min.js"></script> 
 	<![endif]-->
-    <script src="../../assets/global/plugins/jquery-1.11.0.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/jquery.cokie.min.js" type="text/javascript"></script>
-    <script src="../../assets/global/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
-    <!-- END CORE PLUGINS -->
-    <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="../../assets/global/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="../../assets/global/plugins/select2/select2.min.js"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
-    <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    <script src="../../assets/global/scripts/metronic.js" type="text/javascript"></script>
-    <script src="../../assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
-    <script src="../../assets/admin/pages/scripts/login.js" type="text/javascript"></script>
-    <!-- END PAGE LEVEL SCRIPTS -->
-    <script>
-        jQuery(document).ready(function () {
-            Metronic.init(); // init metronic core components
-            Layout.init(); // init current layout
-            Login.init();
-        });
-    </script>
-    <!-- END JAVASCRIPTS -->
-    <script type="text/javascript">  var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-37564768-1']); _gaq.push(['_setDomainName', 'keenthemes.com']); _gaq.push(['_setAllowLinker', true]); _gaq.push(['_trackPageview']); (function () { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();</script>
+        <script src="../Scripts/jquery-2.1.0.min.js" type="text/javascript"></script>
+        <script src="../Scripts/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+        <script src="../Scripts/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../Scripts/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+        <script src="../Scripts/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="../Scripts/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="../Scripts/plugins/jquery.cokie.min.js" type="text/javascript"></script>
+        <script src="../Scripts/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="../Scripts/plugins/jquery-validation/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../Scripts/plugins/select2/select2.min.js"></script>
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="../../assets/global/scripts/metronic.js" type="text/javascript"></script>
+        <script src="../../assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+        <script src="../../assets/admin/pages/scripts/login.js" type="text/javascript"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <script>
+            jQuery(document).ready(function () {
+                Metronic.init(); // init metronic core components
+                Layout.init(); // init current layout
+                Login.init();
+            });
+        </script>
+        <!-- END JAVASCRIPTS -->
+        <script type="text/javascript">  var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-37564768-1']); _gaq.push(['_setDomainName', 'keenthemes.com']); _gaq.push(['_setAllowLinker', true]); _gaq.push(['_trackPageview']); (function () { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();</script>
+    </form>
 </body>
 <!-- END BODY -->
 </html>

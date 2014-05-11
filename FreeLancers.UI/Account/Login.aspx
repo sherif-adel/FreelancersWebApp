@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Log in" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="FreeLancers.UI.Account.Login" %>
+﻿<%@ Page Title="Log in" Language="C#" MasterPageFile="~/Account/AccountMaster.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="FreeLancers.UI.Account.Login" EnableViewState="true"%>
 
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
@@ -7,29 +7,28 @@
         <%--<h1><%: Title %>.</h1>--%>
     </hgroup>
     <section id="loginForm">
-        <h2>Use a local account to log in.</h2>
         <asp:ModelErrorMessage ID="ModelErrorMessage1" runat="server" ModelStateKey="Login"
             CssClass="field-validation-error" SetFocusOnError="true" />
         <fieldset>
-            <legend>Log in Form</legend>
-            <ol>
-                <li>
-                    <asp:Label runat="server" AssociatedControlID="txtUserName">User name</asp:Label>
-                    <asp:TextBox runat="server" ID="txtUserName" />
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUserName" CssClass="field-validation-error" ErrorMessage="The user name field is required." />
-                </li>
-                <li>
-                    <asp:Label runat="server" AssociatedControlID="txtPassword">Password</asp:Label>
-                    <asp:TextBox runat="server" ID="txtPassword" TextMode="Password" />
-                    <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPassword" CssClass="field-validation-error" ErrorMessage="The password field is required." />
-                </li>
-                <li>
-                    <asp:CheckBox runat="server" ID="cbRememberMe" />
-                    <asp:Label runat="server" AssociatedControlID="cbRememberMe" CssClass="checkbox">Remember me?</asp:Label>
-                </li>
-            </ol>
-            <asp:Button runat="server" ID="btnLogin" Text="Log in" OnClick="btnLogin_Click" />
+            <legend>Log in</legend>
+
+            <div class="input-icon">
+                <i class="fa fa-user"></i>
+                <input id="txtUserName" class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="email" name="email" runat="server" />
+            </div>
+            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUserName" CssClass="field-validation-error" ErrorMessage="The user name field is required." />
+
+            <div class="input-icon">
+                <i class="fa fa-lock"></i>
+                <input id="txtPassword" class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" runat="server" />
+            </div>
+            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtPassword" CssClass="field-validation-error" ErrorMessage="The password field is required." />
+
+            <asp:CheckBox runat="server" ID="cbRememberMe" Text="Remember Me ?" CssClass="checkbox" />
+
+            <asp:Button runat="server" ID="btnLogin" Text="Log in" OnClick="btnLogin_Click" class="btn green pull-right"></asp:Button>
         </fieldset>
+        <br />
         <p>
             <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled" Text="Register" Font-Bold="true" Font-Underline="true" NavigateUrl="~/Account/Register.aspx"></asp:HyperLink>
             if you don't have an account.
@@ -37,7 +36,6 @@
     </section>
 
     <section id="socialLoginForm">
-        <h2>Use another service to log in.</h2>
         <uc:OpenAuthProviders runat="server" ID="OpenAuthLogin" />
     </section>
 </asp:Content>

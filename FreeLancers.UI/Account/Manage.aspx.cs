@@ -63,7 +63,7 @@ namespace FreeLancers.UI.Account
             {
                 try
                 {
-                    CurrentUser.Password = password.Text;
+                    CurrentUser.Password = password.Value;
                     UserService.Update(CurrentUser);
                     SuccessMessage = "Password Added Successfully";
                     successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
@@ -101,10 +101,10 @@ namespace FreeLancers.UI.Account
         {
             if (IsValid)
             {
-                if (CurrentUser.Password == txtCurrentPassword.Text)
+                if (CurrentUser.Password == txtCurrentPassword.Value)
                 {
 
-                    CurrentUser.Password = NewPassword.Text;
+                    CurrentUser.Password = NewPassword.Value;
                     UserService.Update(CurrentUser);
                     SuccessMessage = "Password Updated Successfully";
                     successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
