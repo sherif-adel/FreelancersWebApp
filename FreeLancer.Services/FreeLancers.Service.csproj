@@ -69,40 +69,58 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ProfileService.svc" />
     <Content Include="UserService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CityTranslator.cs" />
     <Compile Include="CommentsTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="CommentTranslator.cs" />
     <Compile Include="CompetitorsTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="CompetitorTranslator.cs" />
+    <Compile Include="CountryTranslator.cs" />
+    <Compile Include="CustomTranslators\ProfileTranslator.cs" />
+    <Compile Include="ImageTranslator.cs" />
     <Compile Include="MainCategorysTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainCategoryTranslator.cs" />
+    <Compile Include="ProfileService.svc.cs">
+      <DependentUpon>ProfileService.svc</DependentUpon>
     </Compile>
     <Compile Include="ProfilesTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProfileTranslator.cs" />
     <Compile Include="ProjectsTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProjectTranslator.cs" />
     <Compile Include="RequestsTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="RequestTranslator.cs" />
     <Compile Include="RolesTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="RoleTranslator.cs" />
     <Compile Include="SkillsTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="SkillTranslator.cs" />
     <Compile Include="StatussTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="StatusTranslator.cs" />
     <Compile Include="SubCategorysTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="SubCategoryTranslator.cs" />
     <Compile Include="TranslatorsTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,6 +144,7 @@
     <Compile Include="UsersTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserTranslator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
