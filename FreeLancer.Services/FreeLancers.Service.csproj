@@ -122,17 +122,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Translators\CommentTranslator.cs" />
-    <Compile Include="Translators\CompetitorTranslator.cs" />
-    <Compile Include="Translators\RequestTranslator.cs" />
-    <Compile Include="Translators\ProjectTranslator.cs" />
-    <Compile Include="Translators\ProfileTranslator.cs" />
-    <Compile Include="Translators\MainCategoryTranslator.cs" />
-    <Compile Include="Translators\RolesTranslator.cs" />
-    <Compile Include="Translators\SkillTranslator.cs" />
-    <Compile Include="Translators\StatusTranslator.cs" />
-    <Compile Include="Translators\SubCategoryTranslator.cs" />
-    <Compile Include="Translators\UsersTranslator.cs" />
     <Compile Include="UserService.svc.cs">
       <DependentUpon>UserService.svc</DependentUpon>
     </Compile>
