@@ -6,10 +6,13 @@
     <edmx:StorageModels>
     <Schema Namespace="FreeLancersModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="FreeLancersModelStoreContainer">
+          <EntitySet Name="City" EntityType="FreeLancersModel.Store.City" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Comments" EntityType="FreeLancersModel.Store.Comments" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Competitors" EntityType="FreeLancersModel.Store.Competitors" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Country" EntityType="FreeLancersModel.Store.Country" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FreelancerSkills" EntityType="FreeLancersModel.Store.FreelancerSkills" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="FreelancerSubCategories" EntityType="FreeLancersModel.Store.FreelancerSubCategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Images" EntityType="FreeLancersModel.Store.Images" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="MainCategory" EntityType="FreeLancersModel.Store.MainCategory" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Profiles" EntityType="FreeLancersModel.Store.Profiles" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Project" EntityType="FreeLancersModel.Store.Project" store:Type="Tables" Schema="dbo" />
@@ -20,6 +23,10 @@
           <EntitySet Name="Status" EntityType="FreeLancersModel.Store.Status" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SubCategory" EntityType="FreeLancersModel.Store.SubCategory" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="FreeLancersModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_City_Country" Association="FreeLancersModel.Store.FK_City_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
           <AssociationSet Name="FK_Comments_Profiles" Association="FreeLancersModel.Store.FK_Comments_Profiles">
             <End Role="Profiles" EntitySet="Profiles" />
             <End Role="Comments" EntitySet="Comments" />
@@ -51,6 +58,14 @@
           <AssociationSet Name="FK_FreelancerSubCategories_Users" Association="FreeLancersModel.Store.FK_FreelancerSubCategories_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="FreelancerSubCategories" EntitySet="FreelancerSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_Profiles" Association="FreeLancersModel.Store.FK_Images_Profiles">
+            <End Role="Profiles" EntitySet="Profiles" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profiles_SubCategory" Association="FreeLancersModel.Store.FK_Profiles_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategory" />
+            <End Role="Profiles" EntitySet="Profiles" />
           </AssociationSet>
           <AssociationSet Name="FK_Profiles_Users" Association="FreeLancersModel.Store.FK_Profiles_Users">
             <End Role="Users" EntitySet="Users" />
@@ -88,11 +103,23 @@
             <End Role="MainCategory" EntitySet="MainCategory" />
             <End Role="SubCategory" EntitySet="SubCategory" />
           </AssociationSet>
+          <AssociationSet Name="FK_Users_City" Association="FreeLancersModel.Store.FK_Users_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
           <AssociationSet Name="FK_Users_Roles" Association="FreeLancersModel.Store.FK_Users_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Comments">
           <Key>
             <PropertyRef Name="CommentID" />
@@ -107,11 +134,20 @@
           <Key>
             <PropertyRef Name="ProjectID" />
             <PropertyRef Name="UserID" />
+            <PropertyRef Name="CompetitorID" />
           </Key>
           <Property Name="ProjectID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="Cost" Type="money" Nullable="false" />
           <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="CompetitorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
         </EntityType>
         <EntityType Name="FreelancerSkills">
           <Key>
@@ -129,6 +165,16 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="SubCategoryID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FileData" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProfileID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="MainCategory">
           <Key>
             <PropertyRef Name="MainCategoryID" />
@@ -141,11 +187,8 @@
           <Key>
             <PropertyRef Name="ProfileID" />
           </Key>
-          <Property Name="ProfileID" Type="int" Nullable="false" />
+          <Property Name="ProfileID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="Image1" Type="image" />
-          <Property Name="Image2" Type="image" />
-          <Property Name="Image3" Type="image" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Experience" Type="int" Nullable="false" />
           <Property Name="LinkedURL" Type="nvarchar" MaxLength="50" />
@@ -154,6 +197,9 @@
           <Property Name="Rating" Type="int" />
           <Property Name="Featured" Type="bit" />
           <Property Name="CompanyName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SubCategoryID" Type="int" Nullable="false" />
+          <Property Name="ExpiryDate" Type="date" />
+          <Property Name="ViewersCount" Type="int" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -230,13 +276,25 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="Mobile" Type="int" />
           <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="CityID" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_City_Country">
+          <End Role="Country" Type="FreeLancersModel.Store.Country" Multiplicity="1" />
+          <End Role="City" Type="FreeLancersModel.Store.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Comments_Profiles">
           <End Role="Profiles" Type="FreeLancersModel.Store.Profiles" Multiplicity="1" />
           <End Role="Comments" Type="FreeLancersModel.Store.Comments" Multiplicity="*" />
@@ -330,6 +388,30 @@
             </Principal>
             <Dependent Role="FreelancerSubCategories">
               <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Images_Profiles">
+          <End Role="Profiles" Type="FreeLancersModel.Store.Profiles" Multiplicity="1" />
+          <End Role="Images" Type="FreeLancersModel.Store.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profiles">
+              <PropertyRef Name="ProfileID" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="ProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profiles_SubCategory">
+          <End Role="SubCategory" Type="FreeLancersModel.Store.SubCategory" Multiplicity="1" />
+          <End Role="Profiles" Type="FreeLancersModel.Store.Profiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryID" />
+            </Principal>
+            <Dependent Role="Profiles">
+              <PropertyRef Name="SubCategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -441,6 +523,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Users_City">
+          <End Role="City" Type="FreeLancersModel.Store.City" Multiplicity="1" />
+          <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Users_Roles">
           <End Role="Roles" Type="FreeLancersModel.Store.Roles" Multiplicity="1" />
           <End Role="Users" Type="FreeLancersModel.Store.Users" Multiplicity="*" />
@@ -459,16 +553,43 @@
       <Schema Namespace="FreeLancersModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="FreeLancersEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Comments" EntityType="FreeLancersModel.Comment" />
-          <EntitySet Name="Competitors" EntityType="FreeLancersModel.Competitor" />
           <EntitySet Name="MainCategories" EntityType="FreeLancersModel.MainCategory" />
-          <EntitySet Name="Profiles" EntityType="FreeLancersModel.Profile" />
           <EntitySet Name="Projects" EntityType="FreeLancersModel.Project" />
           <EntitySet Name="Requests" EntityType="FreeLancersModel.Request" />
           <EntitySet Name="Roles" EntityType="FreeLancersModel.Role" />
           <EntitySet Name="Skills" EntityType="FreeLancersModel.Skill" />
           <EntitySet Name="Status" EntityType="FreeLancersModel.Status" />
           <EntitySet Name="SubCategories" EntityType="FreeLancersModel.SubCategory" />
+          <AssociationSet Name="FK_SubCategory_MainCategory" Association="FreeLancersModel.FK_SubCategory_MainCategory">
+            <End Role="MainCategory" EntitySet="MainCategories" />
+            <End Role="SubCategory" EntitySet="SubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Project_SubCategory" Association="FreeLancersModel.FK_Project_SubCategory">
+            <End Role="SubCategory" EntitySet="SubCategories" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Requests_RequestStatus" Association="FreeLancersModel.FK_Requests_RequestStatus">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RequestStatus_Roles" Association="FreeLancersModel.FK_RequestStatus_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <EntitySet Name="Images" EntityType="FreeLancersModel.Image" />
+          <EntitySet Name="Cities" EntityType="FreeLancersModel.City" />
+          <EntitySet Name="Countries" EntityType="FreeLancersModel.Country" />
+          <AssociationSet Name="FK_City_Country" Association="FreeLancersModel.FK_City_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <EntitySet Name="Competitors" EntityType="FreeLancersModel.Competitor" />
+          <EntitySet Name="Profiles" EntityType="FreeLancersModel.Profile" />
           <EntitySet Name="Users" EntityType="FreeLancersModel.User" />
+          <AssociationSet Name="FK_Users_City" Association="FreeLancersModel.FK_Users_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
           <AssociationSet Name="FK_Comments_Profiles" Association="FreeLancersModel.FK_Comments_Profiles">
             <End Role="Profile" EntitySet="Profiles" />
             <End Role="Comment" EntitySet="Comments" />
@@ -485,33 +606,25 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Competitor" EntitySet="Competitors" />
           </AssociationSet>
-          <AssociationSet Name="FK_SubCategory_MainCategory" Association="FreeLancersModel.FK_SubCategory_MainCategory">
-            <End Role="MainCategory" EntitySet="MainCategories" />
+          <AssociationSet Name="FK_Images_Profiles" Association="FreeLancersModel.FK_Images_Profiles">
+            <End Role="Profile" EntitySet="Profiles" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profiles_SubCategory" Association="FreeLancersModel.FK_Profiles_SubCategory">
             <End Role="SubCategory" EntitySet="SubCategories" />
+            <End Role="Profile" EntitySet="Profiles" />
           </AssociationSet>
           <AssociationSet Name="FK_Profiles_Users" Association="FreeLancersModel.FK_Profiles_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="Profile" EntitySet="Profiles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Project_SubCategory" Association="FreeLancersModel.FK_Project_SubCategory">
-            <End Role="SubCategory" EntitySet="SubCategories" />
-            <End Role="Project" EntitySet="Projects" />
-          </AssociationSet>
           <AssociationSet Name="FK_Project_Users" Association="FreeLancersModel.FK_Project_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="Project" EntitySet="Projects" />
           </AssociationSet>
-          <AssociationSet Name="FK_Requests_RequestStatus" Association="FreeLancersModel.FK_Requests_RequestStatus">
-            <End Role="Status" EntitySet="Status" />
-            <End Role="Request" EntitySet="Requests" />
-          </AssociationSet>
           <AssociationSet Name="FK_Requests_Users" Association="FreeLancersModel.FK_Requests_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="Request" EntitySet="Requests" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RequestStatus_Roles" Association="FreeLancersModel.FK_RequestStatus_Roles">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="Status" EntitySet="Status" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_Roles" Association="FreeLancersModel.FK_Users_Roles">
             <End Role="Role" EntitySet="Roles" />
@@ -529,7 +642,7 @@
             <End Role="Project" EntitySet="Projects" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="CommentID" />
@@ -542,18 +655,6 @@
           <NavigationProperty Name="Profile" Relationship="FreeLancersModel.FK_Comments_Profiles" FromRole="Comment" ToRole="Profile" />
           <NavigationProperty Name="User" Relationship="FreeLancersModel.FK_Comments_Users" FromRole="Comment" ToRole="User" />
         </EntityType>
-        <EntityType Name="Competitor">
-          <Key>
-            <PropertyRef Name="ProjectID" />
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Type="Int32" Name="ProjectID" Nullable="false" />
-          <Property Type="Int32" Name="UserID" Nullable="false" />
-          <Property Type="Decimal" Name="Cost" Nullable="false" Precision="19" Scale="4" />
-          <Property Type="Int32" Name="Duration" Nullable="false" />
-          <NavigationProperty Name="Project" Relationship="FreeLancersModel.FK_Competitors_Project" FromRole="Competitor" ToRole="Project" />
-          <NavigationProperty Name="User" Relationship="FreeLancersModel.FK_Competitors_Users" FromRole="Competitor" ToRole="User" />
-        </EntityType>
         <EntityType Name="MainCategory">
           <Key>
             <PropertyRef Name="MainCategoryID" />
@@ -562,27 +663,6 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Binary" Name="Image" Nullable="false" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="SubCategories" Relationship="FreeLancersModel.FK_SubCategory_MainCategory" FromRole="MainCategory" ToRole="SubCategory" />
-        </EntityType>
-        <EntityType Name="Profile">
-          <Key>
-            <PropertyRef Name="ProfileID" />
-          </Key>
-          <Property Type="Int32" Name="ProfileID" Nullable="false" />
-          <Property Type="Int32" Name="UserID" Nullable="false" />
-          <Property Type="Binary" Name="Image1" MaxLength="Max" FixedLength="false" />
-          <Property Type="Binary" Name="Image2" MaxLength="Max" FixedLength="false" />
-          <Property Type="Binary" Name="Image3" MaxLength="Max" FixedLength="false" />
-          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Experience" Nullable="false" />
-          <Property Type="String" Name="LinkedURL" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="YouTubeURL" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="PreviousWork" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Rating" />
-          <Property Type="Boolean" Name="Featured" />
-          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Comments" Relationship="FreeLancersModel.FK_Comments_Profiles" FromRole="Profile" ToRole="Comment" />
-          <NavigationProperty Name="User" Relationship="FreeLancersModel.FK_Profiles_Users" FromRole="Profile" ToRole="User" />
-          <NavigationProperty Name="Skills" Relationship="FreeLancersModel.FreelancerSkills" FromRole="Profile" ToRole="Skill" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -600,10 +680,10 @@
           <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
           <Property Type="Boolean" Name="Featured" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Competitors" Relationship="FreeLancersModel.FK_Competitors_Project" FromRole="Project" ToRole="Competitor" />
           <NavigationProperty Name="SubCategory" Relationship="FreeLancersModel.FK_Project_SubCategory" FromRole="Project" ToRole="SubCategory" />
+          <NavigationProperty Name="Competitors" Relationship="FreeLancersModel.FK_Competitors_Project" FromRole="Project" ToRole="Competitor" />
           <NavigationProperty Name="User" Relationship="FreeLancersModel.FK_Project_Users" FromRole="Project" ToRole="User" />
-          <NavigationProperty Name="UsersNotified" Relationship="FreeLancersModel.ProjectNotifications" FromRole="Project" ToRole="User" />
+          <NavigationProperty Name="Freelancers" Relationship="FreeLancersModel.ProjectNotifications" FromRole="Project" ToRole="User" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
@@ -658,19 +738,147 @@
           <Property Type="Int32" Name="MainCategoryID" />
           <NavigationProperty Name="MainCategory" Relationship="FreeLancersModel.FK_SubCategory_MainCategory" FromRole="SubCategory" ToRole="MainCategory" />
           <NavigationProperty Name="Projects" Relationship="FreeLancersModel.FK_Project_SubCategory" FromRole="SubCategory" ToRole="Project" />
+          <NavigationProperty Name="Profiles" Relationship="FreeLancersModel.FK_Profiles_SubCategory" FromRole="SubCategory" ToRole="Profile" />
           <NavigationProperty Name="Users" Relationship="FreeLancersModel.FreelancerSubCategories" FromRole="SubCategory" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_SubCategory_MainCategory">
+          <End Type="FreeLancersModel.MainCategory" Role="MainCategory" Multiplicity="0..1" />
+          <End Type="FreeLancersModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MainCategory">
+              <PropertyRef Name="MainCategoryID" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="MainCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Project_SubCategory">
+          <End Type="FreeLancersModel.SubCategory" Role="SubCategory" Multiplicity="1" />
+          <End Type="FreeLancersModel.Project" Role="Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="SubCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Requests_RequestStatus">
+          <End Type="FreeLancersModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="FreeLancersModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RequestStatus_Roles">
+          <End Type="FreeLancersModel.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="FreeLancersModel.Status" Role="Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Type="Int32" Name="ImageID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="GUID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Binary" Name="FileData" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Type="Int32" Name="ProfileID" Nullable="false" />
+          <NavigationProperty Name="Profile" Relationship="FreeLancersModel.FK_Images_Profiles" FromRole="Image" ToRole="Profile" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Type="Int32" Name="CityID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CountryID" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="FreeLancersModel.FK_City_Country" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="Users" Relationship="FreeLancersModel.FK_Users_City" FromRole="City" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Type="Int32" Name="CountryID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cities" Relationship="FreeLancersModel.FK_City_Country" FromRole="Country" ToRole="City" />
+        </EntityType>
+        <Association Name="FK_City_Country">
+          <End Type="FreeLancersModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="FreeLancersModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Competitor">
+          <Key>
+            <PropertyRef Name="ProjectID" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="CompetitorID" />
+          </Key>
+          <Property Type="Int32" Name="ProjectID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Decimal" Name="Cost" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="Duration" Nullable="false" />
+          <Property Type="Int32" Name="CompetitorID" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="FreeLancersModel.FK_Competitors_Project" FromRole="Competitor" ToRole="Project" />
+          <NavigationProperty Name="User" Relationship="FreeLancersModel.FK_Competitors_Users" FromRole="Competitor" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="ProfileID" />
+          </Key>
+          <Property Type="Int32" Name="ProfileID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Experience" Nullable="false" />
+          <Property Type="String" Name="LinkedURL" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="YouTubeURL" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PreviousWork" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Rating" />
+          <Property Type="Boolean" Name="Featured" />
+          <Property Type="String" Name="CompanyName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="SubCategoryID" Nullable="false" />
+          <Property Type="DateTime" Name="ExpiryDate" Precision="0" />
+          <Property Type="Int32" Name="ViewersCount" />
+          <NavigationProperty Name="Comments" Relationship="FreeLancersModel.FK_Comments_Profiles" FromRole="Profile" ToRole="Comment" />
+          <NavigationProperty Name="Images" Relationship="FreeLancersModel.FK_Images_Profiles" FromRole="Profile" ToRole="Image" />
+          <NavigationProperty Name="SubCategory" Relationship="FreeLancersModel.FK_Profiles_SubCategory" FromRole="Profile" ToRole="SubCategory" />
+          <NavigationProperty Name="User" Relationship="FreeLancersModel.FK_Profiles_Users" FromRole="Profile" ToRole="User" />
+          <NavigationProperty Name="Skills" Relationship="FreeLancersModel.FreelancerSkills" FromRole="Profile" ToRole="Skill" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Type="Int32" Name="UserID" Nullable="false" />
-          <Property Type="String" Name="FirstName" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="LastName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="UserID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Email" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="Mobile" />
           <Property Type="Int32" Name="RoleID" Nullable="false" />
+          <Property Type="Int32" Name="CityID" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="FreeLancersModel.FK_Users_City" FromRole="User" ToRole="City" />
           <NavigationProperty Name="Comments" Relationship="FreeLancersModel.FK_Comments_Users" FromRole="User" ToRole="Comment" />
           <NavigationProperty Name="Competitors" Relationship="FreeLancersModel.FK_Competitors_Users" FromRole="User" ToRole="Competitor" />
           <NavigationProperty Name="Profiles" Relationship="FreeLancersModel.FK_Profiles_Users" FromRole="User" ToRole="Profile" />
@@ -678,8 +886,20 @@
           <NavigationProperty Name="Requests" Relationship="FreeLancersModel.FK_Requests_Users" FromRole="User" ToRole="Request" />
           <NavigationProperty Name="Role" Relationship="FreeLancersModel.FK_Users_Roles" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="SubCategories" Relationship="FreeLancersModel.FreelancerSubCategories" FromRole="User" ToRole="SubCategory" />
-          <NavigationProperty Name="ProjectsNotifications" Relationship="FreeLancersModel.ProjectNotifications" FromRole="User" ToRole="Project" />
+          <NavigationProperty Name="AvailableProjects" Relationship="FreeLancersModel.ProjectNotifications" FromRole="User" ToRole="Project" />
         </EntityType>
+        <Association Name="FK_Users_City">
+          <End Type="FreeLancersModel.City" Role="City" Multiplicity="1" />
+          <End Type="FreeLancersModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Comments_Profiles">
           <End Type="FreeLancersModel.Profile" Role="Profile" Multiplicity="1" />
           <End Type="FreeLancersModel.Comment" Role="Comment" Multiplicity="*" />
@@ -728,15 +948,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SubCategory_MainCategory">
-          <End Type="FreeLancersModel.MainCategory" Role="MainCategory" Multiplicity="0..1" />
-          <End Type="FreeLancersModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+        <Association Name="FK_Images_Profiles">
+          <End Type="FreeLancersModel.Profile" Role="Profile" Multiplicity="1" />
+          <End Type="FreeLancersModel.Image" Role="Image" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MainCategory">
-              <PropertyRef Name="MainCategoryID" />
+            <Principal Role="Profile">
+              <PropertyRef Name="ProfileID" />
             </Principal>
-            <Dependent Role="SubCategory">
-              <PropertyRef Name="MainCategoryID" />
+            <Dependent Role="Image">
+              <PropertyRef Name="ProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profiles_SubCategory">
+          <End Type="FreeLancersModel.SubCategory" Role="SubCategory" Multiplicity="1" />
+          <End Type="FreeLancersModel.Profile" Role="Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryID" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="SubCategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -752,18 +984,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Project_SubCategory">
-          <End Type="FreeLancersModel.SubCategory" Role="SubCategory" Multiplicity="1" />
-          <End Type="FreeLancersModel.Project" Role="Project" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SubCategory">
-              <PropertyRef Name="SubCategoryID" />
-            </Principal>
-            <Dependent Role="Project">
-              <PropertyRef Name="SubCategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Project_Users">
           <End Type="FreeLancersModel.User" Role="User" Multiplicity="1" />
           <End Type="FreeLancersModel.Project" Role="Project" Multiplicity="*" />
@@ -776,18 +996,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Requests_RequestStatus">
-          <End Type="FreeLancersModel.Status" Role="Status" Multiplicity="1" />
-          <End Type="FreeLancersModel.Request" Role="Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Status">
-              <PropertyRef Name="StatusID" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="StatusID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Requests_Users">
           <End Type="FreeLancersModel.User" Role="User" Multiplicity="1" />
           <End Type="FreeLancersModel.Request" Role="Request" Multiplicity="*" />
@@ -797,18 +1005,6 @@
             </Principal>
             <Dependent Role="Request">
               <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_RequestStatus_Roles">
-          <End Type="FreeLancersModel.Role" Role="Role" Multiplicity="0..1" />
-          <End Type="FreeLancersModel.Status" Role="Status" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="RoleID" />
-            </Principal>
-            <Dependent Role="Status">
-              <PropertyRef Name="RoleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -853,41 +1049,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Competitors">
-            <EntityTypeMapping TypeName="FreeLancersModel.Competitor">
-              <MappingFragment StoreEntitySet="Competitors">
-                <ScalarProperty Name="Duration" ColumnName="Duration" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="MainCategories">
             <EntityTypeMapping TypeName="FreeLancersModel.MainCategory">
               <MappingFragment StoreEntitySet="MainCategory">
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="MainCategoryID" ColumnName="MainCategoryID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Profiles">
-            <EntityTypeMapping TypeName="FreeLancersModel.Profile">
-              <MappingFragment StoreEntitySet="Profiles">
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="Featured" ColumnName="Featured" />
-                <ScalarProperty Name="Rating" ColumnName="Rating" />
-                <ScalarProperty Name="PreviousWork" ColumnName="PreviousWork" />
-                <ScalarProperty Name="YouTubeURL" ColumnName="YouTubeURL" />
-                <ScalarProperty Name="LinkedURL" ColumnName="LinkedURL" />
-                <ScalarProperty Name="Experience" ColumnName="Experience" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Image3" ColumnName="Image3" />
-                <ScalarProperty Name="Image2" ColumnName="Image2" />
-                <ScalarProperty Name="Image1" ColumnName="Image1" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -959,15 +1126,73 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="FreeLancersModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+                <ScalarProperty Name="FileData" ColumnName="FileData" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="FreeLancersModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="FreeLancersModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Competitors">
+            <EntityTypeMapping TypeName="FreeLancersModel.Competitor">
+              <MappingFragment StoreEntitySet="Competitors">
+                <ScalarProperty Name="CompetitorID" ColumnName="CompetitorID" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="FreeLancersModel.Profile">
+              <MappingFragment StoreEntitySet="Profiles">
+                <ScalarProperty Name="ViewersCount" ColumnName="ViewersCount" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Featured" ColumnName="Featured" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="PreviousWork" ColumnName="PreviousWork" />
+                <ScalarProperty Name="YouTubeURL" ColumnName="YouTubeURL" />
+                <ScalarProperty Name="LinkedURL" ColumnName="LinkedURL" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="FreeLancersModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -996,7 +1221,7 @@
               <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

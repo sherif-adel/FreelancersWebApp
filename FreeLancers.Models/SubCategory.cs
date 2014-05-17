@@ -23,6 +23,8 @@ public partial class SubCategory
 
         this.Projects = new HashSet<Project>();
 
+        this.Profiles = new HashSet<Profile>();
+
         this.Users = new HashSet<User>();
 
     }
@@ -43,6 +45,8 @@ public partial class SubCategory
     public virtual MainCategory MainCategory { get; set; }
 
     public virtual ICollection<Project> Projects { get; set; }
+
+    public virtual ICollection<Profile> Profiles { get; set; }
 
     public virtual ICollection<User> Users { get; set; }
 

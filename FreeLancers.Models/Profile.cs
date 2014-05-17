@@ -23,6 +23,8 @@ public partial class Profile
 
         this.Comments = new HashSet<Comment>();
 
+        this.Images = new HashSet<Image>();
+
         this.Skills = new HashSet<Skill>();
 
     }
@@ -31,12 +33,6 @@ public partial class Profile
     public int ProfileID { get; set; }
 
     public int UserID { get; set; }
-
-    public byte[] Image1 { get; set; }
-
-    public byte[] Image2 { get; set; }
-
-    public byte[] Image3 { get; set; }
 
     public string Description { get; set; }
 
@@ -54,9 +50,19 @@ public partial class Profile
 
     public string CompanyName { get; set; }
 
+    public int SubCategoryID { get; set; }
+
+    public Nullable<System.DateTime> ExpiryDate { get; set; }
+
+    public Nullable<int> ViewersCount { get; set; }
+
 
 
     public virtual ICollection<Comment> Comments { get; set; }
+
+    public virtual ICollection<Image> Images { get; set; }
+
+    public virtual SubCategory SubCategory { get; set; }
 
     public virtual User User { get; set; }
 

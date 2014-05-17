@@ -34,11 +34,7 @@ public partial class FreeLancersEntities : DbContext
 
     public DbSet<Comment> Comments { get; set; }
 
-    public DbSet<Competitor> Competitors { get; set; }
-
     public DbSet<MainCategory> MainCategories { get; set; }
-
-    public DbSet<Profile> Profiles { get; set; }
 
     public DbSet<Project> Projects { get; set; }
 
@@ -51,6 +47,16 @@ public partial class FreeLancersEntities : DbContext
     public DbSet<Status> Status { get; set; }
 
     public DbSet<SubCategory> SubCategories { get; set; }
+
+    public DbSet<Image> Images { get; set; }
+
+    public DbSet<City> Cities { get; set; }
+
+    public DbSet<Country> Countries { get; set; }
+
+    public DbSet<Competitor> Competitors { get; set; }
+
+    public DbSet<Profile> Profiles { get; set; }
 
     public DbSet<User> Users { get; set; }
 

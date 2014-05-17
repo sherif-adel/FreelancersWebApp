@@ -15,28 +15,22 @@ namespace FreeLancers.Models
 using System;
     using System.Collections.Generic;
     
-public partial class Role
+public partial class Image
 {
 
-    public Role()
-    {
+    public int ImageID { get; set; }
 
-        this.Status = new HashSet<Status>();
+    public System.Guid GUID { get; set; }
 
-        this.Users = new HashSet<User>();
+    public string Name { get; set; }
 
-    }
+    public byte[] FileData { get; set; }
 
-
-    public int RoleID { get; set; }
-
-    public string RoleName { get; set; }
+    public int ProfileID { get; set; }
 
 
 
-    public virtual ICollection<Status> Status { get; set; }
-
-    public virtual ICollection<User> Users { get; set; }
+    public virtual Profile Profile { get; set; }
 
 }
 

@@ -51,10 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="City.cs">
+      <DependentUpon>FreeLancerEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Comment.cs">
       <DependentUpon>FreeLancerEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Competitor.cs">
+      <DependentUpon>FreeLancerEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
       <DependentUpon>FreeLancerEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="FreeLancerEntities.Context.cs">
@@ -71,6 +77,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FreeLancerEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Image.cs">
+      <DependentUpon>FreeLancerEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="MainCategory.cs">
       <DependentUpon>FreeLancerEntities.tt</DependentUpon>

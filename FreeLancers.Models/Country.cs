@@ -15,28 +15,24 @@ namespace FreeLancers.Models
 using System;
     using System.Collections.Generic;
     
-public partial class Role
+public partial class Country
 {
 
-    public Role()
+    public Country()
     {
 
-        this.Status = new HashSet<Status>();
-
-        this.Users = new HashSet<User>();
+        this.Cities = new HashSet<City>();
 
     }
 
 
-    public int RoleID { get; set; }
+    public int CountryID { get; set; }
 
-    public string RoleName { get; set; }
+    public string Name { get; set; }
 
 
 
-    public virtual ICollection<Status> Status { get; set; }
-
-    public virtual ICollection<User> Users { get; set; }
+    public virtual ICollection<City> Cities { get; set; }
 
 }
 

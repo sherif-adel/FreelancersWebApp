@@ -33,16 +33,14 @@ public partial class User
 
         this.SubCategories = new HashSet<SubCategory>();
 
-        this.ProjectsNotifications = new HashSet<Project>();
+        this.AvailableProjects = new HashSet<Project>();
 
     }
 
 
     public int UserID { get; set; }
 
-    public string FirstName { get; set; }
-
-    public string LastName { get; set; }
+    public string FullName { get; set; }
 
     public string Email { get; set; }
 
@@ -52,7 +50,11 @@ public partial class User
 
     public int RoleID { get; set; }
 
+    public int CityID { get; set; }
 
+
+
+    public virtual City City { get; set; }
 
     public virtual ICollection<Comment> Comments { get; set; }
 
@@ -68,7 +70,7 @@ public partial class User
 
     public virtual ICollection<SubCategory> SubCategories { get; set; }
 
-    public virtual ICollection<Project> ProjectsNotifications { get; set; }
+    public virtual ICollection<Project> AvailableProjects { get; set; }
 
 }
 

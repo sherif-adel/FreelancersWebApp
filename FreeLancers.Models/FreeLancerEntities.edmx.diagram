@@ -4,34 +4,41 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cc650cc7f7b74680ad922144b2486b3d" Name="Diagram1" ZoomLevel="49">
+      <Diagram DiagramId="cc650cc7f7b74680ad922144b2486b3d" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="FreeLancersModel.Comment" Width="1.5" PointX="3.125" PointY="33.25" />
-        <EntityTypeShape EntityType="FreeLancersModel.Competitor" Width="1.5" PointX="1.2279800070580003" PointY="13.580510130888088" />
         <EntityTypeShape EntityType="FreeLancersModel.MainCategory" Width="1.5" PointX="4.4183893950741684" PointY="14.866624168523877" />
-        <EntityTypeShape EntityType="FreeLancersModel.Profile" Width="1.5" PointX="11.688129063550443" PointY="12.707103809671059" />
         <EntityTypeShape EntityType="FreeLancersModel.Project" Width="1.5" PointX="0.72758063335324663" PointY="18.452940755734659" />
         <EntityTypeShape EntityType="FreeLancersModel.Request" Width="1.5" PointX="10.2340819305899" PointY="29.729253812566984" />
         <EntityTypeShape EntityType="FreeLancersModel.Role" Width="1.5" PointX="1.2629609076599409" PointY="0.24923169624490277" />
         <EntityTypeShape EntityType="FreeLancersModel.Skill" Width="1.5" PointX="6.6616620638694908" PointY="8.53230886558644" />
         <EntityTypeShape EntityType="FreeLancersModel.Status" Width="1.5" PointX="9.2348980741737865" PointY="11.97887847385317" />
         <EntityTypeShape EntityType="FreeLancersModel.SubCategory" Width="1.5" PointX="7.0257513965599943" PointY="22.34766098407454" />
-        <EntityTypeShape EntityType="FreeLancersModel.User" Width="1.5" PointX="9.5169711716086471" PointY="13.346459886686159" />
+        <AssociationConnector Association="FreeLancersModel.FK_SubCategory_MainCategory" />
+        <AssociationConnector Association="FreeLancersModel.FK_Project_SubCategory" />
+        <AssociationConnector Association="FreeLancersModel.FK_Requests_RequestStatus" />
+        <AssociationConnector Association="FreeLancersModel.FK_RequestStatus_Roles" />
+        <EntityTypeShape EntityType="FreeLancersModel.Image" Width="1.5" PointX="0.5" PointY="16" />
+        <EntityTypeShape EntityType="FreeLancersModel.City" Width="1.5" PointX="10.546356478029097" PointY="21.81880716505405" />
+        <EntityTypeShape EntityType="FreeLancersModel.Country" Width="1.5" PointX="5.1118027926943279" PointY="8.9726431858598463" />
+        <AssociationConnector Association="FreeLancersModel.FK_City_Country" />
+        <EntityTypeShape EntityType="FreeLancersModel.Competitor" Width="1.5" PointX="0.5" PointY="23.875" />
+        <EntityTypeShape EntityType="FreeLancersModel.Profile" Width="1.5" PointX="11.854254729977928" PointY="19.079337277952273" />
+        <EntityTypeShape EntityType="FreeLancersModel.User" Width="1.5" PointX="6" PointY="25.375" />
+        <AssociationConnector Association="FreeLancersModel.FK_Users_City" />
         <AssociationConnector Association="FreeLancersModel.FK_Comments_Profiles" />
         <AssociationConnector Association="FreeLancersModel.FK_Comments_Users" />
         <AssociationConnector Association="FreeLancersModel.FK_Competitors_Project" />
         <AssociationConnector Association="FreeLancersModel.FK_Competitors_Users" />
-        <AssociationConnector Association="FreeLancersModel.FK_SubCategory_MainCategory" />
+        <AssociationConnector Association="FreeLancersModel.FK_Images_Profiles" />
+        <AssociationConnector Association="FreeLancersModel.FK_Profiles_SubCategory" />
         <AssociationConnector Association="FreeLancersModel.FK_Profiles_Users" />
-        <AssociationConnector Association="FreeLancersModel.FK_Project_SubCategory" />
         <AssociationConnector Association="FreeLancersModel.FK_Project_Users" />
-        <AssociationConnector Association="FreeLancersModel.FK_Requests_RequestStatus" />
         <AssociationConnector Association="FreeLancersModel.FK_Requests_Users" />
-        <AssociationConnector Association="FreeLancersModel.FK_RequestStatus_Roles" />
         <AssociationConnector Association="FreeLancersModel.FK_Users_Roles" />
         <AssociationConnector Association="FreeLancersModel.FreelancerSkills" />
         <AssociationConnector Association="FreeLancersModel.FreelancerSubCategories" />
         <AssociationConnector Association="FreeLancersModel.ProjectNotifications" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

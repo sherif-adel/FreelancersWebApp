@@ -26,6 +26,8 @@ public partial class Competitor
 
     public int Duration { get; set; }
 
+    public int CompetitorID { get; set; }
+
 
 
     public virtual Project Project { get; set; }

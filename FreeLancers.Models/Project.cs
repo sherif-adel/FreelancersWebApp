@@ -23,7 +23,7 @@ public partial class Project
 
         this.Competitors = new HashSet<Competitor>();
 
-        this.UsersNotified = new HashSet<User>();
+        this.Freelancers = new HashSet<User>();
 
     }
 
@@ -54,13 +54,13 @@ public partial class Project
 
 
 
-    public virtual ICollection<Competitor> Competitors { get; set; }
-
     public virtual SubCategory SubCategory { get; set; }
+
+    public virtual ICollection<Competitor> Competitors { get; set; }
 
     public virtual User User { get; set; }
 
-    public virtual ICollection<User> UsersNotified { get; set; }
+    public virtual ICollection<User> Freelancers { get; set; }
 
 }
 
