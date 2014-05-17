@@ -6,7 +6,6 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
-using FreeLancers.Service.Translators;
 using Freelancers.BLL;
 using FreeLancers.Models;
 using FreeLancers.Service.Contracts;

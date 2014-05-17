@@ -22,7 +22,7 @@ WriteHeader(codeStringGenerator, fileManager);
 foreach (var entity in typeMapper.GetItemsToGenerate<EntityType>(itemCollection))
 {
 
-    fileManager.StartNewFile(entity.Name + "sTranslator" + ".cs");
+    fileManager.StartNewFile(entity.Name + "Translator" + ".cs");
     BeginNamespace(code);
 #>
 <#=codeStringGenerator.UsingDirectives(false)#>
@@ -55,31 +55,6 @@ if(<#=entity.Name.ToLower()#> == null)
        #>
 <#
     }
-
-    if (complexProperties.Any())
-    {
-#>
-
-<#
-        foreach(var complexProperty in complexProperties)
-        {
-#>
-    [DataMember]
-    <#=codeStringGenerator.Property(complexProperty)#>
-<#
-        }
-    }
-    var navigationProperties = typeMapper.GetNavigationProperties(entity);
-    if (navigationProperties.Any())
-    {
-#>
-
-        <#foreach (var navigationProperty in navigationProperties)
-        {
-            #><#=codeStringGenerator.NavigationProperty(navigationProperty, entity.Name.ToLower())#>
-    <#
-        }
-    }
 #>
  };
 return entity<#=entity.Name#>;}
@@ -109,12 +84,6 @@ public static <#=entity.Name#>Contract ConvertTo<#=entity.Name#>Contract(<#=enti
         <#foreach (var edmProperty in simpleProperties)
         {
             #><#=codeStringGenerator.Property(edmProperty, entity.Name.ToLower())#><#
-        }
-
-        foreach (var navigationProperty in navigationProperties)
-        {
-            #>
-             <#=codeStringGenerator.NavigationPropertyContract(navigationProperty, entity.Name.ToLower())#><#
         }
 
        #>};
@@ -164,41 +133,12 @@ foreach (var complex in typeMapper.GetItemsToGenerate<ComplexType>(itemCollectio
 <#
         }
 
-        foreach (var complexProperty in complexProperties)
-        {
-#>
-        this.<#=code.Escape(complexProperty)#> = new <#=typeMapper.GetTypeName(complexProperty.TypeUsage)#>();
-<#
-        }
 #>
     }
 
 <#
     }
 
-    var simpleProperties = typeMapper.GetSimpleProperties(complex);
-    if (simpleProperties.Any())
-    {
-        foreach(var edmProperty in simpleProperties)
-        {
-#>
-    <#=codeStringGenerator.Property(edmProperty)#>
-<#
-        }
-    }
-
-    if (complexProperties.Any())
-    {
-#>
-
-<#
-        foreach(var edmProperty in complexProperties)
-        {
-#>
-    <#=codeStringGenerator.Property(edmProperty)#>
-<#
-        }
-    }
 #>
 }
 <#
