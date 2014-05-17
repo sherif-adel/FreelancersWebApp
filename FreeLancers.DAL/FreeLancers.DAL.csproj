@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CityDataService.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="CommentDataService.cs">
       <DependentUpon>DataServiceTemplate.tt</DependentUpon>
     </Compile>
@@ -58,9 +61,15 @@
     <Compile Include="CompetitorDataService.cs">
       <DependentUpon>DataServiceTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="CountryDataService.cs">
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataServiceTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>DataServiceTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageDataService.cs">
       <DependentUpon>DataServiceTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="MainCategoryDataService.cs">
@@ -69,6 +78,7 @@
     <Compile Include="ProfileDataService.cs">
       <DependentUpon>DataServiceTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProfileDBManager.cs" />
     <Compile Include="ProjectDataService.cs">
       <DependentUpon>DataServiceTemplate.tt</DependentUpon>
     </Compile>

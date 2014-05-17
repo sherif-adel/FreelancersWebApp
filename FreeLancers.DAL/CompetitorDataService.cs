@@ -34,7 +34,7 @@ public partial class CompetitorDataService : DataServiceBase<Competitor>
 	/// <param name="id">The competitor Id.</param>
 	public override Competitor GetById(int id)
 	{
-		return DataContext.Competitors.FirstOrDefault(entity => entity.UserID == id);
+		return DataContext.Competitors.FirstOrDefault(entity => entity.CompetitorID == id);
 	}
 
 	/// <summary>

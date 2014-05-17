@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using System.Linq;
 using FreeLancers.Models;
 
-public partial class UserDataService : DataServiceBase<User>
+public partial class ImageDataService : DataServiceBase<Image>
 {
     #region Constructor
     
 	/// <summary>
 	/// Gets the specified entity by Id.
 	/// </summary>
-	/// <param name="id">The user Id.</param>
-	public UserDataService(FreeLancersEntities dataContext):base(dataContext)
+	/// <param name="id">The image Id.</param>
+	public ImageDataService(FreeLancersEntities dataContext):base(dataContext)
 	{
 		this.DataContext = dataContext;
 	}
@@ -31,59 +31,59 @@ public partial class UserDataService : DataServiceBase<User>
 	/// <summary>
 	/// Gets the specified entity by Id.
 	/// </summary>
-	/// <param name="id">The user Id.</param>
-	public override User GetById(int id)
+	/// <param name="id">The image Id.</param>
+	public override Image GetById(int id)
 	{
-		return DataContext.Users.FirstOrDefault(entity => entity.UserID == id);
+		return DataContext.Images.FirstOrDefault(entity => entity.ImageID == id);
 	}
 
 	/// <summary>
 	/// Gets All.
 	/// </summary>
-	public override List<User> GetAll()
+	public override List<Image> GetAll()
 	{
-		return DataContext.Users.ToList();
+		return DataContext.Images.ToList();
 	}
 
 	/// <summary>
 	/// Adds the specified entity.
 	/// </summary>
-	/// <param name="user">The user entity.</param>
-	public override void Add(User user)
+	/// <param name="image">The image entity.</param>
+	public override void Add(Image image)
 	{
-		DataContext.Users.Add(user);
+		DataContext.Images.Add(image);
 		DataContext.SaveChanges();
 	}
 
 	/// <summary>
 	/// Deletes the specified entity.
 	/// </summary>
-	/// <param name="user">The user entity.</param>
-	public override void Delete(User user)
+	/// <param name="image">The image entity.</param>
+	public override void Delete(Image image)
 	{
 
-		DataContext.Users.Remove(user);
+		DataContext.Images.Remove(image);
 		DataContext.SaveChanges();
 	}
 
 	/// <summary>
 	/// Deletes the entity by Id.
 	/// </summary>
-	/// <param name="id">The user Id.</param>
+	/// <param name="id">The image Id.</param>
 	public override void Delete(int id)
 	{
-		var user = GetById(id);
-		DataContext.Users.Remove(user);
+		var image = GetById(id);
+		DataContext.Images.Remove(image);
 		DataContext.SaveChanges();
 	}
 
 	/// <summary>
 	/// Updates the specified entity.
 	/// </summary>
-	/// <param name="user">The user entity.</param>
-	public override void Update(User user)
+	/// <param name="image">The image entity.</param>
+	public override void Update(Image image)
 	{
-		DataContext.Entry(user).State = EntityState.Modified;
+		DataContext.Entry(image).State = EntityState.Modified;
 		DataContext.SaveChanges();
 	}
 

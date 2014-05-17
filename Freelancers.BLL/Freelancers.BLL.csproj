@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CityManager.cs">
+      <DependentUpon>ManagersTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="CommentManager.cs">
       <DependentUpon>ManagersTemplate.tt</DependentUpon>
     </Compile>
@@ -56,7 +59,13 @@
     <Compile Include="CompetitorManager.cs">
       <DependentUpon>ManagersTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="CountryManager.cs">
+      <DependentUpon>ManagersTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enums\RoleTypes.cs" />
+    <Compile Include="ImageManager.cs">
+      <DependentUpon>ManagersTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainCategoryManager.cs">
       <DependentUpon>ManagersTemplate.tt</DependentUpon>
     </Compile>
@@ -68,6 +77,7 @@
     <Compile Include="ProfileManager.cs">
       <DependentUpon>ManagersTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProfilesManager.cs" />
     <Compile Include="ProjectManager.cs">
       <DependentUpon>ManagersTemplate.tt</DependentUpon>
     </Compile>
