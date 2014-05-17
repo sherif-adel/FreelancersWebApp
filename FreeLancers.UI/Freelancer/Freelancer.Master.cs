@@ -6,9 +6,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace FreeLancers.UI
+namespace FreeLancers.UI.Freelancer
 {
-    public partial class Main : System.Web.UI.MasterPage
+    public partial class Freelancer : System.Web.UI.MasterPage
     {
         protected UserContract CurrentUser
         {
@@ -27,9 +27,9 @@ namespace FreeLancers.UI
         private void SetLoginHeader()
         {
             userPanel.Visible = true;
-            if (!string.IsNullOrEmpty(CurrentUser.FirstName + CurrentUser.LastName))
+            if (!string.IsNullOrEmpty(CurrentUser.FullName))
             {
-                lblUserName.InnerText = CurrentUser.FirstName + " " + CurrentUser.LastName;
+                lblUserName.InnerText = CurrentUser.FullName;
             }
             else
             {

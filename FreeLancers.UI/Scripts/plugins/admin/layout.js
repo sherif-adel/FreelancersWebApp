@@ -3,7 +3,7 @@ Core script to handle the entire theme and core functions
 **/
 var Layout = function () {
 
-    var layoutImgPath = '../../assets/admin/layout/img/';
+    var layoutImgPath = '/Images/External/';
 
     // ios vertual keyboard issue fix
     var handleIOSKeyboard = function () {
@@ -449,7 +449,6 @@ var Layout = function () {
 
             if (layoutOption === "boxed") {
                 $("body").addClass("page-boxed");
-
                 // set header
                 $('.page-header > .page-header-inner').addClass("container");
                 var cont = $('body > .clearfix').after('<div class="container"></div>');
@@ -523,13 +522,13 @@ var Layout = function () {
 
             handleSidebarAndContentHeight(); // fix content height            
             handleFixedSidebar(); // reinitialize fixed sidebar
-            handleFixedSidebarHoverable(); // reinitialize fixed sidebar hover effect
+            //handleFixedSidebarHoverable(); // reinitialize fixed sidebar hover effect
         }
 
         // handle theme colors
         var setColor = function (color) {
             var color_ = (Metronic.isRTL() ? color + '-rtl' : color);
-            $('#style_color').attr("href", "../../assets/admin/layout/css/themes/" + color_ + ".css");
+            $('#style_color').attr("href", "../Content/External/themes/" + color_ + ".css");
             if (color == 'light2') {
                 $('.page-logo img').attr('src', '../../assets/admin/layout/img/logo-invert.png');
             } else {

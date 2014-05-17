@@ -84,9 +84,9 @@ namespace FreeLancers.UI
         {
             anonymous.Visible = false;
             loggedUser.Visible = true;
-            if (!string.IsNullOrEmpty(CurrentUser.FirstName + CurrentUser.LastName))
+            if (!string.IsNullOrEmpty(CurrentUser.FullName))
             {
-                lblUserName.Text = CurrentUser.FirstName + "" + CurrentUser.LastName;
+                lblUserName.Text = CurrentUser.FullName;
             }
             else
             {

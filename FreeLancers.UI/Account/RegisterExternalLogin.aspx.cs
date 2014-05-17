@@ -126,7 +126,7 @@ namespace FreeLancers.UI.Account
             UserContract user = UserService.ValidateLogin(email);
             if (user == null)
             {
-                user = new UserContract() { FirstName = name, LastName = name, Email = email, RoleID = roleId };
+                user = new UserContract() { FullName = name, Email = email, RoleID = roleId };
                 UserService.Add(user);
             }
             return user;

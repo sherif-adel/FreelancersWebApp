@@ -1,8 +1,8 @@
-﻿<%@ Page Title="Manage Account" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="FreeLancers.UI.Account.Manage" %>
+﻿<%@ Page Title="Manage Account" Language="C#" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="FreeLancers.UI.Account.Manage" %>
 
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
-<asp:Content ContentPlaceHolderID="MainContent" runat="server">
+<asp:content contentplaceholderid="MainContent" runat="server">
     <hgroup class="title">
         <%--<h1><%: Title %>.</h1>--%>
     </hgroup>
@@ -17,7 +17,6 @@
         </h2>
         <br />
         <asp:PlaceHolder runat="server" ID="setPassword" Visible="false">
-
             <fieldset>
                 <legend>Set Local Password</legend>
                 <div class="alert alert-warning">
@@ -50,7 +49,7 @@
                 <asp:Button runat="server" Text="Set Password" ValidationGroup="SetPassword" OnClick="setPassword_Click" class="btn green pull-right" />
             </fieldset>
         </asp:PlaceHolder>
-
+        <br />
         <asp:PlaceHolder runat="server" ID="manageDetails">
             <fieldset>
                 <legend>Manage your Details</legend>
@@ -64,22 +63,10 @@
                                 <asp:Label ID="lblFirstName" runat="server" AssociatedControlID="txtFirstName" Text="First Name:"></asp:Label>
                             </td>
                             <td>
-                                <asp:TextBox runat="server" ID="txtFirstName" />
+                                <asp:TextBox runat="server" ID="txtFullName" />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFirstName"
                                     CssClass="field-validation-error" ErrorMessage="The password field is required."
                                     Display="Dynamic" ValidationGroup="ManageDetails" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:Label ID="lblLastName" runat="server" AssociatedControlID="txtLastName" Text="Last Name:"></asp:Label>
-                            </td>
-                            <td>
-                                <asp:TextBox runat="server" ID="txtLastName" />
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtLastName"
-                                    CssClass="field-validation-error" ErrorMessage="The password field is required."
-                                    Display="Dynamic" ValidationGroup="ManageDetails" />
-
                             </td>
                         </tr>
                         <tr>
@@ -98,7 +85,7 @@
                 <asp:Button ID="btnSaveDetails" runat="server" Text="Save Details" ValidationGroup="ManageDetails" OnClick="btnSaveDetails_Click" class="btn green pull-right" />
             </fieldset>
         </asp:PlaceHolder>
-
+        <br />
         <asp:PlaceHolder runat="server" ID="changePassword" Visible="false">
             <fieldset class="changePassword">
                 <legend>Change Password</legend>
@@ -115,9 +102,10 @@
                         ValidationGroup="ChangePassword" />
                 </div>
                 <div>
+                    <div>
                     <asp:ModelErrorMessage ID="ModelErrorMessage2" runat="server" ModelStateKey="CurrentPassword" AssociatedControlID="txtCurrentPassword"
                         CssClass="field-validation-error" SetFocusOnError="true" />
-
+                    </div>
                     <div class="input-icon">
                         <i class="fa fa-lock"></i>
                         <input id="NewPassword" class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="New Password" name="password" runat="server" />
@@ -157,6 +145,6 @@
         }
     </script>
 
-</asp:Content>
+</asp:content>
 
 

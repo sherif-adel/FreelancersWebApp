@@ -57,7 +57,7 @@ Page Header
   color: #969696;
 }
 .page-header.navbar .search-form .input-group .input-group-btn .btn.submit {
-  background: url(../../img/header_search_icon_default.png) center center no-repeat !important;
+  background: url(/Images/External/header_search_icon_default.png) center center no-repeat !important;
 }
 .page-header.navbar .search-form.open {
   background: #333333;
@@ -347,7 +347,7 @@ Page Header
 }
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search .input-group .input-group-btn .btn,
 .page-sidebar .sidebar-search .input-group .input-group-btn .btn {
-  background-image: url(../../img/sidebar_search_icon_default.png) !important;
+  background-image: url(/Images/External/sidebar_search_icon_default.png) !important;
 }
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search.sidebar-search-bordered .input-group,
 .page-sidebar .sidebar-search.sidebar-search-bordered .input-group {
@@ -359,7 +359,7 @@ Page Header
 }
 .page-sidebar-closed .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search.open .remove, .page-sidebar-closed
 .page-sidebar .sidebar-search.open .remove {
-  background-image: url("../../img/sidebar_search_close_icon_default.png");
+  background-image: url("/Images/External/sidebar_search_close_icon_default.png");
 }
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .sidebar-search.sidebar-search-solid .input-group,
 .page-sidebar .sidebar-search.sidebar-search-solid .input-group {

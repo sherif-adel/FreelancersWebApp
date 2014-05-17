@@ -10,16 +10,7 @@
 namespace FreeLancers.UI.Freelancer {
     
     
-    public partial class ManageProfile {
-        
-        /// <summary>
-        /// lblCompanyName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCompanyName;
+    public partial class MyProfile {
         
         /// <summary>
         /// txtCompanyName control.
@@ -28,34 +19,70 @@ namespace FreeLancers.UI.Freelancer {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCompanyName;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCompanyName;
         
         /// <summary>
-        /// lblExperience control.
+        /// image1Upload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblExperience;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile image1Upload;
         
         /// <summary>
-        /// TextBox1 control.
+        /// image1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.HtmlControls.HtmlImage image1;
         
         /// <summary>
-        /// lblPreviousWork control.
+        /// image2Upload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPreviousWork;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile image2Upload;
+        
+        /// <summary>
+        /// image2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage image2;
+        
+        /// <summary>
+        /// image3Upload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile image3Upload;
+        
+        /// <summary>
+        /// image3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage image3;
+        
+        /// <summary>
+        /// txtDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription;
         
         /// <summary>
         /// txtPreviousWork control.
@@ -64,105 +91,60 @@ namespace FreeLancers.UI.Freelancer {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPreviousWork;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtPreviousWork;
         
         /// <summary>
-        /// cbFeatures control.
+        /// experienceRange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbFeatures;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl experienceRange;
         
         /// <summary>
-        /// lblYouTubeURL control.
+        /// txtExperience control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblYouTubeURL;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtExperience;
         
         /// <summary>
-        /// txtYouTubeURL control.
+        /// txtLinkedInUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtYouTubeURL;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtLinkedInUrl;
         
         /// <summary>
-        /// lblLinkedInURL control.
+        /// txtYouTubeUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLinkedInURL;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtYouTubeUrl;
         
         /// <summary>
-        /// txtLinkedInURL control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLinkedInURL;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
         
         /// <summary>
-        /// lblImage1 control.
+        /// btnEditProfile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblImage1;
-        
-        /// <summary>
-        /// fileImage1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileImage1;
-        
-        /// <summary>
-        /// lblImage2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblImage2;
-        
-        /// <summary>
-        /// fileImage2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileImage2;
-        
-        /// <summary>
-        /// lblImage3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblImage3;
-        
-        /// <summary>
-        /// fileImage3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileImage3;
+        protected global::System.Web.UI.WebControls.Button btnEditProfile;
     }
 }

@@ -47,6 +47,11 @@ namespace FreeLancers.UI.Account
 
         #region Protected Methods
 
+        protected void Page_PreInit(Object sender, EventArgs e)
+        {
+            this.MasterPageFile = "~/Freelancer/Freelancer.Master";
+        }
+
         protected void Page_Load()
         {
             if (!IsPostBack)
@@ -82,8 +87,7 @@ namespace FreeLancers.UI.Account
             {
                 try
                 {
-                    CurrentUser.FirstName = txtFirstName.Text;
-                    CurrentUser.LastName = txtLastName.Text;
+                    CurrentUser.FullName = txtFullName.Text;
                     CurrentUser.Mobile = int.Parse(txtMobile.Text);
                     UserService.Update(CurrentUser);
                     SuccessMessage = "Details Updated Successfully";
@@ -130,8 +134,7 @@ namespace FreeLancers.UI.Account
         private void loadUserDetails()
         {
             lblEmail.Text = CurrentUser.Email;
-            txtFirstName.Text = CurrentUser.FirstName;
-            txtLastName.Text = CurrentUser.LastName;
+            txtFullName.Text = CurrentUser.FullName;
             txtMobile.Text = CurrentUser.Mobile.HasValue ? CurrentUser.Mobile.Value.ToString() : string.Empty;
         }
 

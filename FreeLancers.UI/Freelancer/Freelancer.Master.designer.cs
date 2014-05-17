@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FreeLancers.UI {
+namespace FreeLancers.UI.Freelancer{
     
     
-    public partial class Main {
+    public partial class Freelancer {
         
         /// <summary>
         /// PlaceHolder1 control.

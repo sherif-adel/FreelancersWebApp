@@ -230,7 +230,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Freelancer\Home.aspx" />
-    <Content Include="Freelancer\ManageProfile.ascx" />
+    <Content Include="Freelancer\MyProfile.aspx" />
     <Content Include="Images\accent.png" />
     <Content Include="Images\bullet.png" />
     <Content Include="Images\External\accordion-plusminus.png" />
@@ -379,7 +379,8 @@
     <Content Include="Images\External\email\social_facebook.html.tmp" />
     <Content Include="Images\External\icon-img-down.html.tmp" />
     <Content Include="Images\External\icon-img-up.html.tmp" />
-    <Content Include="Main.Master" />
+    <Content Include="Freelancer\Freelancer.Master" />
+    <Content Include="Common\ImageHandler.ashx" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -676,6 +677,9 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common\ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -697,24 +701,24 @@
     <Compile Include="Freelancer\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Freelancer\ManageProfile.ascx.cs">
-      <DependentUpon>ManageProfile.ascx</DependentUpon>
+    <Compile Include="Freelancer\MyProfile.aspx.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Freelancer\ManageProfile.ascx.designer.cs">
-      <DependentUpon>ManageProfile.ascx</DependentUpon>
+    <Compile Include="Freelancer\MyProfile.aspx.designer.cs">
+      <DependentUpon>MyProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Account\ExternalProviders\GoogleCustomClient.cs" />
     <Compile Include="Account\ExternalProviders\MicrosoftScopedClient.cs" />
-    <Compile Include="Main.Master.cs">
-      <DependentUpon>Main.Master</DependentUpon>
+    <Compile Include="Freelancer\Freelancer.Master.cs">
+      <DependentUpon>Freelancer.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Main.Master.designer.cs">
-      <DependentUpon>Main.Master</DependentUpon>
+    <Compile Include="Freelancer\Freelancer.Master.designer.cs">
+      <DependentUpon>Freelancer.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -748,6 +752,14 @@
     <ProjectReference Include="..\FreeLancer.Services\FreeLancers.Service.csproj">
       <Project>{45550b28-d851-4283-8e9e-1866c8cdb8e3}</Project>
       <Name>FreeLancers.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Freelancers.BLL\Freelancers.BLL.csproj">
+      <Project>{5f5954f6-4dc7-4269-b650-8f6be5c24f66}</Project>
+      <Name>Freelancers.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FreeLancers.Models\FreeLancers.Models.csproj">
+      <Project>{8db99cbc-bb87-4cc4-89f1-d2a2560c5974}</Project>
+      <Name>FreeLancers.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\FreeLancers.Services.Contracts\FreeLancers.Service.Contracts.csproj">
       <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>
