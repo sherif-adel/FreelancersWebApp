@@ -16,7 +16,7 @@ public partial class RoleContract
     
         [DataMember]
         public virtual List<StatusContract> Status { get; set; }
-        //[DataMember]
-        //public virtual List<UserContract> Users { get; set; }
+        [DataMember]
+        public virtual List<UserContract> Users { get; set; }
     }
 }

@@ -8,54 +8,54 @@ namespace FreeLancers.Service.Contracts
     using System.Text;
     
     [ServiceContract]
-    public partial interface ICompetitorService
+    public partial interface ICityService
     {
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
-    	/// <param name="id">The competitor ID.</param>
+    	/// <param name="id">The city ID.</param>
     	[OperationContract]
-    	CompetitorContract GetById(int id);
+    	CityContract GetById(int id);
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
     	[OperationContract]
-    	List<CompetitorContract> GetAll();
+    	List<CityContract> GetAll();
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
-    	/// <param name="competitor">The competitor entity.</param>
+    	/// <param name="city">The city entity.</param>
     	[OperationContract]
-    	void Add(CompetitorContract competitor);
+    	void Add(CityContract city);
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
-    	/// <param name="competitor">The competitor entity.</param>
+    	/// <param name="city">The city entity.</param>
     	[OperationContract]
-    	void Delete(CompetitorContract competitor);
+    	void Delete(CityContract city);
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
-    	/// <param name="id">The competitor Id.</param>
+    	/// <param name="id">The city Id.</param>
     	[OperationContract]
     	void DeleteById(int id);
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
-    	/// <param name="competitor">The competitor entity.</param>
+    	/// <param name="city">The city entity.</param>
     	[OperationContract]
-    	void Update(CompetitorContract competitor);
+    	void Update(CityContract city);
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
     	[OperationContract]
-    	List<CompetitorContract> Search(Func<dynamic, bool> criteria);
+    	List<CityContract> Search(Func<dynamic, bool> criteria);
 
         #endregion
 

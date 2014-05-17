@@ -55,7 +55,7 @@ namespace FreeLancers.Service.Contracts
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
     	[OperationContract]
-    	List<SkillContract> Search(System.Linq.Expressions.Expression<Func<SkillContract, bool>> criteria);
+    	List<SkillContract> Search(Func<dynamic, bool> criteria);
 
         #endregion
 

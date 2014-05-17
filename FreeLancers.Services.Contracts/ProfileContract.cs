@@ -14,12 +14,6 @@ public partial class ProfileContract
         [DataMember]
         public int UserID { get; set; }
         [DataMember]
-        public byte[] Image1 { get; set; }
-        [DataMember]
-        public byte[] Image2 { get; set; }
-        [DataMember]
-        public byte[] Image3 { get; set; }
-        [DataMember]
         public string Description { get; set; }
         [DataMember]
         public int Experience { get; set; }
@@ -35,9 +29,19 @@ public partial class ProfileContract
         public Nullable<bool> Featured { get; set; }
         [DataMember]
         public string CompanyName { get; set; }
+        [DataMember]
+        public int SubCategoryID { get; set; }
+        [DataMember]
+        public Nullable<System.DateTime> ExpiryDate { get; set; }
+        [DataMember]
+        public Nullable<int> ViewersCount { get; set; }
     
         [DataMember]
         public virtual List<CommentContract> Comments { get; set; }
+        [DataMember]
+        public virtual List<ImageContract> Images { get; set; }
+        [DataMember]
+        public virtual SubCategoryContract SubCategory { get; set; }
         [DataMember]
         public virtual UserContract User { get; set; }
         [DataMember]

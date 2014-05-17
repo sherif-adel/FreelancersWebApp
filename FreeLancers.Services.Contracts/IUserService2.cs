@@ -7,7 +7,6 @@ using System.Text;
 
 namespace FreeLancers.Service.Contracts
 {
-    [ServiceContract]
     public partial interface IUserService
     {
         [OperationContract]

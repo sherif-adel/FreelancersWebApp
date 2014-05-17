@@ -8,54 +8,54 @@ namespace FreeLancers.Service.Contracts
     using System.Text;
     
     [ServiceContract]
-    public partial interface ICompetitorService
+    public partial interface IImageService
     {
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
-    	/// <param name="id">The competitor ID.</param>
+    	/// <param name="id">The image ID.</param>
     	[OperationContract]
-    	CompetitorContract GetById(int id);
+    	ImageContract GetById(int id);
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
     	[OperationContract]
-    	List<CompetitorContract> GetAll();
+    	List<ImageContract> GetAll();
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
-    	/// <param name="competitor">The competitor entity.</param>
+    	/// <param name="image">The image entity.</param>
     	[OperationContract]
-    	void Add(CompetitorContract competitor);
+    	void Add(ImageContract image);
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
-    	/// <param name="competitor">The competitor entity.</param>
+    	/// <param name="image">The image entity.</param>
     	[OperationContract]
-    	void Delete(CompetitorContract competitor);
+    	void Delete(ImageContract image);
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
-    	/// <param name="id">The competitor Id.</param>
+    	/// <param name="id">The image Id.</param>
     	[OperationContract]
     	void DeleteById(int id);
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
-    	/// <param name="competitor">The competitor entity.</param>
+    	/// <param name="image">The image entity.</param>
     	[OperationContract]
-    	void Update(CompetitorContract competitor);
+    	void Update(ImageContract image);
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
     	[OperationContract]
-    	List<CompetitorContract> Search(Func<dynamic, bool> criteria);
+    	List<ImageContract> Search(Func<dynamic, bool> criteria);
 
         #endregion
 

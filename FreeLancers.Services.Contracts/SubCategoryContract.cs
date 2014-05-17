@@ -25,6 +25,8 @@ public partial class SubCategoryContract
         [DataMember]
         public virtual List<ProjectContract> Projects { get; set; }
         [DataMember]
+        public virtual List<ProfileContract> Profiles { get; set; }
+        [DataMember]
         public virtual List<UserContract> Users { get; set; }
     }
 }

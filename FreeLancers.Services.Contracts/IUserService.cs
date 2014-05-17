@@ -7,7 +7,7 @@ namespace FreeLancers.Service.Contracts
     using System.ServiceModel;
     using System.Text;
     
-
+    [ServiceContract]
     public partial interface IUserService
     {
         #region Methods
@@ -55,7 +55,7 @@ namespace FreeLancers.Service.Contracts
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
     	[OperationContract]
-        List<UserContract> Search(Func<dynamic, bool> criteria);
+    	List<UserContract> Search(Func<dynamic, bool> criteria);
 
         #endregion
 

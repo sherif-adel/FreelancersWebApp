@@ -8,54 +8,54 @@ namespace FreeLancers.Service.Contracts
     using System.Text;
     
     [ServiceContract]
-    public partial interface ICompetitorService
+    public partial interface ICountryService
     {
         #region Methods
     
     	/// <summary>
     	/// Gets the specified entity by ID.
     	/// </summary>
-    	/// <param name="id">The competitor ID.</param>
+    	/// <param name="id">The country ID.</param>
     	[OperationContract]
-    	CompetitorContract GetById(int id);
+    	CountryContract GetById(int id);
     
     	/// <summary>
     	/// Gets All.
     	/// </summary>
     	[OperationContract]
-    	List<CompetitorContract> GetAll();
+    	List<CountryContract> GetAll();
     
     	/// <summary>
     	/// Adds the specified entity.
     	/// </summary>
-    	/// <param name="competitor">The competitor entity.</param>
+    	/// <param name="country">The country entity.</param>
     	[OperationContract]
-    	void Add(CompetitorContract competitor);
+    	void Add(CountryContract country);
     
     	/// <summary>
     	/// Deletes the specified entity.
     	/// </summary>
-    	/// <param name="competitor">The competitor entity.</param>
+    	/// <param name="country">The country entity.</param>
     	[OperationContract]
-    	void Delete(CompetitorContract competitor);
+    	void Delete(CountryContract country);
     	/// <summary>
     	/// Deletes the entity by Id.
     	/// </summary>
-    	/// <param name="id">The competitor Id.</param>
+    	/// <param name="id">The country Id.</param>
     	[OperationContract]
     	void DeleteById(int id);
     	/// <summary>
     	/// Updates the specified entity.
     	/// </summary>
-    	/// <param name="competitor">The competitor entity.</param>
+    	/// <param name="country">The country entity.</param>
     	[OperationContract]
-    	void Update(CompetitorContract competitor);
+    	void Update(CountryContract country);
     	/// <summary>
     	/// Queries the entity.
     	/// </summary>
     	/// <param name="criteria">Search Criteria.</param>
     	[OperationContract]
-    	List<CompetitorContract> Search(Func<dynamic, bool> criteria);
+    	List<CountryContract> Search(Func<dynamic, bool> criteria);
 
         #endregion
 

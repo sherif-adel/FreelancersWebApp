@@ -17,6 +17,8 @@ public partial class CompetitorContract
         public decimal Cost { get; set; }
         [DataMember]
         public int Duration { get; set; }
+        [DataMember]
+        public int CompetitorID { get; set; }
     
         [DataMember]
         public virtual ProjectContract Project { get; set; }

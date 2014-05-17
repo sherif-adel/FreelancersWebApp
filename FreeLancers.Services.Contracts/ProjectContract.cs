@@ -35,12 +35,12 @@ public partial class ProjectContract
         public string Name { get; set; }
     
         [DataMember]
-        public virtual List<CompetitorContract> Competitors { get; set; }
-        [DataMember]
         public virtual SubCategoryContract SubCategory { get; set; }
+        [DataMember]
+        public virtual List<CompetitorContract> Competitors { get; set; }
         [DataMember]
         public virtual UserContract User { get; set; }
         [DataMember]
-        public virtual List<UserContract> UsersNotified { get; set; }
+        public virtual List<UserContract> Freelancers { get; set; }
     }
 }

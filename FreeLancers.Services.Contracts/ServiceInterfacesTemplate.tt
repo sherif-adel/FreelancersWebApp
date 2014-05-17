@@ -78,7 +78,7 @@ using System.Text;
 	/// </summary>
 	/// <param name="criteria">Search Criteria.</param>
 	[OperationContract]
-	List<<#=entityType#>Contract> Search(System.Linq.Expressions.Expression<Func<<#=entityType#>Contract, bool>> criteria);
+	List<<#=entityType#>Contract> Search(Func<dynamic, bool> criteria);
 <# region.End();#>
 }
 <#

@@ -55,6 +55,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CityContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="CommentContract.cs">
       <DependentUpon>ContractsTemplate.tt</DependentUpon>
     </Compile>
@@ -66,11 +69,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContractsTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="CountryContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ICityService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="ICommentService.cs">
       <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="ICompetitorService.cs">
       <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ICountryService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IImageService.cs">
+      <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageContract.cs">
+      <DependentUpon>ContractsTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="IMainCategoryService.cs">
       <DependentUpon>ServiceInterfacesTemplate.tt</DependentUpon>
