@@ -74,53 +74,49 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CityTranslator.cs" />
-    <Compile Include="CommentsTranslator.cs">
+    <Compile Include="CityTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="CommentTranslator.cs" />
-    <Compile Include="CompetitorsTranslator.cs">
+    <Compile Include="CommentTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="CompetitorTranslator.cs" />
-    <Compile Include="CountryTranslator.cs" />
+    <Compile Include="CompetitorTranslator.cs">
+      <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CountryTranslator.cs">
+      <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="CustomTranslators\ProfileTranslator.cs" />
-    <Compile Include="ImageTranslator.cs" />
-    <Compile Include="MainCategorysTranslator.cs">
+    <Compile Include="ImageTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="MainCategoryTranslator.cs" />
+    <Compile Include="MainCategoryTranslator.cs">
+      <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="ProfileService.svc.cs">
       <DependentUpon>ProfileService.svc</DependentUpon>
     </Compile>
-    <Compile Include="ProfilesTranslator.cs">
+    <Compile Include="ProfileTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProfileTranslator.cs" />
-    <Compile Include="ProjectsTranslator.cs">
+    <Compile Include="ProjectTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProjectTranslator.cs" />
-    <Compile Include="RequestsTranslator.cs">
+    <Compile Include="RequestTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="RequestTranslator.cs" />
-    <Compile Include="RolesTranslator.cs">
+    <Compile Include="RoleTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="RoleTranslator.cs" />
-    <Compile Include="SkillsTranslator.cs">
+    <Compile Include="SkillTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="SkillTranslator.cs" />
-    <Compile Include="StatussTranslator.cs">
+    <Compile Include="StatusTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="StatusTranslator.cs" />
-    <Compile Include="SubCategorysTranslator.cs">
+    <Compile Include="SubCategoryTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="SubCategoryTranslator.cs" />
     <Compile Include="TranslatorsTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,10 +137,9 @@
       <DependentUpon>UserService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UsersTranslator.cs">
+    <Compile Include="UserTranslator.cs">
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserTranslator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
