@@ -58,6 +58,7 @@
       <DependentUpon>DataServiceTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Common\DataServiceBase.cs" />
+    <Compile Include="Common\DBConnection.cs" />
     <Compile Include="CompetitorDataService.cs">
       <DependentUpon>DataServiceTemplate.tt</DependentUpon>
     </Compile>

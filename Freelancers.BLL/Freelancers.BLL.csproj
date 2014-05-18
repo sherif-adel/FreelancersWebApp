@@ -55,6 +55,7 @@
     <Compile Include="CommentManager.cs">
       <DependentUpon>ManagersTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Common\DBConnector.cs" />
     <Compile Include="Common\ManagersBase.cs" />
     <Compile Include="CompetitorManager.cs">
       <DependentUpon>ManagersTemplate.tt</DependentUpon>
