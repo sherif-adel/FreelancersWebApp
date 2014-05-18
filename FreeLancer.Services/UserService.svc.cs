@@ -9,6 +9,7 @@ using System.Text;
 using Freelancers.BLL;
 using FreeLancers.Models;
 using FreeLancers.Service.Contracts;
+using Freelancers.BLL.Common;
 
 namespace FreeLancer.Services
 {
@@ -16,9 +17,9 @@ namespace FreeLancer.Services
     {
         public UserContract GetById(int userId)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                UserManager userManager = new UserManager(entities);
+                UserManager userManager = new UserManager(dbConnector.DataContext);
                 var user = userManager.GetById(userId);
                 return UsersTranslator.ConvertToUserContract(user);
             }
@@ -26,9 +27,9 @@ namespace FreeLancer.Services
 
         public List<UserContract> GetAll()
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                UserManager userManager = new UserManager(entities);
+                UserManager userManager = new UserManager(dbConnector.DataContext);
                 var users = userManager.GetAll();
                 return UsersTranslator.ConvertToUserContract(users).ToList();
             }
@@ -36,9 +37,9 @@ namespace FreeLancer.Services
 
         public void Add(UserContract user)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                UserManager userManager = new UserManager(entities);
+                UserManager userManager = new UserManager(dbConnector.DataContext);
                 var userEntity = UsersTranslator.ConvertToUserEntity(user);
                 userManager.Add(userEntity);
             }
@@ -46,9 +47,9 @@ namespace FreeLancer.Services
 
         public void Delete(UserContract user)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                UserManager userManager = new UserManager(entities);
+                UserManager userManager = new UserManager(dbConnector.DataContext);
                 var userEntity = UsersTranslator.ConvertToUserEntity(user);
                 userManager.Delete(userEntity);
             }
@@ -56,18 +57,18 @@ namespace FreeLancer.Services
 
         public void DeleteById(int userId)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                UserManager userManager = new UserManager(entities);
+                UserManager userManager = new UserManager(dbConnector.DataContext);
                 userManager.Delete(userId);
             }
         }
 
         public void Update(UserContract user)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                UserManager userManager = new UserManager(entities);
+                UserManager userManager = new UserManager(dbConnector.DataContext);
                 var userEntity = UsersTranslator.ConvertToUserEntity(user);
                 userManager.Update(userEntity);
             }
@@ -75,9 +76,9 @@ namespace FreeLancer.Services
 
         public List<UserContract> Search(Func<dynamic, bool> criteria)
         {
-            using (FreeLancersEntities entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                UserManager userManager = new UserManager(entities);
+                UserManager userManager = new UserManager(dbConnector.DataContext);
                 Func<User, bool> userCriteria = (Func<User, bool>)criteria;
                 return UsersTranslator.ConvertToUserContract(userManager.Search(userCriteria)).ToList();
             }
@@ -85,9 +86,9 @@ namespace FreeLancer.Services
 
         public List<UserContract> GetUsersByRoleId(int roleId)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                UserManager userManager = new UserManager(entities);
+                UserManager userManager = new UserManager(dbConnector.DataContext);
                 var users = userManager.GetUsersByRoleId(roleId);
                 return UsersTranslator.ConvertToUserContract(users).ToList();
             }
@@ -95,9 +96,9 @@ namespace FreeLancer.Services
 
         public UserContract ValidateLogin(string email, string password)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                UserManager userManager = new UserManager(entities);
+                UserManager userManager = new UserManager(dbConnector.DataContext);
                 var user = userManager.ValidateLogin(email, password);
                 return UsersTranslator.ConvertToUserContract(user);
             }
@@ -105,9 +106,9 @@ namespace FreeLancer.Services
 
         public UserContract ValidateLogin(string email)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                UserManager userManager = new UserManager(entities);
+                UserManager userManager = new UserManager(dbConnector.DataContext);
                 var user = userManager.ValidateLogin(email);
                 return UsersTranslator.ConvertToUserContract(user);
             }
@@ -115,9 +116,9 @@ namespace FreeLancer.Services
 
         public bool HasPassword(UserContract user)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                UserManager userManager = new UserManager(entities);
+                UserManager userManager = new UserManager(dbConnector.DataContext);
                 var convertedUser = UsersTranslator.ConvertToUserEntity(user);
                 return userManager.HasPassword(convertedUser);
             }

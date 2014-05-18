@@ -9,6 +9,7 @@ using System.Text;
 using Freelancers.BLL;
 using FreeLancers.Models;
 using FreeLancers.Service.Contracts;
+using Freelancers.BLL.Common;
 
 namespace FreeLancer.Services
 {
@@ -16,9 +17,9 @@ namespace FreeLancer.Services
     {
         public ProfileContract GetById(int profileId)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                ProfileManager profileManager = new ProfileManager(entities);
+                ProfileManager profileManager = new ProfileManager(dbConnector.DataContext);
                 var profile = profileManager.GetById(profileId);
                 return ProfilesTranslator.ConvertToProfileContract(profile);
             }
@@ -26,9 +27,9 @@ namespace FreeLancer.Services
 
         public List<ProfileContract> GetAll()
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                ProfileManager profileManager = new ProfileManager(entities);
+                ProfileManager profileManager = new ProfileManager(dbConnector.DataContext);
                 var profiles = profileManager.GetAll();
                 return ProfilesTranslator.ConvertToProfileContract(profiles).ToList();
             }
@@ -36,9 +37,9 @@ namespace FreeLancer.Services
 
         public void Add(ProfileContract profile)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                ProfileManager profileManager = new ProfileManager(entities);
+                ProfileManager profileManager = new ProfileManager(dbConnector.DataContext);
                 var profileEntity = ProfilesTranslator.ConvertToProfileEntity(profile);
                 profileManager.Add(profileEntity);
             }
@@ -46,9 +47,9 @@ namespace FreeLancer.Services
 
         public void Delete(ProfileContract user)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                ProfileManager profileManager = new ProfileManager(entities);
+                ProfileManager profileManager = new ProfileManager(dbConnector.DataContext);
                 var profile = ProfilesTranslator.ConvertToProfileEntity(user);
                 profileManager.Delete(profile);
             }
@@ -56,18 +57,18 @@ namespace FreeLancer.Services
 
         public void DeleteById(int userId)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                ProfileManager profileManager = new ProfileManager(entities);
+                ProfileManager profileManager = new ProfileManager(dbConnector.DataContext);
                 profileManager.Delete(userId);
             }
         }
 
         public void Update(ProfileContract user)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                ProfileManager profileManager = new ProfileManager(entities);
+                ProfileManager profileManager = new ProfileManager(dbConnector.DataContext);
                 var userEntity = ProfilesTranslator.ConvertToProfileEntity(user);
                 profileManager.Update(userEntity);
             }
@@ -75,9 +76,9 @@ namespace FreeLancer.Services
 
         public List<ProfileContract> Search(Func<dynamic, bool> criteria)
         {
-            using (FreeLancersEntities entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                ProfileManager profileManager = new ProfileManager(entities);
+                ProfileManager profileManager = new ProfileManager(dbConnector.DataContext);
                 Func<Profile, bool> profileCriteria = (Func<Profile, bool>)criteria;
                 return ProfilesTranslator.ConvertToProfileContract(profileManager.Search(profileCriteria)).ToList();
             }
@@ -85,9 +86,9 @@ namespace FreeLancer.Services
 
         public ProfileContract GetByUserId(int userId)
         {
-            using (var entities = new FreeLancersEntities())
+            using (var dbConnector = new DBConnector())
             {
-                ProfileManager profileManager = new ProfileManager(entities);
+                ProfileManager profileManager = new ProfileManager(dbConnector.DataContext);
                 var profile = profileManager.GetById(userId);
                 return ProfilesTranslator.ConvertToProfileContract(profile);
             }

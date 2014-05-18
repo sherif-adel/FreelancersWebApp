@@ -130,9 +130,7 @@
       <DependentUpon>TranslatorsTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="TranslatorsTemplate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
