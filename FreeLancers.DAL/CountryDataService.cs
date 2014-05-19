@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class CountryDataService : DataServiceBase<Country>
 {
@@ -34,7 +35,15 @@ public partial class CountryDataService : DataServiceBase<Country>
 	/// <param name="id">The country Id.</param>
 	public override Country GetById(int id)
 	{
-		return DataContext.Countries.FirstOrDefault(entity => entity.CountryID == id);
+		try
+		{
+			return DataContext.Countries.FirstOrDefault(entity => entity.CountryID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class CountryDataService : DataServiceBase<Country>
 	/// </summary>
 	public override List<Country> GetAll()
 	{
-		return DataContext.Countries.ToList();
+		try
+		{
+			return DataContext.Countries.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class CountryDataService : DataServiceBase<Country>
 	/// <param name="country">The country entity.</param>
 	public override void Add(Country country)
 	{
-		DataContext.Countries.Add(country);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Countries.Add(country);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class CountryDataService : DataServiceBase<Country>
 	/// <param name="country">The country entity.</param>
 	public override void Delete(Country country)
 	{
-
-		DataContext.Countries.Remove(country);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Countries.Remove(country);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class CountryDataService : DataServiceBase<Country>
 	/// <param name="id">The country Id.</param>
 	public override void Delete(int id)
 	{
-		var country = GetById(id);
-		DataContext.Countries.Remove(country);
-		DataContext.SaveChanges();
+		try
+		{
+			var country = GetById(id);
+			DataContext.Countries.Remove(country);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class CountryDataService : DataServiceBase<Country>
 	/// <param name="country">The country entity.</param>
 	public override void Update(Country country)
 	{
-		DataContext.Entry(country).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(country).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion

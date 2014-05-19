@@ -13,6 +13,7 @@ namespace Freelancers.BLL.Common
         #region Fields
 
         private FreeLancersEntities _dataContext;
+        private DBConnection _dbConnection;
 
         #endregion Fields
 
@@ -22,13 +23,13 @@ namespace Freelancers.BLL.Common
         {
             get
             {
-                if (dbConnection == null)
+                if (_dbConnection == null)
                     return new DBConnection();
-                return dbConnection;
+                return _dbConnection;
             }
             set
             {
-                dbConnection = value;
+                _dbConnection = value;
             }
         }
 

@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class ProfileDataService : DataServiceBase<Profile>
 {
@@ -34,7 +35,15 @@ public partial class ProfileDataService : DataServiceBase<Profile>
 	/// <param name="id">The profile Id.</param>
 	public override Profile GetById(int id)
 	{
-		return DataContext.Profiles.FirstOrDefault(entity => entity.ProfileID == id);
+		try
+		{
+			return DataContext.Profiles.FirstOrDefault(entity => entity.ProfileID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class ProfileDataService : DataServiceBase<Profile>
 	/// </summary>
 	public override List<Profile> GetAll()
 	{
-		return DataContext.Profiles.ToList();
+		try
+		{
+			return DataContext.Profiles.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class ProfileDataService : DataServiceBase<Profile>
 	/// <param name="profile">The profile entity.</param>
 	public override void Add(Profile profile)
 	{
-		DataContext.Profiles.Add(profile);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Profiles.Add(profile);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class ProfileDataService : DataServiceBase<Profile>
 	/// <param name="profile">The profile entity.</param>
 	public override void Delete(Profile profile)
 	{
-
-		DataContext.Profiles.Remove(profile);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Profiles.Remove(profile);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class ProfileDataService : DataServiceBase<Profile>
 	/// <param name="id">The profile Id.</param>
 	public override void Delete(int id)
 	{
-		var profile = GetById(id);
-		DataContext.Profiles.Remove(profile);
-		DataContext.SaveChanges();
+		try
+		{
+			var profile = GetById(id);
+			DataContext.Profiles.Remove(profile);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class ProfileDataService : DataServiceBase<Profile>
 	/// <param name="profile">The profile entity.</param>
 	public override void Update(Profile profile)
 	{
-		DataContext.Entry(profile).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(profile).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion

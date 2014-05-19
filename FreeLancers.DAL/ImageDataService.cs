@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class ImageDataService : DataServiceBase<Image>
 {
@@ -34,7 +35,15 @@ public partial class ImageDataService : DataServiceBase<Image>
 	/// <param name="id">The image Id.</param>
 	public override Image GetById(int id)
 	{
-		return DataContext.Images.FirstOrDefault(entity => entity.ImageID == id);
+		try
+		{
+			return DataContext.Images.FirstOrDefault(entity => entity.ImageID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class ImageDataService : DataServiceBase<Image>
 	/// </summary>
 	public override List<Image> GetAll()
 	{
-		return DataContext.Images.ToList();
+		try
+		{
+			return DataContext.Images.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class ImageDataService : DataServiceBase<Image>
 	/// <param name="image">The image entity.</param>
 	public override void Add(Image image)
 	{
-		DataContext.Images.Add(image);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Images.Add(image);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class ImageDataService : DataServiceBase<Image>
 	/// <param name="image">The image entity.</param>
 	public override void Delete(Image image)
 	{
-
-		DataContext.Images.Remove(image);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Images.Remove(image);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class ImageDataService : DataServiceBase<Image>
 	/// <param name="id">The image Id.</param>
 	public override void Delete(int id)
 	{
-		var image = GetById(id);
-		DataContext.Images.Remove(image);
-		DataContext.SaveChanges();
+		try
+		{
+			var image = GetById(id);
+			DataContext.Images.Remove(image);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class ImageDataService : DataServiceBase<Image>
 	/// <param name="image">The image entity.</param>
 	public override void Update(Image image)
 	{
-		DataContext.Entry(image).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(image).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion

@@ -116,6 +116,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FreeLancers.Log\FreeLancers.Log.csproj">
+      <Project>{6101985c-d7b3-4bc2-9ba8-82de9a26c0d6}</Project>
+      <Name>FreeLancers.Log</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FreeLancers.Models\FreeLancers.Models.csproj">
       <Project>{8db99cbc-bb87-4cc4-89f1-d2a2560c5974}</Project>
       <Name>FreeLancers.Models</Name>

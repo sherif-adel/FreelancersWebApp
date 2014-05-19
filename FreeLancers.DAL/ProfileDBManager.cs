@@ -1,4 +1,5 @@
-﻿using FreeLancers.Models;
+﻿using FreeLancers.Log;
+using FreeLancers.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,20 @@ namespace FreeLancers.DAL
     {
         #region Custom Operations
 
-        public List<Profile> GetByUserId(int userId, bool includeImages)
+        public Profile GetByUserId(int userId, bool includeImages)
         {
-            if (includeImages)
-                return DataContext.Profiles.Include("Images").Where(profile => profile.UserID == userId).ToList();
-            else
-                return DataContext.Profiles.Where(profile => profile.UserID == userId).ToList();
+            try
+            {
+                if (includeImages)
+                    return DataContext.Profiles.Include("Images").Where(profile => profile.UserID == userId).FirstOrDefault();
+                else
+                    return DataContext.Profiles.Where(profile => profile.UserID == userId).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
         }
 
         #endregion

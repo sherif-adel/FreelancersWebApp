@@ -23,11 +23,12 @@ foreach (EntitySet entity in container.BaseEntitySets.OfType<EntitySet>())
 	fileManager.StartNewFile(String.Format("{0}.cs",dataServiceName));
 	BeginNamespace(namespaceName, code); 
 #>
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 <#=Accessibility.ForType(entity.ElementType)#> <#=code.SpaceAfter(code.AbstractOption(entity.ElementType))#>partial class <#=dataServiceName#> : DataServiceBase<<#=entityType#>>
 {
@@ -50,7 +51,15 @@ using FreeLancers.Models;
 	/// <param name="id">The <#= entityNameLower #> Id.</param>
 	public override <#=entityType#> GetById(int id)
 	{
-		return DataContext.<#=entitySetName#>.FirstOrDefault(entity => entity.<#=entityType#>ID == id);
+		try
+		{
+			return DataContext.<#=entitySetName#>.FirstOrDefault(entity => entity.<#=entityType#>ID == id);
+		}
+        catch (Exception ex)
+        {
+            ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+            throw ex;
+        }
 	}
 
 	/// <summary>
@@ -58,7 +67,15 @@ using FreeLancers.Models;
 	/// </summary>
 	public override List<<#=entityType#>> GetAll()
 	{
-		return DataContext.<#=entitySetName#>.ToList();
+		try
+		{
+			return DataContext.<#=entitySetName#>.ToList();
+		}
+		catch (Exception ex)
+        {
+            ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+            throw ex;
+        }
 	}
 
 	/// <summary>
@@ -67,8 +84,16 @@ using FreeLancers.Models;
 	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
 	public override void Add(<#=entityType#> <#= entityNameLower #>)
 	{
-		DataContext.<#=entitySetName#>.Add(<#= entityNameLower #>);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.<#=entitySetName#>.Add(<#= entityNameLower #>);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+        {
+            ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+            throw ex;
+        }
 	}
 
 	/// <summary>
@@ -77,9 +102,16 @@ using FreeLancers.Models;
 	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
 	public override void Delete(<#=entityType#> <#= entityNameLower #>)
 	{
-
-		DataContext.<#=entitySetName#>.Remove(<#= entityNameLower #>);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.<#=entitySetName#>.Remove(<#= entityNameLower #>);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+        {
+            ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+            throw ex;
+        }
 	}
 
 	/// <summary>
@@ -88,9 +120,17 @@ using FreeLancers.Models;
 	/// <param name="id">The <#= entityNameLower #> Id.</param>
 	public override void Delete(int id)
 	{
-		var <#= entityNameLower #> = GetById(id);
-		DataContext.<#=entitySetName#>.Remove(<#= entityNameLower #>);
-		DataContext.SaveChanges();
+		try
+		{
+			var <#= entityNameLower #> = GetById(id);
+			DataContext.<#=entitySetName#>.Remove(<#= entityNameLower #>);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+        {
+            ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+            throw ex;
+        }
 	}
 
 	/// <summary>
@@ -99,8 +139,16 @@ using FreeLancers.Models;
 	/// <param name="<#= entityNameLower #>">The <#= entityNameLower #> entity.</param>
 	public override void Update(<#=entityType#> <#= entityNameLower #>)
 	{
-		DataContext.Entry(<#= entityNameLower #>).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(<#= entityNameLower #>).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+        {
+            ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+            throw ex;
+        }
 	}
 <# region.End();#>
 }

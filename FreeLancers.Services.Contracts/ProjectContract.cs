@@ -41,6 +41,6 @@ public partial class ProjectContract
         [DataMember]
         public virtual UserContract User { get; set; }
         [DataMember]
-        public virtual List<UserContract> Freelancers { get; set; }
+        public virtual List<UserContract> Users { get; set; }
     }
 }

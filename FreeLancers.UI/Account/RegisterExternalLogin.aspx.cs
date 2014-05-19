@@ -11,6 +11,7 @@ namespace FreeLancers.UI.Account
 {
     public partial class RegisterExternalLogin : System.Web.UI.Page
     {
+        #region Properies
 
         private UserService _userService;
 
@@ -62,6 +63,10 @@ namespace FreeLancers.UI.Account
             private set { ViewState["ProviderUserName"] = value; }
         }
 
+        #endregion
+
+        #region Protected Methods
+
         protected void Page_Load()
         {
             if (!IsPostBack)
@@ -70,6 +75,14 @@ namespace FreeLancers.UI.Account
             }
         }
 
+        protected void btnOk_Click(object sender, EventArgs e)
+        {
+            RedirectToReturnUrl();
+        }
+
+        #endregion
+
+        #region Private Methods
 
         private void ProcessProviderResult()
         {
@@ -85,7 +98,7 @@ namespace FreeLancers.UI.Account
 
             if (!authResult.IsSuccessful)
             {
-                HandeFailedLogin();
+                HandleFailedLogin();
                 return;
             }
 
@@ -114,7 +127,7 @@ namespace FreeLancers.UI.Account
             }
             catch (Exception)
             {
-                HandeFailedLogin();
+                HandleFailedLogin();
                 return;
             }
 
@@ -132,7 +145,7 @@ namespace FreeLancers.UI.Account
             return user;
         }
 
-        private void HandeFailedLogin()
+        private void HandleFailedLogin()
         {
             Title = "External login failed";
             userNameForm.Visible = false;
@@ -154,9 +167,6 @@ namespace FreeLancers.UI.Account
             }
         }
 
-        protected void btnOk_Click(object sender, EventArgs e)
-        {
-            RedirectToReturnUrl();
-        }
+        #endregion
     }
 }

@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class RequestDataService : DataServiceBase<Request>
 {
@@ -34,7 +35,15 @@ public partial class RequestDataService : DataServiceBase<Request>
 	/// <param name="id">The request Id.</param>
 	public override Request GetById(int id)
 	{
-		return DataContext.Requests.FirstOrDefault(entity => entity.RequestID == id);
+		try
+		{
+			return DataContext.Requests.FirstOrDefault(entity => entity.RequestID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class RequestDataService : DataServiceBase<Request>
 	/// </summary>
 	public override List<Request> GetAll()
 	{
-		return DataContext.Requests.ToList();
+		try
+		{
+			return DataContext.Requests.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class RequestDataService : DataServiceBase<Request>
 	/// <param name="request">The request entity.</param>
 	public override void Add(Request request)
 	{
-		DataContext.Requests.Add(request);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Requests.Add(request);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class RequestDataService : DataServiceBase<Request>
 	/// <param name="request">The request entity.</param>
 	public override void Delete(Request request)
 	{
-
-		DataContext.Requests.Remove(request);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Requests.Remove(request);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class RequestDataService : DataServiceBase<Request>
 	/// <param name="id">The request Id.</param>
 	public override void Delete(int id)
 	{
-		var request = GetById(id);
-		DataContext.Requests.Remove(request);
-		DataContext.SaveChanges();
+		try
+		{
+			var request = GetById(id);
+			DataContext.Requests.Remove(request);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class RequestDataService : DataServiceBase<Request>
 	/// <param name="request">The request entity.</param>
 	public override void Update(Request request)
 	{
-		DataContext.Entry(request).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(request).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion

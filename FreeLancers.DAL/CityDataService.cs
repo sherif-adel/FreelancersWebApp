@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class CityDataService : DataServiceBase<City>
 {
@@ -34,7 +35,15 @@ public partial class CityDataService : DataServiceBase<City>
 	/// <param name="id">The city Id.</param>
 	public override City GetById(int id)
 	{
-		return DataContext.Cities.FirstOrDefault(entity => entity.CityID == id);
+		try
+		{
+			return DataContext.Cities.FirstOrDefault(entity => entity.CityID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class CityDataService : DataServiceBase<City>
 	/// </summary>
 	public override List<City> GetAll()
 	{
-		return DataContext.Cities.ToList();
+		try
+		{
+			return DataContext.Cities.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class CityDataService : DataServiceBase<City>
 	/// <param name="city">The city entity.</param>
 	public override void Add(City city)
 	{
-		DataContext.Cities.Add(city);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Cities.Add(city);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class CityDataService : DataServiceBase<City>
 	/// <param name="city">The city entity.</param>
 	public override void Delete(City city)
 	{
-
-		DataContext.Cities.Remove(city);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Cities.Remove(city);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class CityDataService : DataServiceBase<City>
 	/// <param name="id">The city Id.</param>
 	public override void Delete(int id)
 	{
-		var city = GetById(id);
-		DataContext.Cities.Remove(city);
-		DataContext.SaveChanges();
+		try
+		{
+			var city = GetById(id);
+			DataContext.Cities.Remove(city);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class CityDataService : DataServiceBase<City>
 	/// <param name="city">The city entity.</param>
 	public override void Update(City city)
 	{
-		DataContext.Entry(city).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(city).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion

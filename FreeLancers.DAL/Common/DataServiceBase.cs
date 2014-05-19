@@ -6,6 +6,7 @@
     using System.Data.Entity.Core.Objects.DataClasses;
     using FreeLancers.Models;
     using System.Collections.Generic;
+    using FreeLancers.Log;
     public abstract class DataServiceBase<T> where T : class
     {
         #region Properties
@@ -91,7 +92,11 @@
             {
                 return (predicate == null) ? this.DataContext.Set<T>().ToList() : this.DataContext.Set<T>().Where(predicate).ToList();
             }
-            catch { return null; }
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
         }
 
     }

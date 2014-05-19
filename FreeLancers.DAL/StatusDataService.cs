@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class StatusDataService : DataServiceBase<Status>
 {
@@ -34,7 +35,15 @@ public partial class StatusDataService : DataServiceBase<Status>
 	/// <param name="id">The status Id.</param>
 	public override Status GetById(int id)
 	{
-		return DataContext.Status.FirstOrDefault(entity => entity.StatusID == id);
+		try
+		{
+			return DataContext.Status.FirstOrDefault(entity => entity.StatusID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class StatusDataService : DataServiceBase<Status>
 	/// </summary>
 	public override List<Status> GetAll()
 	{
-		return DataContext.Status.ToList();
+		try
+		{
+			return DataContext.Status.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class StatusDataService : DataServiceBase<Status>
 	/// <param name="status">The status entity.</param>
 	public override void Add(Status status)
 	{
-		DataContext.Status.Add(status);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Status.Add(status);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class StatusDataService : DataServiceBase<Status>
 	/// <param name="status">The status entity.</param>
 	public override void Delete(Status status)
 	{
-
-		DataContext.Status.Remove(status);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Status.Remove(status);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class StatusDataService : DataServiceBase<Status>
 	/// <param name="id">The status Id.</param>
 	public override void Delete(int id)
 	{
-		var status = GetById(id);
-		DataContext.Status.Remove(status);
-		DataContext.SaveChanges();
+		try
+		{
+			var status = GetById(id);
+			DataContext.Status.Remove(status);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class StatusDataService : DataServiceBase<Status>
 	/// <param name="status">The status entity.</param>
 	public override void Update(Status status)
 	{
-		DataContext.Entry(status).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(status).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion

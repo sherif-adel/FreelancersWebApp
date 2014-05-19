@@ -33,7 +33,7 @@ public partial class User
 
         this.SubCategories = new HashSet<SubCategory>();
 
-        this.AvailableProjects = new HashSet<Project>();
+        this.Projects1 = new HashSet<Project>();
 
     }
 
@@ -50,7 +50,7 @@ public partial class User
 
     public int RoleID { get; set; }
 
-    public int CityID { get; set; }
+    public Nullable<int> CityID { get; set; }
 
 
 
@@ -70,7 +70,7 @@ public partial class User
 
     public virtual ICollection<SubCategory> SubCategories { get; set; }
 
-    public virtual ICollection<Project> AvailableProjects { get; set; }
+    public virtual ICollection<Project> Projects1 { get; set; }
 
 }
 

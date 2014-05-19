@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class SkillDataService : DataServiceBase<Skill>
 {
@@ -34,7 +35,15 @@ public partial class SkillDataService : DataServiceBase<Skill>
 	/// <param name="id">The skill Id.</param>
 	public override Skill GetById(int id)
 	{
-		return DataContext.Skills.FirstOrDefault(entity => entity.SkillID == id);
+		try
+		{
+			return DataContext.Skills.FirstOrDefault(entity => entity.SkillID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class SkillDataService : DataServiceBase<Skill>
 	/// </summary>
 	public override List<Skill> GetAll()
 	{
-		return DataContext.Skills.ToList();
+		try
+		{
+			return DataContext.Skills.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class SkillDataService : DataServiceBase<Skill>
 	/// <param name="skill">The skill entity.</param>
 	public override void Add(Skill skill)
 	{
-		DataContext.Skills.Add(skill);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Skills.Add(skill);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class SkillDataService : DataServiceBase<Skill>
 	/// <param name="skill">The skill entity.</param>
 	public override void Delete(Skill skill)
 	{
-
-		DataContext.Skills.Remove(skill);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Skills.Remove(skill);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class SkillDataService : DataServiceBase<Skill>
 	/// <param name="id">The skill Id.</param>
 	public override void Delete(int id)
 	{
-		var skill = GetById(id);
-		DataContext.Skills.Remove(skill);
-		DataContext.SaveChanges();
+		try
+		{
+			var skill = GetById(id);
+			DataContext.Skills.Remove(skill);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class SkillDataService : DataServiceBase<Skill>
 	/// <param name="skill">The skill entity.</param>
 	public override void Update(Skill skill)
 	{
-		DataContext.Entry(skill).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(skill).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion

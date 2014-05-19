@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3B5382
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreeLancers.Log", "FreeLancers.Log\FreeLancers.Log.csproj", "{6101985C-D7B3-4BC2-9BA8-82DE9A26C0D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{22B9B648-694D-4857-A9E7-868C6B1B0E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22B9B648-694D-4857-A9E7-868C6B1B0E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22B9B648-694D-4857-A9E7-868C6B1B0E41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6101985C-D7B3-4BC2-9BA8-82DE9A26C0D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6101985C-D7B3-4BC2-9BA8-82DE9A26C0D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6101985C-D7B3-4BC2-9BA8-82DE9A26C0D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6101985C-D7B3-4BC2-9BA8-82DE9A26C0D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class UserDataService : DataServiceBase<User>
 {
@@ -34,7 +35,15 @@ public partial class UserDataService : DataServiceBase<User>
 	/// <param name="id">The user Id.</param>
 	public override User GetById(int id)
 	{
-		return DataContext.Users.FirstOrDefault(entity => entity.UserID == id);
+		try
+		{
+			return DataContext.Users.FirstOrDefault(entity => entity.UserID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class UserDataService : DataServiceBase<User>
 	/// </summary>
 	public override List<User> GetAll()
 	{
-		return DataContext.Users.ToList();
+		try
+		{
+			return DataContext.Users.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class UserDataService : DataServiceBase<User>
 	/// <param name="user">The user entity.</param>
 	public override void Add(User user)
 	{
-		DataContext.Users.Add(user);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Users.Add(user);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class UserDataService : DataServiceBase<User>
 	/// <param name="user">The user entity.</param>
 	public override void Delete(User user)
 	{
-
-		DataContext.Users.Remove(user);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Users.Remove(user);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class UserDataService : DataServiceBase<User>
 	/// <param name="id">The user Id.</param>
 	public override void Delete(int id)
 	{
-		var user = GetById(id);
-		DataContext.Users.Remove(user);
-		DataContext.SaveChanges();
+		try
+		{
+			var user = GetById(id);
+			DataContext.Users.Remove(user);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class UserDataService : DataServiceBase<User>
 	/// <param name="user">The user entity.</param>
 	public override void Update(User user)
 	{
-		DataContext.Entry(user).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(user).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion

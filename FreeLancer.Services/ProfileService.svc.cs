@@ -84,12 +84,12 @@ namespace FreeLancer.Services
             }
         }
 
-        public ProfileContract GetByUserId(int userId)
+        public ProfileContract GetByUserId(int userId, bool includeImages)
         {
             using (var dbConnector = new DBConnector())
             {
                 ProfileManager profileManager = new ProfileManager(dbConnector.DataContext);
-                var profile = profileManager.GetById(userId);
+                var profile = profileManager.GetByUserId(userId, includeImages);
                 return ProfilesTranslator.ConvertToProfileContract(profile);
             }
         }

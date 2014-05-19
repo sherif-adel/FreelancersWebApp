@@ -43,8 +43,8 @@ public partial class ProfileContract
         [DataMember]
         public virtual SubCategoryContract SubCategory { get; set; }
         [DataMember]
-        public virtual UserContract User { get; set; }
-        [DataMember]
         public virtual List<SkillContract> Skills { get; set; }
+        [DataMember]
+        public virtual UserContract User { get; set; }
     }
 }

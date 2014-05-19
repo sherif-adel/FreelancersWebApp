@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class RoleDataService : DataServiceBase<Role>
 {
@@ -34,7 +35,15 @@ public partial class RoleDataService : DataServiceBase<Role>
 	/// <param name="id">The role Id.</param>
 	public override Role GetById(int id)
 	{
-		return DataContext.Roles.FirstOrDefault(entity => entity.RoleID == id);
+		try
+		{
+			return DataContext.Roles.FirstOrDefault(entity => entity.RoleID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class RoleDataService : DataServiceBase<Role>
 	/// </summary>
 	public override List<Role> GetAll()
 	{
-		return DataContext.Roles.ToList();
+		try
+		{
+			return DataContext.Roles.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class RoleDataService : DataServiceBase<Role>
 	/// <param name="role">The role entity.</param>
 	public override void Add(Role role)
 	{
-		DataContext.Roles.Add(role);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Roles.Add(role);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class RoleDataService : DataServiceBase<Role>
 	/// <param name="role">The role entity.</param>
 	public override void Delete(Role role)
 	{
-
-		DataContext.Roles.Remove(role);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Roles.Remove(role);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class RoleDataService : DataServiceBase<Role>
 	/// <param name="id">The role Id.</param>
 	public override void Delete(int id)
 	{
-		var role = GetById(id);
-		DataContext.Roles.Remove(role);
-		DataContext.SaveChanges();
+		try
+		{
+			var role = GetById(id);
+			DataContext.Roles.Remove(role);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class RoleDataService : DataServiceBase<Role>
 	/// <param name="role">The role entity.</param>
 	public override void Update(Role role)
 	{
-		DataContext.Entry(role).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(role).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion

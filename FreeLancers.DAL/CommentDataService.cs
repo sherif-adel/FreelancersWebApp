@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class CommentDataService : DataServiceBase<Comment>
 {
@@ -34,7 +35,15 @@ public partial class CommentDataService : DataServiceBase<Comment>
 	/// <param name="id">The comment Id.</param>
 	public override Comment GetById(int id)
 	{
-		return DataContext.Comments.FirstOrDefault(entity => entity.CommentID == id);
+		try
+		{
+			return DataContext.Comments.FirstOrDefault(entity => entity.CommentID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class CommentDataService : DataServiceBase<Comment>
 	/// </summary>
 	public override List<Comment> GetAll()
 	{
-		return DataContext.Comments.ToList();
+		try
+		{
+			return DataContext.Comments.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class CommentDataService : DataServiceBase<Comment>
 	/// <param name="comment">The comment entity.</param>
 	public override void Add(Comment comment)
 	{
-		DataContext.Comments.Add(comment);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Comments.Add(comment);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class CommentDataService : DataServiceBase<Comment>
 	/// <param name="comment">The comment entity.</param>
 	public override void Delete(Comment comment)
 	{
-
-		DataContext.Comments.Remove(comment);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Comments.Remove(comment);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class CommentDataService : DataServiceBase<Comment>
 	/// <param name="id">The comment Id.</param>
 	public override void Delete(int id)
 	{
-		var comment = GetById(id);
-		DataContext.Comments.Remove(comment);
-		DataContext.SaveChanges();
+		try
+		{
+			var comment = GetById(id);
+			DataContext.Comments.Remove(comment);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class CommentDataService : DataServiceBase<Comment>
 	/// <param name="comment">The comment entity.</param>
 	public override void Update(Comment comment)
 	{
-		DataContext.Entry(comment).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(comment).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion

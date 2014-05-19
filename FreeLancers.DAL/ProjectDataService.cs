@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class ProjectDataService : DataServiceBase<Project>
 {
@@ -34,7 +35,15 @@ public partial class ProjectDataService : DataServiceBase<Project>
 	/// <param name="id">The project Id.</param>
 	public override Project GetById(int id)
 	{
-		return DataContext.Projects.FirstOrDefault(entity => entity.ProjectID == id);
+		try
+		{
+			return DataContext.Projects.FirstOrDefault(entity => entity.ProjectID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class ProjectDataService : DataServiceBase<Project>
 	/// </summary>
 	public override List<Project> GetAll()
 	{
-		return DataContext.Projects.ToList();
+		try
+		{
+			return DataContext.Projects.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class ProjectDataService : DataServiceBase<Project>
 	/// <param name="project">The project entity.</param>
 	public override void Add(Project project)
 	{
-		DataContext.Projects.Add(project);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Projects.Add(project);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class ProjectDataService : DataServiceBase<Project>
 	/// <param name="project">The project entity.</param>
 	public override void Delete(Project project)
 	{
-
-		DataContext.Projects.Remove(project);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Projects.Remove(project);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class ProjectDataService : DataServiceBase<Project>
 	/// <param name="id">The project Id.</param>
 	public override void Delete(int id)
 	{
-		var project = GetById(id);
-		DataContext.Projects.Remove(project);
-		DataContext.SaveChanges();
+		try
+		{
+			var project = GetById(id);
+			DataContext.Projects.Remove(project);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class ProjectDataService : DataServiceBase<Project>
 	/// <param name="project">The project entity.</param>
 	public override void Update(Project project)
 	{
-		DataContext.Entry(project).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(project).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion

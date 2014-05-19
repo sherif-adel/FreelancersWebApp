@@ -22,7 +22,7 @@ public partial class UserContract
         [DataMember]
         public int RoleID { get; set; }
         [DataMember]
-        public int CityID { get; set; }
+        public Nullable<int> CityID { get; set; }
     
         [DataMember]
         public virtual CityContract City { get; set; }
@@ -41,6 +41,6 @@ public partial class UserContract
         [DataMember]
         public virtual List<SubCategoryContract> SubCategories { get; set; }
         [DataMember]
-        public virtual List<ProjectContract> AvailableProjects { get; set; }
+        public virtual List<ProjectContract> Projects1 { get; set; }
     }
 }

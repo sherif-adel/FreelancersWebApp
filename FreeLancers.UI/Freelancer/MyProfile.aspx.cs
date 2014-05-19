@@ -64,7 +64,7 @@ namespace FreeLancers.UI.Freelancer
 
         private void loadProfileData()
         {
-            var currentProfile = ProfileService.GetById(CurrentUser.Profiles.FirstOrDefault().ProfileID);
+            var currentProfile = ProfileService.GetByUserId(CurrentUser.UserID, true);
             if (currentProfile != null)
             {
                 txtCompanyName.Value = currentProfile.CompanyName;
@@ -114,7 +114,7 @@ namespace FreeLancers.UI.Freelancer
             //newProfile.Images = new List<ImageContract>();
             //newProfile.Images.Add(image1);
             //newProfile.Images.Add(image2);
-           // newProfile.Images.Add(image3);
+            // newProfile.Images.Add(image3);
 
             return newProfile;
         }

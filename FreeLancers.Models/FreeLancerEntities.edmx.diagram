@@ -23,19 +23,19 @@
         <AssociationConnector Association="FreeLancersModel.FK_City_Country" />
         <EntityTypeShape EntityType="FreeLancersModel.Competitor" Width="1.5" PointX="0.5" PointY="23.875" />
         <EntityTypeShape EntityType="FreeLancersModel.Profile" Width="1.5" PointX="11.854254729977928" PointY="19.079337277952273" />
-        <EntityTypeShape EntityType="FreeLancersModel.User" Width="1.5" PointX="6" PointY="25.375" />
-        <AssociationConnector Association="FreeLancersModel.FK_Users_City" />
         <AssociationConnector Association="FreeLancersModel.FK_Comments_Profiles" />
-        <AssociationConnector Association="FreeLancersModel.FK_Comments_Users" />
         <AssociationConnector Association="FreeLancersModel.FK_Competitors_Project" />
-        <AssociationConnector Association="FreeLancersModel.FK_Competitors_Users" />
         <AssociationConnector Association="FreeLancersModel.FK_Images_Profiles" />
         <AssociationConnector Association="FreeLancersModel.FK_Profiles_SubCategory" />
+        <AssociationConnector Association="FreeLancersModel.FreelancerSkills" />
+        <EntityTypeShape EntityType="FreeLancersModel.User" Width="1.5" PointX="7.55344977395304" PointY="29.033093018938366" />
+        <AssociationConnector Association="FreeLancersModel.FK_Users_City" />
+        <AssociationConnector Association="FreeLancersModel.FK_Comments_Users" />
+        <AssociationConnector Association="FreeLancersModel.FK_Competitors_Users" />
         <AssociationConnector Association="FreeLancersModel.FK_Profiles_Users" />
         <AssociationConnector Association="FreeLancersModel.FK_Project_Users" />
         <AssociationConnector Association="FreeLancersModel.FK_Requests_Users" />
         <AssociationConnector Association="FreeLancersModel.FK_Users_Roles" />
-        <AssociationConnector Association="FreeLancersModel.FreelancerSkills" />
         <AssociationConnector Association="FreeLancersModel.FreelancerSubCategories" />
         <AssociationConnector Association="FreeLancersModel.ProjectNotifications" />
         </Diagram>

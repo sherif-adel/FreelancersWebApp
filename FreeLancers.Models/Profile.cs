@@ -64,9 +64,9 @@ public partial class Profile
 
     public virtual SubCategory SubCategory { get; set; }
 
-    public virtual User User { get; set; }
-
     public virtual ICollection<Skill> Skills { get; set; }
+
+    public virtual User User { get; set; }
 
 }
 

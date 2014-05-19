@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class SubCategoryDataService : DataServiceBase<SubCategory>
 {
@@ -34,7 +35,15 @@ public partial class SubCategoryDataService : DataServiceBase<SubCategory>
 	/// <param name="id">The subcategory Id.</param>
 	public override SubCategory GetById(int id)
 	{
-		return DataContext.SubCategories.FirstOrDefault(entity => entity.SubCategoryID == id);
+		try
+		{
+			return DataContext.SubCategories.FirstOrDefault(entity => entity.SubCategoryID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class SubCategoryDataService : DataServiceBase<SubCategory>
 	/// </summary>
 	public override List<SubCategory> GetAll()
 	{
-		return DataContext.SubCategories.ToList();
+		try
+		{
+			return DataContext.SubCategories.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class SubCategoryDataService : DataServiceBase<SubCategory>
 	/// <param name="subcategory">The subcategory entity.</param>
 	public override void Add(SubCategory subcategory)
 	{
-		DataContext.SubCategories.Add(subcategory);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.SubCategories.Add(subcategory);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class SubCategoryDataService : DataServiceBase<SubCategory>
 	/// <param name="subcategory">The subcategory entity.</param>
 	public override void Delete(SubCategory subcategory)
 	{
-
-		DataContext.SubCategories.Remove(subcategory);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.SubCategories.Remove(subcategory);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class SubCategoryDataService : DataServiceBase<SubCategory>
 	/// <param name="id">The subcategory Id.</param>
 	public override void Delete(int id)
 	{
-		var subcategory = GetById(id);
-		DataContext.SubCategories.Remove(subcategory);
-		DataContext.SaveChanges();
+		try
+		{
+			var subcategory = GetById(id);
+			DataContext.SubCategories.Remove(subcategory);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class SubCategoryDataService : DataServiceBase<SubCategory>
 	/// <param name="subcategory">The subcategory entity.</param>
 	public override void Update(SubCategory subcategory)
 	{
-		DataContext.Entry(subcategory).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(subcategory).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion

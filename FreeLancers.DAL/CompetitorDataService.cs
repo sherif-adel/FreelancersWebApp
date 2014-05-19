@@ -2,11 +2,12 @@
 namespace FreeLancers.DAL
 {
 
-using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using FreeLancers.Models;
+	using System;
+	using System.Data.Entity;
+	using System.Collections.Generic;
+	using System.Linq;
+	using FreeLancers.Models;
+	using FreeLancers.Log;
 
 public partial class CompetitorDataService : DataServiceBase<Competitor>
 {
@@ -34,7 +35,15 @@ public partial class CompetitorDataService : DataServiceBase<Competitor>
 	/// <param name="id">The competitor Id.</param>
 	public override Competitor GetById(int id)
 	{
-		return DataContext.Competitors.FirstOrDefault(entity => entity.CompetitorID == id);
+		try
+		{
+			return DataContext.Competitors.FirstOrDefault(entity => entity.CompetitorID == id);
+		}
+            catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -42,7 +51,15 @@ public partial class CompetitorDataService : DataServiceBase<Competitor>
 	/// </summary>
 	public override List<Competitor> GetAll()
 	{
-		return DataContext.Competitors.ToList();
+		try
+		{
+			return DataContext.Competitors.ToList();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -51,8 +68,16 @@ public partial class CompetitorDataService : DataServiceBase<Competitor>
 	/// <param name="competitor">The competitor entity.</param>
 	public override void Add(Competitor competitor)
 	{
-		DataContext.Competitors.Add(competitor);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Competitors.Add(competitor);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -61,9 +86,16 @@ public partial class CompetitorDataService : DataServiceBase<Competitor>
 	/// <param name="competitor">The competitor entity.</param>
 	public override void Delete(Competitor competitor)
 	{
-
-		DataContext.Competitors.Remove(competitor);
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Competitors.Remove(competitor);
+			DataContext.SaveChanges();
+		}
+    		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -72,9 +104,17 @@ public partial class CompetitorDataService : DataServiceBase<Competitor>
 	/// <param name="id">The competitor Id.</param>
 	public override void Delete(int id)
 	{
-		var competitor = GetById(id);
-		DataContext.Competitors.Remove(competitor);
-		DataContext.SaveChanges();
+		try
+		{
+			var competitor = GetById(id);
+			DataContext.Competitors.Remove(competitor);
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
 	/// <summary>
@@ -83,8 +123,16 @@ public partial class CompetitorDataService : DataServiceBase<Competitor>
 	/// <param name="competitor">The competitor entity.</param>
 	public override void Update(Competitor competitor)
 	{
-		DataContext.Entry(competitor).State = EntityState.Modified;
-		DataContext.SaveChanges();
+		try
+		{
+			DataContext.Entry(competitor).State = EntityState.Modified;
+			DataContext.SaveChanges();
+		}
+		catch (Exception ex)
+            {
+                ExceptionHandler.LogException(ex, System.Reflection.MethodInfo.GetCurrentMethod().Name, FreeLancers.Log.ExceptionHandler.LogThreshold.ERROR);
+                throw ex;
+            }
 	}
 
         #endregion
